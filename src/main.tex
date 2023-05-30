@@ -1,0 +1,385 @@
+%Preamble
+\documentclass[10pt, a4paper,onecolumn ,titlepage]{article}
+%\documentclass[man,floatsintext]{apa7}
+
+%Einbindung der Referenzen in das Dokument via BiblaTeX
+\usepackage[ngerman]{babel}
+\usepackage[style=german,german=quotes]{csquotes}
+\usepackage[style=apa,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{main.bib}
+
+%Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amstext}
+\usepackage{graphicx}
+\usepackage{xstring}
+\usepackage{suffix}
+\usepackage[nohyperlinks, printonlyused, withpage, smaller]{acronym}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{etoolbox}
+\usepackage[nooneline]{caption}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{abstract}
+\usepackage{tablefootnote}
+\usepackage{blkarray}
+\usepackage{shorttoc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{threeparttable}
+
+%Ueberschrieben des kewyowrds befehl
+\providecommand{\keywords}[1]
+{
+    \small
+    \textbf{\textit{Keywords --}} #1
+}
+
+
+
+%Documents
+\begin{document}
+
+%Titelseite
+    \begin{titlepage}
+        \begin{center}
+
+            \vspace*{1cm}
+
+            {\large \textbf{Erstellen eines TryHackMe Raums}}
+
+            \vspace{0.5cm}
+            zur Vermittlung von Schachstellen im Zusammenhang mit der Lernplattform ILIAS
+
+            \vspace{1.5cm}
+
+            \textbf{Chris Benz} \\
+            \small{chbenz@stud.hs-heilbronn.de}
+            \\
+            \vspace{0.2cm}
+            \textbf{Lennart Kremp}\\
+            \small{jkaercher@stud.hs-heilbronn.de}
+            \\
+            \vspace{0.2cm}
+            \textbf{Umut Eke} \\
+            \small{sthuerwae@stud.hs-heilbronn.de}
+            \\
+            \vspace{0.2cm}
+            \textbf{Frederik Spieß}\\
+            \small{ermeyer@stud.hs-heilbronn.de}
+
+
+            \vfill
+
+            \begin{figure}[H]
+                \centering
+                \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
+                    \includegraphics[width=\linewidth]{author_pictures/chris_2}
+                \end{minipage}\label{fig:chris}
+                \hspace{.005\linewidth}% Abstand zwischen Bilder
+                \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
+                    \includegraphics[width=\linewidth]{author_pictures/chris_2}
+                \end{minipage}\label{fig:lennart}
+                \hspace{.005\linewidth}% Abstand zwischen Bilder
+                \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
+                    \includegraphics[width=\linewidth]{author_pictures/chris_2}
+                \end{minipage}\label{fig:umut}
+                \hspace{.005\linewidth}% Abstand zwischen Bilder
+                \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
+                    \includegraphics[width=\linewidth]{author_pictures/chris_2}
+                \end{minipage}\label{fig:frederik}
+            \end{figure}
+
+
+            \vfill
+
+            Durchführung im Rahmen der Veranstaltung \\ \glqq Praktikum sichere Software-Entwicklung\grqq{} an der Hochschule Heilbronn und Universität Heidelberg
+
+            \vspace{0.2cm}
+
+            Beaufsichtigt durch Prof. Dr.-Ing. Andreas Mayer
+
+            \vspace{1.0cm}
+
+
+            \vspace{0.8cm}
+
+            Fakultät für Informatik\\
+            Hochschule Heilbronn\\
+            \today{}, Heilbronn
+
+        \end{center}
+
+    \end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \renewcommand*\abstractname{\flushleft\textbf{Abstract}\hfill}
+    \begin{abstract}
+        \hline
+        \vspace{0.5cm}
+        \noindent
+        \textbf{Hintergrund}: Die fortschreitende Digitalisierung ist in allen Bereichen des Lebens angekommen.
+        Apps im Allgemeinen, aber auch neue Entwicklungsfelder wie mHealth-Anwendungen erfahren einen starken Anstieg ihrer Nutzerzahlen.
+        Dabei ist eine hohe Usability einer der essenziellen Faktoren erfolgreicher Apps.
+        Eine fundierte und frühzeitige Beurteilung der Usability einer App bietet den Entwickler*innen die Möglichkeit, Schwachstellen schnell zu beseitigen.
+        Es existiert eine Vielzahl verschiedener Fragebögen zur Evaluierung der Usability.
+        Oft verwendete Fragebögen sind der System Usability Scale (SUS) sowie der speziell für mHealth-Apps entwickelte mHealth App Usability Questionnaire (MAUQ).
+        Neue Daten der am Universitätsklinikum durchgeführten Enable Studie deuten auf Schwierigkeiten beim Verständnis der Items von SUS und MAUQ hin.
+
+        \vspace{0.5cm}
+        \noindent
+        \textbf{Zielsetzung}: Das Ziel dieses Projekts ist es, festzustellen, ob es bei den Items der Fragebögen SUS und MAUQ Verständnisprobleme gibt.
+        Bestätigt sich diese Hypothese, sind auffällige Items zu identifizieren und abschließend jeweils eine überarbeitete Version der Fragebögen zu entwickeln.
+
+        \vspace{0.5cm}
+        \noindent
+        \textbf{Methoden}: Die in der Enable Studie erhobenen Fragebögen werden in einem ersten Schritt auf Auffälligkeiten und Anmerkungen untersucht,
+        um im Anschluss die Items, durch Berechnung der Item Conspicuity Rate (ICR), zu evaluieren.
+        In einem zweiten Schritt werden die beiden Fragebögen durch Interviews mit weiteren Proband*innen untersucht, um Informationen über die Ursachen der Verständnisprobleme zu erhalten.
+        Hierbei liegt der Fokus auf den, durch die \ac{icr}, als auffällig identifizierten Items.
+        Abschließend werden neue Versionen des SUS und MAUQ entworfen.
+
+
+        \vspace{0.5cm}
+        \noindent
+        \textbf{Ergebnisse}: Insgesamt wurden 235 MAUQ Fragebögen und 126 SUS Fragebögen einem Screening unterzogen.
+        Im Anschluss wurden 37 Proband*innen für eine weitere Erhebung konsultiert.
+        Einige Items der beiden Fragebögen sind aufgrund einer Vielzahl an Auffälligkeiten sowie eindeutiger Bemerkungen der Proband*innen, als auffällig einzustufen. %vielleicht auffällig
+        Abschließend wurden auf Grundlage der neu gewonnen Erkenntnisse neue Versionen für SUS und MAUQ entwickelt.
+
+
+        \vspace{0.5cm}
+        \hline
+        \vspace{3cm}
+        \noindent
+        \keywords{Schwachstellen, Ilias, ImageMagic, Privilage Escalation in Linux, XSS}
+    \end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	1.Inhaltsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    \shorttoc{Inhaltsübersicht}{1}
+    \pagebreak
+    \tableofcontents
+    \vfill
+    \pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	1.Einleitung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Einleitung}
+    \label{sec:einleitung}
+
+    \subsection{Gegenstand und Motivation}
+    \label{subsec:gegenstand-motivation}
+    Mit der zunehmenden Digitalisierung der Gesellschaft steigt die Nutzung verschiedenster Anwendungen in allen Lebensbereichen.
+    Auch mHealth-Anwendungen weisen eine steigende Beliebtheit auf und sind im Anbetracht mangelnder Ressourcen im Gesundheitssektor ein effektives Werkzeug zur besseren Patientenversorgung.
+    Sie sind Teil des klinischen Alltags, helfen Nutzer*innen ein besseres Empfinden für ihre Gesundheit zu erhalten und vernetzen ärztliches Fachpersonal und Patient*in.
+    Eine Reihe durchgeführten Studien konnten zeigen, dass gut konzipiere mHealth-Anwendungen Patient*innen nachhaltig unterstützen und die Kosten im Bereich der Gesundheitsversorgung senken können~\parencite{RN20,RN21,RN22}.
+    Trotz aller Vorteile die mHealth-Anwendungen mit sich bringen, wird ein Großteil der entwickelten Anwendungen nicht ausgiebig genutzt, da Fachkräfte aufgrund unzureichender Bewertung der Usability häufig nicht von der Zuverlässigkeit der Systeme überzeugt sind~\parencite{RN19}.
+    Es zeigt sich, einer der Hauptaspekte erfolgreicher Anwendungen, ist eine verständliche und intuitive Usability.
+    Für die Erhebung der Usability gibt es eine große Auswahl verschiedenster Usability-Fragebögen.
+    Um möglichst aussagekräftige und korrekte Informationen über die Usability zu erhalten, ist die Qualität des Fragebogens von Bedeutung.
+    Es besteht ein Interesse daran, anerkannte Fragebögen auf Auffälligkeiten zu analysieren und diese gegebenenfalls durch überarbeitete Versionen zu adressieren.
+
+    \subsection{Problemstellung}
+    \label{subsec:problemstellung}
+    Oft verwendete Usability-Fragebögen sind der \ac{sus}~\parencite{RN8} sowie der speziell für mHealth-Apps entwickelte \ac{mauq}~\parencite{RN14}.
+    Das aus den Fragebögen gewonnene Feedback wird meist verwendet, um Änderungen an Systemen vorzunehmen, die die Usability verbessern.
+    Je genauer die Fragebögen das Feedback der Benutzer*innen zur Usability widerspiegeln, desto zielgerichteter kann die Usability an deren Bedürfnisse angepasst werden.
+    Erste Usability-Fragebogenrückläufer einer am Universitätsklinikum Heidelberg durchgeführten Studie lassen die Hypothese aufkommen, dass die Beantwortung der Fragebögen \ac{sus} und \ac{mauq} den Proband*innen Schwierigkeiten bereitet.
+    Dies kann sich auf die Qualität der Ergebnisse auswirken und zu fehlerhaften Rückschlüssen in Bezug auf die Usability eines Systems führen.
+
+
+    \subsection{Zielsetzung}
+    \label{subsec:zielsetzung}
+    Die Arbeit ist in drei Unterziele einzuteilen.
+    Allen voran gilt es, die zuvor erläuterte Hypothese, dass die Items der Fragebögen \ac{sus} und \ac{mauq} Verständnisprobleme aufweisen, zu bestätigen.
+    In Abhängigkeit davon sind, nach der Annahme der Hypothese, die Items der beiden Fragebögen weitergehend zu untersuchen.
+    So können potenziell problembehaftete Items herausgefiltert und die Ursachen der Verständnisprobleme beschrieben werden.
+    Die herausgearbeiteten Probleme bezüglich der auffälligen Items sind in der Form zu adressieren, dass für beide Fragebögen eine überarbeitete Version zur Verfügung steht.
+
+
+
+    \subsection{Frage-/Aufgabenstellungen}
+    \label{subsec:frage-aufgabenstellung}
+    Zur Bestätigung der anfänglichen, in der Zielsetzung beschriebenen Hypothese, ist ein Analyseplan zu erarbeiten.
+    Dieser beschreibt das systematische Vorgehen, nach dem die Fragebogenrückläufer der Enable-Studie zu screenen und die verschiedenen Auffälligkeiten zu erfassen sind.
+    Die Auffälligkeiten sind zudem in verschiedene Kategorien einzuteilen und durch Proband*innen verfasste Notizen gesondert zu analysieren.
+    Dies soll Aufschluss über das Vorhandensein von Verständnisproblemen und erste Grundlagen für das Herausfiltern auffälliger Items liefern.
+    Mittels eines geeigneten Werkzeugs (\ac{icr}) und der gesammelten Informationen sind auffällige Items zu identifizieren.
+    Es sind Interviews durchzuführen, die Informationen zu den Ursachen der Verständnisprobleme liefern sollen.
+    Dabei kommt den durch Proband*innen während den Interviews getätigten Aussagen eine besondere Bedeutung zu.
+    Um eine Vergleichbarkeit zwischen den Interviews zu gewährleisten, ist ein Interviewleitfaden zu entwickeln.
+    Mit den erarbeiteten Erkenntnissen sind die auffälligen Items zu überarbeiten und neue Versionen der Fragebögen \ac{sus} und \ac{mauq} zu entwerfen.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	2.Grundlagen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Grundlagen}
+    \label{sec:grundlagen}
+
+    \subsection{mHealth-Anwendungen}
+    \label{subsec:mhealthanwendungen}
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	3.Methoden und Werkzeuge
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+
+    \section{Methoden und Werkzeuge}
+    \label{sec:methoden-werkzeuge}
+
+    \subsection{Prozess Übersicht}
+    \label{subsec:process-overview}
+    Um jeweils einen neuen Entwurf für die Fragebögen SUS und MAUQ zu erhalten, werden zunächst die während der Enable Studie am Universitätsklinikum Heidelberg
+    erhobenen Fragebogenrückläufer ausgewertet.
+    Die erhobenen Daten bilden die Grundlage für eine Auswahl \textit{auffälliger Items}.
+    In einem anschließenden Interview werden weitere Daten mit Fokus auf die, als auffällig klassifizierten, Items erhoben,
+    um im Anschluss jeweils einen sprachlich angepassten Entwurf für SUS und MAUQ auszuarbeiten.
+    Abbildung ~\ref{fig:flow-chart-übersicht} visualisiert die gewählte Vorgehensweise und stellt einen kompakten Überblick dar.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	4.Ergebnisse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Ergebnisse}
+    \label{sec:ergebnisse}
+
+    \subsection{Analyseergebnisse der Enable-Fragebogenrückläufer}
+    \label{subsec:screening-ergebnisse}
+
+    \subsubsection{Ergebnisse SUS}
+    \label{subsubsec:screening-ergebnisse-sus}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	5.Diskussion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Diskussion}
+    \label{sec:diskussion}
+
+    \subsection{MAUQ Item 17 - ein Sonderfall}
+    \label{subsec:mauq-item-17-diskussion}
+    \noindent
+    Item 17 des MAUQ Fragebogens stellt in seiner Komplexität ein Sonderfall dar.
+    Es verlangt von den Proband*innen technisches Wissen im Bereich der Funktionsweise von Apps.
+    Die in Abschnitt~\ref{subsubsec:interview-ergebnisse-mauq} durch Proband*innen angemerkten Schwierigkeiten bei der Beantwortung können nur zum Teil adressiert werden.
+    Im Rahmen eines einzelnen Items ist es nicht möglich, Proband*innen mit mangelndem technischen Verständnis darüber aufzuklären, dass Apps für einen bestimmten Funktionsumfang auf eine intakte Internetverbindung zurückgreifen müssen.
+    Es ist davon auszugehen, dass Item 17 in Abgrenzung zu den anderen Items häufiger leer gelassen oder durch ein Fragezeichen markiert sein wird.
+    Ein Umstand, der bei einer solch technischen Frage, nicht zu vermeiden ist.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	6.Ausblick
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Ausblick}
+    \label{sec:ausblick}
+
+    \subsection{Anpassung der sprachlichen Formulierung an die Nutzungszeit der App}
+    \label{subsec:konjunktiv}
+    Die Auswertungen der Interviews zeigen, dass die gelegentliche Verwendung des Konjunktivs für Proband*innen unerwartet ist.
+    Die Verwendung des Modus verursacht bei den Proband*innen jedoch keine Verständnisprobleme.
+    Dennoch ist es sinnvoll zwei Versionen der Fragebögen zu entwickeln und validieren.
+    Diese sollten die Nutzungsdauer, die den Proband*innen zum Zeitpunkt der Befragung zur Verfügung stand, durch die Verwendung oder den Verzicht des Konjunktivs miteinbeziehen.
+    Ab wann der Nutzungszeitraum eine App lange genug ist, um auf die Verwendung des Konjunktivs zu verzichten, gilt es zu ermitteln.
+    Hierdurch findet eine Anpassung an den im Alltag genutzten Sprachgebrauch statt, welche voraussichtlich eine verbesserte Lesbarkeit zum Resultat hat.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	7.Danksagung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \vspace{5cm}
+    \hline
+    \vspace{1cm}
+    \noindent
+    \textbf{Danksagung}
+    \\
+    \\
+    Wir bedanken uns bei \textit{Prof. Dr.-Ing. Andreas Mayer} für die Betreuung im Rahmen des Kurses Praktikum sichere Software-Entwicklung an der Hochschule Heilbronn.
+    \vspace{1cm}
+    \hline
+    \vspace{2cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	7.Bibliographie
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Literaturverzeichnis}
+    \label{sec:bibliographie}
+    \printbibliography[title=""]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	8.Abkürzungsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+
+    \section{Abkürzungsverzeichnis}
+    \label{sec:abkuerzungsverzeichnis}
+    \begin{acronym}
+        \acro{UX}[UX-Design]{User Experience Design}
+    \end{acronym}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	9.Anhang
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Anhang}
+    \label{sec:Anhang}
+
+
+
+
+\end{document}
+
