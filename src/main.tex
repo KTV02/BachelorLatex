@@ -50,10 +50,10 @@
 
             \vspace*{1cm}
 
-            {\large \textbf{Erstellen eines TryHackMe Raums}}
+            {\large \textbf{Entwickeln eines TryHackMe Raums}}
 
             \vspace{0.5cm}
-            zur Vermittlung von Schachstellen im Zusammenhang mit der Lernplattform ILIAS
+            zur Sicherheitsschulung von Schachstellen, aufgezeigt am Lernmanagementsystem ILIAS
 
             \vspace{1.5cm}
 
@@ -97,7 +97,7 @@
 
             \vfill
 
-            Durchführung im Rahmen der Veranstaltung \\ \glqq Praktikum sichere Software-Entwicklung\grqq{} an der Hochschule Heilbronn und Universität Heidelberg
+            Durchführung im Rahmen der Veranstaltung \\ \glqq Praktikum sichere Software-Entwicklung\grqq{} an der Hochschule Heilbronn
 
             \vspace{0.2cm}
 
@@ -184,46 +184,25 @@
 
     \subsection{Gegenstand und Motivation}
     \label{subsec:gegenstand-motivation}
-    Mit der zunehmenden Digitalisierung der Gesellschaft steigt die Nutzung verschiedenster Anwendungen in allen Lebensbereichen.
-    Auch mHealth-Anwendungen weisen eine steigende Beliebtheit auf und sind im Anbetracht mangelnder Ressourcen im Gesundheitssektor ein effektives Werkzeug zur besseren Patientenversorgung.
-    Sie sind Teil des klinischen Alltags, helfen Nutzer*innen ein besseres Empfinden für ihre Gesundheit zu erhalten und vernetzen ärztliches Fachpersonal und Patient*in.
-    Eine Reihe durchgeführten Studien konnten zeigen, dass gut konzipiere mHealth-Anwendungen Patient*innen nachhaltig unterstützen und die Kosten im Bereich der Gesundheitsversorgung senken können~\parencite{RN20,RN21,RN22}.
-    Trotz aller Vorteile die mHealth-Anwendungen mit sich bringen, wird ein Großteil der entwickelten Anwendungen nicht ausgiebig genutzt, da Fachkräfte aufgrund unzureichender Bewertung der Usability häufig nicht von der Zuverlässigkeit der Systeme überzeugt sind~\parencite{RN19}.
-    Es zeigt sich, einer der Hauptaspekte erfolgreicher Anwendungen, ist eine verständliche und intuitive Usability.
-    Für die Erhebung der Usability gibt es eine große Auswahl verschiedenster Usability-Fragebögen.
-    Um möglichst aussagekräftige und korrekte Informationen über die Usability zu erhalten, ist die Qualität des Fragebogens von Bedeutung.
-    Es besteht ein Interesse daran, anerkannte Fragebögen auf Auffälligkeiten zu analysieren und diese gegebenenfalls durch überarbeitete Versionen zu adressieren.
-
-    \subsection{Problemstellung}
-    \label{subsec:problemstellung}
-    Oft verwendete Usability-Fragebögen sind der \ac{sus}~\parencite{RN8} sowie der speziell für mHealth-Apps entwickelte \ac{mauq}~\parencite{RN14}.
-    Das aus den Fragebögen gewonnene Feedback wird meist verwendet, um Änderungen an Systemen vorzunehmen, die die Usability verbessern.
-    Je genauer die Fragebögen das Feedback der Benutzer*innen zur Usability widerspiegeln, desto zielgerichteter kann die Usability an deren Bedürfnisse angepasst werden.
-    Erste Usability-Fragebogenrückläufer einer am Universitätsklinikum Heidelberg durchgeführten Studie lassen die Hypothese aufkommen, dass die Beantwortung der Fragebögen \ac{sus} und \ac{mauq} den Proband*innen Schwierigkeiten bereitet.
-    Dies kann sich auf die Qualität der Ergebnisse auswirken und zu fehlerhaften Rückschlüssen in Bezug auf die Usability eines Systems führen.
+    \footnote{In dieser Arbeit wird aus Gründen der besseren Lesbarkeit das generische Maskulinum verwendet. Weibliche und anderweitige Geschlechteridentitäten werden dabei ausdrücklich mitgemeint, soweit es für die Aussage erforderlich ist.}
+    In einer immer stärker miteinander vernetzten Welt wird eines immer wichtiger, die Sicherheit und der Schutz digitaler Infrastruktur.
+    Dies zeigt auch eine immer weiter zunehmenden Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
+    Geschultes IT-Personal mit fundierten Kenntnissen in Bereichen wie.
+    Eine Möglichkeit ein solches Wissen zu erlangen, bietet die Lernplattform TryHackMe.
+    Sie bietet interessierten Personen die Möglichkeit sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
+    Und das erworbene Wissen in einer realitätsnahen, aber dennoch abgesicherten Umgebung zu testen.
+    Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen.
+    Eine häufig zur Kommunikation genutzte Software ist das Lernmanagementsystem ILIAS, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellen.
+    Um eine möglichst realistische Lernumgebung des zu entwickelnden TryHackMe Raumes zu schaffen,
 
 
     \subsection{Zielsetzung}
     \label{subsec:zielsetzung}
-    Die Arbeit ist in drei Unterziele einzuteilen.
-    Allen voran gilt es, die zuvor erläuterte Hypothese, dass die Items der Fragebögen \ac{sus} und \ac{mauq} Verständnisprobleme aufweisen, zu bestätigen.
-    In Abhängigkeit davon sind, nach der Annahme der Hypothese, die Items der beiden Fragebögen weitergehend zu untersuchen.
-    So können potenziell problembehaftete Items herausgefiltert und die Ursachen der Verständnisprobleme beschrieben werden.
-    Die herausgearbeiteten Probleme bezüglich der auffälligen Items sind in der Form zu adressieren, dass für beide Fragebögen eine überarbeitete Version zur Verfügung steht.
-
-
-
-    \subsection{Frage-/Aufgabenstellungen}
-    \label{subsec:frage-aufgabenstellung}
-    Zur Bestätigung der anfänglichen, in der Zielsetzung beschriebenen Hypothese, ist ein Analyseplan zu erarbeiten.
-    Dieser beschreibt das systematische Vorgehen, nach dem die Fragebogenrückläufer der Enable-Studie zu screenen und die verschiedenen Auffälligkeiten zu erfassen sind.
-    Die Auffälligkeiten sind zudem in verschiedene Kategorien einzuteilen und durch Proband*innen verfasste Notizen gesondert zu analysieren.
-    Dies soll Aufschluss über das Vorhandensein von Verständnisproblemen und erste Grundlagen für das Herausfiltern auffälliger Items liefern.
-    Mittels eines geeigneten Werkzeugs (\ac{icr}) und der gesammelten Informationen sind auffällige Items zu identifizieren.
-    Es sind Interviews durchzuführen, die Informationen zu den Ursachen der Verständnisprobleme liefern sollen.
-    Dabei kommt den durch Proband*innen während den Interviews getätigten Aussagen eine besondere Bedeutung zu.
-    Um eine Vergleichbarkeit zwischen den Interviews zu gewährleisten, ist ein Interviewleitfaden zu entwickeln.
-    Mit den erarbeiteten Erkenntnissen sind die auffälligen Items zu überarbeiten und neue Versionen der Fragebögen \ac{sus} und \ac{mauq} zu entwerfen.
+    Das oberste Ziel des zu entwickelnden TryHackMe Raums besteht in der Wissensvermittlung bzw. dem Prüfen erworbener Kenntnisse.
+    Indem wir interessierte Personen mittels einer Storyline durch einen mit realistischen und in der Vergangenheit aufgetretener Schwachstellen leiten, sollen diese ihr Können unter Beweis stellen.
+    Dies soll das Verständnis für die Bedeutung der IT-Sicherheit in der heutigen digitalen Landschaft fördern und gleichzeitig zukünftige Sicherheitsexperten bestmöglich auf Bedrohungen einstellen.
+    Die Geschichte handelt von einem jungen Studenten namens TimDerHackerboy der sich im Laufe seines Kurses \glqq Grundlagen der sicheren Software-Entwicklung\grqq zu einer besseren Note hackt.
+    Dabei begegnet er unter anderem Schachstellen wie dem \ac{xss} , ImageTragic oder einer Misskonfiguration die bei geschicktem Ausnutzen eine Privilege Escalation zulässt.
 
 
 
@@ -236,12 +215,44 @@
     \section{Grundlagen}
     \label{sec:grundlagen}
 
-    \subsection{mHealth-Anwendungen}
-    \label{subsec:mhealthanwendungen}
+    \subsection{ILIAS}
+    \label{subsec:ilias}
+    Die Abkürzung ILIAS beschreibt ein \ac{ilias} .
+    Bei der Software handelt es sich nicht um eine Lernplattform, sondern um ein System mit dem sich eine solche betreiben lässt.
+    Die Software fällt unter die Kategorie Open-Source und ist somit für jedermann zugänglich und wird seit dem Jahre 2000, aufgrund großen Interesses, unter der GNU General Public Licence veröffentlicht.
+    Mittlerweile erscheint \ac{ilias} in der achten Version und ermöglicht Lehrenden und Lernenden eine möglichst unkomplizierte Kommunikation.
+    \ac{ilias} ist wie eine Bibliothek zu verstehen, die es ermöglicht Wissen in Kursen möglichst einfach bereitzustellen und zu managen.
+    Mittlerweile wurde diese Kernkompetenz zudem durch Module zur Kommunikation oder auch dem Durchführen von Onlineprüfungen ergänzt.
+    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die Nato und die Bayrische Polizei.
 
+    \subsection{Cross-Site-Scripting}
+    \label{subsec:CrossSiteScripting}
+    Bei \ac{xss} handelt es sich um eine weit verbreitet Schachstelle die zudem von der \ac{owasp} geührt wird.
+    XSS-Angriffe sind eine Art von Injektion, bei der bösartige Skripte in ansonsten gutartige und vertrauenswürdige Websites eingeschleust werden.
+    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden. ~\textcite{RN1}
+    Ein Ursache für das Auftreten von XSS-Schwachstellen, ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
+    Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Scripte auszuführen und so vertrauliche Informationen zu erlangen.
+    Je nach Schwachstelle kann es sich dabei zum Beispiel um Session-Cookies oder Zugangsdaten handeln.
+    Zudem findet eine einteilung in zwei Arten von XSS-Angriffen statt. Ersten,
 
+    \subsubsection{CVE-2018-5688}
+    \label{subsubsec:CVE-2018-5688}
+    Die Schwachstelle CVE-2018-5688 tritt in ILIAS Versionen vor 5.2.4 auf.
 
+    \subsection{ImageMagic}
+    \label{subsec:ImageMagic}
 
+    \subsubsection{CVE-2016-3718 (ImageTragic)}
+    \label{subsubsec:CVE-2016-3718}
+
+    \subsection{Privilege Escalation}
+    \label{subsec:PrivilegeEscalation}
+
+    \subsubsection{CVE-2019-14287 (Sudo)}
+    \laber{subsubsec:sudo}
+
+    \subsubsection{Misskonfiguration (/etc/pssswd)}
+    \laber{subsubsec:misskonfiguration}
 
 
 
@@ -250,13 +261,13 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	3.Methoden und Werkzeuge
+%	3. Technologien / Methoden und Werkzeuge
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \fill
     \newpage
 
-    \section{Methoden und Werkzeuge}
-    \label{sec:methoden-werkzeuge}
+    \section{Technologien}
+    \label{sec:technologien}
 
     \subsection{Prozess Übersicht}
     \label{subsec:process-overview}
@@ -269,67 +280,33 @@
 
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	4.Ergebnisse
+%	4. Storyline und Musterlösung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \fill
     \newpage
-    \section{Ergebnisse}
-    \label{sec:ergebnisse}
+
+    \section{Storyline}
+    \label{sec:storyline}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	4.Lessons Learned
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
+    \section{Lessons Learned}
+    \label{sec:lessonsLearned}
 
     \subsection{Analyseergebnisse der Enable-Fragebogenrückläufer}
     \label{subsec:screening-ergebnisse}
 
     \subsubsection{Ergebnisse SUS}
     \label{subsubsec:screening-ergebnisse-sus}
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	5.Diskussion
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \fill
-    \newpage
-    \section{Diskussion}
-    \label{sec:diskussion}
-
-    \subsection{MAUQ Item 17 - ein Sonderfall}
-    \label{subsec:mauq-item-17-diskussion}
-    \noindent
-    Item 17 des MAUQ Fragebogens stellt in seiner Komplexität ein Sonderfall dar.
-    Es verlangt von den Proband*innen technisches Wissen im Bereich der Funktionsweise von Apps.
-    Die in Abschnitt~\ref{subsubsec:interview-ergebnisse-mauq} durch Proband*innen angemerkten Schwierigkeiten bei der Beantwortung können nur zum Teil adressiert werden.
-    Im Rahmen eines einzelnen Items ist es nicht möglich, Proband*innen mit mangelndem technischen Verständnis darüber aufzuklären, dass Apps für einen bestimmten Funktionsumfang auf eine intakte Internetverbindung zurückgreifen müssen.
-    Es ist davon auszugehen, dass Item 17 in Abgrenzung zu den anderen Items häufiger leer gelassen oder durch ein Fragezeichen markiert sein wird.
-    Ein Umstand, der bei einer solch technischen Frage, nicht zu vermeiden ist.
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	6.Ausblick
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \fill
-    \newpage
-    \section{Ausblick}
-    \label{sec:ausblick}
-
-    \subsection{Anpassung der sprachlichen Formulierung an die Nutzungszeit der App}
-    \label{subsec:konjunktiv}
-    Die Auswertungen der Interviews zeigen, dass die gelegentliche Verwendung des Konjunktivs für Proband*innen unerwartet ist.
-    Die Verwendung des Modus verursacht bei den Proband*innen jedoch keine Verständnisprobleme.
-    Dennoch ist es sinnvoll zwei Versionen der Fragebögen zu entwickeln und validieren.
-    Diese sollten die Nutzungsdauer, die den Proband*innen zum Zeitpunkt der Befragung zur Verfügung stand, durch die Verwendung oder den Verzicht des Konjunktivs miteinbeziehen.
-    Ab wann der Nutzungszeitraum eine App lange genug ist, um auf die Verwendung des Konjunktivs zu verzichten, gilt es zu ermitteln.
-    Hierdurch findet eine Anpassung an den im Alltag genutzten Sprachgebrauch statt, welche voraussichtlich eine verbesserte Lesbarkeit zum Resultat hat.
-
 
 
 
@@ -366,7 +343,10 @@
     \section{Abkürzungsverzeichnis}
     \label{sec:abkuerzungsverzeichnis}
     \begin{acronym}
-        \acro{UX}[UX-Design]{User Experience Design}
+        \acro{xss}[XSS]{Cross-Site Scripting}
+        \acro{ilias}[ILIAS]{Integriertes Lern-, Informations- und Arbeitskooperations-System}
+        \acro{owasp}[OWASP]{Open Web Application Security Project}
+        Open Web Application Security Project
     \end{acronym}
 
 
