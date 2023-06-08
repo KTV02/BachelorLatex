@@ -5,8 +5,9 @@
 %Einbindung der Referenzen in das Dokument via BiblaTeX
 \usepackage[ngerman]{babel}
 \usepackage[style=german,german=quotes]{csquotes}
-\usepackage[style=apa,backend=biber]{biblatex}
-\DeclareLanguageMapping{american}{american-apa}
+%\usepackage[style=apa,backend=biber]{biblatex}
+%\DeclareLanguageMapping{american}{american-apa}
+\usepackage[style=numeric, backend=biber]{biblatex}
 \addbibresource{main.bib}
 
 %Packages
@@ -32,7 +33,7 @@
 \usepackage{shorttoc}
 \usepackage[shortlabels]{enumitem}
 \usepackage{threeparttable}
-\usepackage{tocbibind}
+
 
 
 %Ueberschrieben des kewyowrds befehl
@@ -232,7 +233,7 @@
     \label{subsec:CrossSiteScripting}
     Bei \ac{xss} handelt es sich um eine weit verbreitete Schwachstelle, die zudem von der \ac{owasp} geführt wird.
     XSS-Angriffe sind eine Art von Injektion, bei der bösartige Skripte in ansonsten gutartige und vertrauenswürdige Websites eingeschleust werden.
-    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden. ~\textcite{RN1}
+    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden.\autocite{RN1}
     Eine Ursache für das Auftreten von XSS-Schwachstellen ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
     Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Scripte auszuführen und so vertrauliche Informationen zu erlangen.
     Je nach Schwachstelle kann es sich dabei zum Beispiel um Session-Cookies oder Zugangsdaten handeln.
@@ -244,7 +245,8 @@
 
     \subsection{ImageMagick}
     \label{subsec:ImageMagick}
-
+    ImageMagick ist ein kostenloses Open-Source-Framework, welches genutzt werden kann, um Bilddateien zu bearbeiten.
+    Es funktioniert mit den gängigen Bilddateiformaten wie bspw. JPEG, PNG, GIF, TIFF und PDF. \autocite{imagemagick}
 
     \subsubsection{CVE-2016-3718 (ImageTragick)}
     \label{subsubsec:CVE-2016-3718}
