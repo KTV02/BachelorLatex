@@ -12,6 +12,7 @@
 %Packages
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{graphicx}
 \usepackage{xstring}
@@ -31,6 +32,8 @@
 \usepackage{shorttoc}
 \usepackage[shortlabels]{enumitem}
 \usepackage{threeparttable}
+\usepackage{tocbibind}
+
 
 %Ueberschrieben des kewyowrds befehl
 \providecommand{\keywords}[1]
@@ -53,7 +56,7 @@
             {\large \textbf{Entwickeln eines TryHackMe Raums}}
 
             \vspace{0.5cm}
-            zur Sicherheitsschulung von Schachstellen, aufgezeigt am Lernmanagementsystem ILIAS
+            zur Sicherheitsschulung von Schwachstellen, aufgezeigt am Lernmanagementsystem ILIAS
 
             \vspace{1.5cm}
 
@@ -61,16 +64,16 @@
             \small{chbenz@stud.hs-heilbronn.de}
             \\
             \vspace{0.2cm}
-            \textbf{Lennart Kremp}\\
-            \small{jkaercher@stud.hs-heilbronn.de}
+            \textbf{Umut Mehmet Eke}\\
+            \small{ueke@stud.hs-heilbronn.de}
             \\
             \vspace{0.2cm}
-            \textbf{Umut Eke} \\
-            \small{sthuerwae@stud.hs-heilbronn.de}
+            \textbf{Lennart Kremp} \\
+            \small{lkremp@stud.hs-heilbronn.de}
             \\
             \vspace{0.2cm}
             \textbf{Frederik Spieß}\\
-            \small{ermeyer@stud.hs-heilbronn.de}
+            \small{frspiess@stud.hs-heilbronn.de}
 
 
             \vfill
@@ -150,7 +153,7 @@
         \hline
         \vspace{3cm}
         \noindent
-        \keywords{Schwachstellen, Ilias, ImageMagic, Privilage Escalation in Linux, XSS}
+        \keywords{Schwachstellen, Ilias, ImageMagick, Privilage Escalation in Linux, XSS}
     \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -179,7 +182,7 @@
     In einer immer stärker miteinander vernetzten Welt wird eines immer wichtiger, die Sicherheit und der Schutz digitaler Infrastruktur.
     Dies zeigt auch eine immer weiter zunehmenden Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
     Geschultes IT-Personal mit fundierten Kenntnissen in Bereichen wie.
-    Eine Möglichkeit ein solches Wissen zu erlangen, bietet die Lernplattform TryHackMe.
+    Eine Möglichkeit ein solches Wissen zu erlangen, bietet die Lernplattform \href{https://tryhackme.com/}{TryHackMe}.
     Sie bietet interessierten Personen die Möglichkeit sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
     Und das erworbene Wissen in einer realitätsnahen, aber dennoch abgesicherten Umgebung zu testen.
     Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen.
@@ -192,8 +195,8 @@
     Das oberste Ziel des zu entwickelnden TryHackMe Raums besteht in der Wissensvermittlung bzw. dem Prüfen erworbener Kenntnisse.
     Indem wir interessierte Personen mittels einer Storyline durch einen mit realistischen und in der Vergangenheit aufgetretener Schwachstellen leiten, sollen diese ihr Können unter Beweis stellen.
     Dies soll das Verständnis für die Bedeutung der IT-Sicherheit in der heutigen digitalen Landschaft fördern und gleichzeitig zukünftige Sicherheitsexperten bestmöglich auf Bedrohungen einstellen.
-    Die Geschichte handelt von einem jungen Studenten namens TimDerHackerboy der sich im Laufe seines Kurses \glqq Grundlagen der sicheren Software-Entwicklung\grqq zu einer besseren Note hackt.
-    Dabei begegnet er unter anderem Schachstellen wie dem \ac{xss} , ImageTragic oder einer Misskonfiguration die bei geschicktem Ausnutzen eine Privilege Escalation zulässt.
+    Die Geschichte handelt von einem jungen Studenten namens TimDerHackerboy, der sich im Laufe seines Kurses \glqq Grundlagen der sicheren Software-Entwicklung\grqq\ zu einer besseren Note hackt.
+    Dabei begegnet er unter anderem Schwachstellen wie dem \ac{xss}, ImageTragick oder einer Misskonfiguration, die bei geschicktem Ausnutzen eine Privilege Escalation zulässt.
 
 
 
@@ -214,26 +217,27 @@
     Mittlerweile erscheint \ac{ilias} in der achten Version und ermöglicht Lehrenden und Lernenden eine möglichst unkomplizierte Kommunikation.
     \ac{ilias} ist wie eine Bibliothek zu verstehen, die es ermöglicht Wissen in Kursen möglichst einfach bereitzustellen und zu managen.
     Mittlerweile wurde diese Kernkompetenz zudem durch Module zur Kommunikation oder auch dem Durchführen von Onlineprüfungen ergänzt.
-    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die Nato und die Bayrische Polizei.
+    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die NATO und die Bayerische Polizei.
 
     \subsection{Cross-Site-Scripting}
     \label{subsec:CrossSiteScripting}
-    Bei \ac{xss} handelt es sich um eine weit verbreitet Schwachstelle, die zudem von der \ac{owasp} geführt wird.
+    Bei \ac{xss} handelt es sich um eine weit verbreitete Schwachstelle, die zudem von der \ac{owasp} geführt wird.
     XSS-Angriffe sind eine Art von Injektion, bei der bösartige Skripte in ansonsten gutartige und vertrauenswürdige Websites eingeschleust werden.
     XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden. ~\textcite{RN1}
-    Eine Ursache für das Auftreten von XSS-Schwachstellen, ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
+    Eine Ursache für das Auftreten von XSS-Schwachstellen ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
     Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Scripte auszuführen und so vertrauliche Informationen zu erlangen.
-    Je nach Anwendung und deren spezifische Schwachstelle kann es sich dabei zum Beispiel um Session-Cookies oder Zugangsdaten handeln.
+    Je nach Schwachstelle kann es sich dabei zum Beispiel um Session-Cookies oder Zugangsdaten handeln.
     Zudem findet eine Einteilung in zwei Arten von XSS-Angriffen statt. Ersten,
 
     \subsubsection{CVE-2018-5688}
     \label{subsubsec:CVE-2018-5688}
-    Die Schwachstelle CVE-2018-5688 tritt in ILIAS Versionen vor 5.2.4 auf.
+    Die Schwachstelle \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688} tritt in ILIAS Versionen vor 5.2.4 auf.
 
-    \subsection{ImageMagic}
-    \label{subsec:ImageMagic}
+    \subsection{ImageMagick}
+    \label{subsec:ImageMagick}
 
-    \subsubsection{CVE-2016-3718 (ImageTragic)}
+
+    \subsubsection{CVE-2016-3718 (ImageTragick)}
     \label{subsubsec:CVE-2016-3718}
 
     \subsection{Privilege Escalation}
