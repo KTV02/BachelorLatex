@@ -33,6 +33,7 @@
 \usepackage{shorttoc}
 \usepackage[shortlabels]{enumitem}
 \usepackage{threeparttable}
+\usepackage{arabicfnt}
 
 
 
@@ -86,12 +87,12 @@
                 \end{minipage}\label{fig:chris}
                 \hspace{.005\linewidth}% Abstand zwischen Bilder
                 \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
-                    \includegraphics[width=\linewidth]{author_pictures/chris_2}
-                \end{minipage}\label{fig:lennart}
+                    \includegraphics[width=\linewidth]{author_pictures/umut}
+                \end{minipage}\label{fig:umut}
                 \hspace{.005\linewidth}% Abstand zwischen Bilder
                 \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
                     \includegraphics[width=\linewidth]{author_pictures/chris_2}
-                \end{minipage}\label{fig:umut}
+                \end{minipage}\label{fig:lennart}
                 \hspace{.005\linewidth}% Abstand zwischen Bilder
                 \begin{minipage}[b]{.13\linewidth} % [b] => Ausrichtung an \caption
                     \includegraphics[width=\linewidth]{author_pictures/chris_2}
@@ -271,17 +272,21 @@
 
     \subsection{Docker}
     \label{subsec:docker}
-
+    Docker ist eine Open-Source-Plattform, die es Entwicklern ermöglicht, Anwendungen in Containern zu erstellen, zu verpacken und auszuführen.\n 
+    Container sind eigenständige und isolierte Einheiten, die alle erforderlichen Abhängigkeiten enthalten, um Anwendungen auf verschiedenen Systemen konsistent auszuführen.\autocite{docker}
+    \n Theoretisch stellt der User \glqq sturai\grqq\ ein ILIAS-Image über Docker Hub bereit (\href{https://hub.docker.com/r/sturai/ilias#!}{s. hier}).
+    Jedoch konnten wir dieses nicht benutzen, da die angebotenen Versionen unsere Exploits nicht mehr unterstützen bzw. diese darin gefixt sind.\n
+    Unsere Lösung
     \subsection{VM mit einem Ubuntu Betriebssystem}
     \label{subsec:ubuntu}
 
-    \subsection{MySql Datenbank}
+    \subsection{MySQL Datenbank}
     \label{subsec:mysqlDatenbank}
 
     \subsection{Apache Server mit einem Debian Betriebssystem}
     \label{subsec:apacherServer}
 
-    \subsection{Ilias mit ImageMagick}
+    \subsection{ILIAS mit ImageMagick}
     \label{subsec:iliasTechnologie}
 
 
