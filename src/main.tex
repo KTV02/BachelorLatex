@@ -227,13 +227,25 @@
     XSS-Angriffe sind eine Art von Injektion, bei der bösartige Skripte in ansonsten gutartige und vertrauenswürdige Websites eingeschleust werden.
     XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden. ~\textcite{RN1}
     Eine Ursache für das Auftreten von XSS-Schwachstellen ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
-    Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Scripte auszuführen und so vertrauliche Informationen zu erlangen.
-    Je nach Schwachstelle kann es sich dabei zum Beispiel um Session-Cookies oder Zugangsdaten handeln.
-    Zudem findet eine Einteilung in zwei Arten von XSS-Angriffen statt. Ersten,
+    Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Skripte auszuführen und so vertrauliche Informationen zu erlangen.
+    Je nach Schwachstelle kann es sich dabei beispielsweise um Session-Cookies oder Zugangsdaten handeln.
+    Zudem findet eine Einteilung in zwei Arten von XSS-Angriffen statt:
+    \\
+    (1) \textbf{Reflected \ac{xss} Attacken} beschreiben eine Attacke, bei der das \ac{xss} Skript vom Webserver reflektiert wird.
+    Dies kann unter anderem in Form einer Fehlermeldung oder Suchergebnissen der Fall sein.
+    \\
+    (2) \textbf{Stored \ac{xss} Attacken} hingegen beschreiben eine Attacke, bei der das \ac{xss} Skript eingeschleust und anschließend auf dem verwundbaren Zielserver gespeichert wird.
+    Dies ermöglicht es, das nach jedem Aufruf des Zielsystems durch unbedarfte Nutzer, das schädliche \ac{xss} Skript ausgeführt wird.
+    Beliebte Beispiele hierfür sind Forenbeiträge, Kommentare oder Datenbankeinträge.
+
 
     \subsubsection{CVE-2018-5688}
     \label{subsubsec:CVE-2018-5688}
     Die Schwachstelle \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688} tritt in ILIAS Versionen vor 5.2.4 auf.
+    Durch Ausnutzung dieser Schwachstelle kann schädlicher \ac{xss} Skriptcode eingeschleust und ausgeführt werden, was potenziell zu Sicherheitsproblemen führen kann.
+    Diese Schwachstelle betrifft den cmd-Parameter der displayHeader-Funktion womit .php Dateien in der Setup-Komponente der Ilias-Software ausgelesen werden können~\parencite{xssExploitDb}.
+    Zum Ausnutzen der Schwachstelle muss ein Angreifer nicht eingeloggt sein.
+    Mit einer CVSS Bewertung von 4.3 ist die Schwachstelle nicht als extrem gefährlich eingestuft, was daran liegt, dass die möglichen Auswirkungen auf das System moderat sind~\parencite{xssCVEDetails}.
 
     \subsection{ImageMagick}
     \label{subsec:ImageMagick}
@@ -242,8 +254,8 @@
     \subsubsection{CVE-2016-3718 (ImageTragick)}
     \label{subsubsec:CVE-2016-3718}
     Die Schwachstelle \href{https://www.cve.org/CVERecord?id=CVE-2016-3718}{CVE-2016-3718}, auch \glqq ImageTragick\grqq\ genannt,
-    tritt in den Versionen 6.9.3-10 und 7.x vor 7.0.1-1 von ImageMagick auf. Durch diese ist es möglich Schadcode gemeinsam mit einem Bild hochzuladen
-    und serverseitig auszuführen.
+    tritt in den Versionen 6.9.3-10 und 7.x vor 7.0.1-1 von ImageMagick auf.
+    Durch diese ist es möglich Schadcode gemeinsam mit einem Bild hochzuladen und serverseitig auszuführen.
 
     \subsection{Privilege Escalation}
     \label{subsec:PrivilegeEscalation}
