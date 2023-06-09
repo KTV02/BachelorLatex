@@ -5,9 +5,8 @@
 %Einbindung der Referenzen in das Dokument via BiblaTeX
 \usepackage[ngerman]{babel}
 \usepackage[style=german,german=quotes]{csquotes}
-%\usepackage[style=apa,backend=biber]{biblatex}
-%\DeclareLanguageMapping{american}{american-apa}
-\usepackage[style=numeric, backend=biber]{biblatex}
+\usepackage[style=apa,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
 \addbibresource{main.bib}
 
 %Packages
@@ -34,7 +33,7 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{threeparttable}
 \usepackage{arabicfnt}
-
+\usepackage{tocbibind}
 
 
 %Ueberschrieben des kewyowrds befehl
@@ -55,10 +54,10 @@
 
             \vspace*{1cm}
 
-            {\large \textbf{Entwickeln eines TryHackMe Raums}}
+            {\large \textbf{Entwicklung eines TryHackMe Raumes}}
 
             \vspace{0.5cm}
-            zur Sicherheitsschulung von Schwachstellen, aufgezeigt am Lernmanagementsystem ILIAS
+            zur Sicherheitsschulung von Schwachstellen - aufgezeigt am Lernmanagementsystem ILIAS
 
             \vspace{1.5cm}
 
@@ -141,14 +140,15 @@
 
         \vspace{0.5cm}
         \noindent
-        \textbf{Methoden}: An erster Stelle steht das bestimmen geeigneter Schachstellen in ILIAS und die Anpassung an die Storyline.
-        Im weiteren Verlauf müssen die Docker Datein sowie Virtual Maschines
+        \textbf{Methoden}: An erster Stelle steht das Bestimmen geeigneter Schwachstellen in ILIAS und die Anpassung an die Storyline.
+        Daraus resultierend gilt es die passenden Technologien auszuwählen und die \ac{vm} zur späteren Einbindung in den TryHackMe Raum auszuarbeiten.
+        Abschließen gilt es alle Komponenten in einem ansprechend designten TryHackMe Raum zu vereinen.
 
 
         \vspace{0.5cm}
         \noindent
-        \textbf{Ergebnisse}: Insgesamt wurden zwei Virtual Maschines erstellt mit den Ilias Versionen 5.2.3 und 5.2.4.
-        Eine Storyline rund um den Studenten TimDerHackerboy führt die Nutzer des Raumes durch die beiden Machinen.
+        \textbf{Ergebnisse}: Insgesamt wurden zwei \ac{vm}s mit den Ilias Versionen 5.2.3 und 5.2.4 erstellt.
+        Eine Storyline rund um den Studenten TimDerHackerBoy führt die Nutzer des Raumes durch die beiden Maschinen.
         Um den Raum erfolgreich abzuschließen sind unter anderem verschiedene Schwachstellen auszunutzen, drei Flags zu finden und den erfolgreichen Umgang mit verschiedenen Tools wie Hydra unter Beweis zustellen.
 
         \vspace{0.5cm}
@@ -225,7 +225,7 @@
     \label{subsec:CrossSiteScripting}
     Bei \ac{xss} handelt es sich um eine weit verbreitete Schwachstelle, die zudem von der \ac{owasp} geführt wird.
     XSS-Angriffe sind eine Art von Injektion, bei der bösartige Skripte in ansonsten gutartige und vertrauenswürdige Websites eingeschleust werden.
-    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden.\autocite{RN1}
+    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden. ~\textcite{RN1}
     Eine Ursache für das Auftreten von XSS-Schwachstellen ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
     Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Scripte auszuführen und so vertrauliche Informationen zu erlangen.
     Je nach Schwachstelle kann es sich dabei zum Beispiel um Session-Cookies oder Zugangsdaten handeln.
@@ -237,8 +237,7 @@
 
     \subsection{ImageMagick}
     \label{subsec:ImageMagick}
-    ImageMagick ist ein kostenloses Open-Source-Framework, welches genutzt werden kann, um Bilddateien zu bearbeiten.
-    Es funktioniert mit den gängigen Bilddateiformaten wie bspw. JPEG, PNG, GIF, TIFF und PDF. \autocite{imagemagick}
+
 
     \subsubsection{CVE-2016-3718 (ImageTragick)}
     \label{subsubsec:CVE-2016-3718}
@@ -299,7 +298,13 @@
     \section{Storyline}
     \label{sec:storyline}
 
+    %Bilder vom TryHackMe Raum einfügen
 
+    \subsection{Virtual Maschine 1}
+    \label{subsec:vm1}
+
+    \subsection{Virtual Maschine 2}
+    \label{subsec:vm2}
 
 
 
@@ -356,7 +361,7 @@
         \acro{xss}[XSS]{Cross-Site Scripting}
         \acro{ilias}[ILIAS]{Integriertes Lern-, Informations- und Arbeitskooperations-System}
         \acro{owasp}[OWASP]{Open Web Application Security Project}
-        Open Web Application Security Project
+        \acro{vm}[VM]{Virtuellen Maschinen}
     \end{acronym}
 
 
