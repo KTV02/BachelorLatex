@@ -35,7 +35,6 @@
 \usepackage{arabicfnt}
 \usepackage{tocbibind}
 
-
 %Ueberschrieben des kewyowrds befehl
 \providecommand{\keywords}[1]
 {
@@ -67,7 +66,7 @@
 }
 
 
-%Documents
+%Document
 \begin{document}
 
 %Titelseite
@@ -123,7 +122,7 @@
 
             \vfill
 
-            Durchführung im Rahmen der Veranstaltung \\ \glqq Praktikum sichere Software-Entwicklung\grqq{} an der Hochschule Heilbronn
+            Durchführung im Rahmen der Veranstaltung \\ \glqq Praktikum sichere Software-Entwicklung\grqq\ an der Hochschule Heilbronn
 
             \vspace{0.2cm}
 
@@ -280,9 +279,9 @@
 
     \subsubsection{CVE-2016-3718 (ImageTragick)}
     \label{subsubsec:CVE-2016-3718}
-    Die Schwachstelle \href{https://www.cve.org/CVERecord?id=CVE-2016-3718}{CVE-2016-3718}, auch \glqq ImageTragick\grqq genannt, tritt in den Versionen 6.9.3-10 und 7.x vor 7.0.1-1 von ImageMagick auf.
+    Die Schwachstelle \href{https://www.cve.org/CVERecord?id=CVE-2016-3718}{CVE-2016-3718}, auch \glqq ImageTragick\grqq\ genannt, tritt in den Versionen 6.9.3-10 und 7.x vor 7.0.1-1 von ImageMagick auf.
     Die Sicherheitslücke ist im Jahre 2016 erstmal entdeckt worden und betrifft die Verarbeitung von Bilddateien mit der ImageMagick Software-Bibliothek.
-    Durch \glqq ImageTragick\grqq ist es möglich, Schadcode in Form einer Bilddatei in ein System einzuschleusen und anschließend serverseitig auszuführen.
+    Durch \glqq ImageTragick\grqq\ ist es möglich, Schadcode in Form einer Bilddatei in ein System einzuschleusen und anschließend serverseitig auszuführen.
     Da es sich bei ImageMagick um eine Software-Bibliothek handelt, die wie in~\ref{subsec:ImageMagick} bereits erwähnt eine große Nutzerzahl aufweist, war die Schwachstelle zum Zeitpunkt ihrer Entdeckung durch die Sicherheitsfirma Check Point in einer Vielzahl von Softwareprodukten zu finden~\parencite{imageTragicReport}.
     ILIAS verwendet ImageMagic zur Verarbeitung der Profilbilder ihrer Nutzer, weshalb auch ILIAS je nach verwendeter ImageMagick Version von der Sicherheitslücke betroffen war.
 
@@ -306,7 +305,7 @@
     Es bietet die Möglichkeit Benutzern gewisse Rechte zuzuordnen.
     Diese sind somit in der Lage, Befehle auszuführen, für die es normalerweise die erhöhten Rechte eines anderen Nutzer notwendig sind.
     Die Schwachstelle \href{https://www.cvedetails.com/cve/CVE-2019-14287/?q=CVE-2019-14287}{CVE-2019-14287} tritt in Sudo Versionen vor 1.28 auf.
-    Sudo wird dazu mit der manipulierten Nutzer-ID -1 oder 4294967295 wie folgt aufgerufen: sudo -u#-1 /bin/bash.
+    Sudo wird dazu mit der manipulierten Nutzer-ID -1 oder 4294967295 wie folgt aufgerufen: sudo -u\#-1 /bin/bash.
     Einem Angreifer ist es bei einer bestimmten sudoers Konfiguration (die den root Zugriff ausführlich verbietet) möglich, Befehle mit root Rechten auszuführen wie ein Exploit von \textcite{privilegeEscalationSudoExploit} zeigt:
     \vspace{0.5}
     \begin{lstlisting}[label={lst:examplesudo}]
@@ -325,8 +324,19 @@
 
 
 
-    \subsubsection{Misskonfiguration (/etc/pssswd)}
+    \subsubsection{Fehlkonfiguration (/etc/pssswd)}
     \label{subsubsec:misskonfiguration}
+    Die /etc/passwd Datei in Linux Systeme ist als eine Art Userdatenbank zu verstehen.
+    Sie enthält Informationen zu den Systemnutzern, dazu gehören Nutzer-ID, Gruppen-ID, Shell-Zuordnung uns früher auch Passwörter.
+    Bei der Datei handelt es sich meistens um eine .txt Datei, die immer für alle Nutzer lesbar ist~\parencite{privilegeEscalationPasswd}.
+    In der \ac{vm}2 werden die Zugriffsrechte für die /etc/passwd Datei mit Befehl chmod 777 geändert.
+    Der chmod Befehl wird in Linux dazu verwendet, die Zugriffsrechte auf Dateien und Verzeichnisse zu ändern.
+    Die hinterlegten Zugriffsrechte für die passwd Datei sehen nunmehr wie folgt aus: rwxrwxrwx.
+    Dementsprechend ist es jedem Nutzer des Systems gestatte, die Datei zu lesen/read, schreiben/write und auszuführen/execute~\parencite{privilegeEscalationFehlkRechte}.
+    Eine solche Fehlkonfiguration führt zu schwerwiegenden Sicherheitsproblemen für das System.
+    Angreifer sind so in der Lage auf Nutzerinformationen zuzugreifen, sich eigene Nutzer mit root Rechten anzulegen und so selber root zu werden.
+    Eine solche Fehlkonfiguration sollte unter allen Umständen vermieden werden und dient in der \ac{vm}2 lediglich der Veranschaulichung welche Folgen eine solche für ein System haben kann.
+
 
 
 
