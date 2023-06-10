@@ -156,13 +156,10 @@
 
         \vspace{0.5cm}
         \noindent
-        \textbf{Zielsetzung}: Das Ziel dieses Projekts ist das Erstellen eines TryHackMe Raumes, der Anhand einer ansprechenden Storyline
+        \textbf{Zielsetzung}: Das Ziel dieses Projekts ist das Erstellen eines TryHackMe Raumes, der anhand einer ansprechenden Storyline
         Wissen im Bereich IT-Sicherheit vermittelt und vorhandene Kenntnisse auf die Probe stellt.
-
-        \vspace{0.5cm}
-        \noindent
-        \textbf{Methoden}: An erster Stelle steht das Bestimmen geeigneter Schwachstellen in ILIAS und die Anpassung an die Storyline.
-        Daraus resultierend gilt es die passenden Technologien auszuwählen und die \ac{vm} zur späteren Einbindung in den TryHackMe Raum auszuarbeiten.
+        Es gilt demnach, geeignete Schwachstellen (in ILIAS) zu bestimmen und eine Storyline rund um diese zu entwerfen.
+        Passende Technologien sind auszuwählen und die \ac{vm}, zur späteren Einbindung in den TryHackMe Raum, auszuarbeiten.
         Abschließen gilt es alle Komponenten in einem ansprechend designten TryHackMe Raum zu vereinen.
 
 
@@ -176,7 +173,7 @@
         \hline
         \vspace{3cm}
         \noindent
-        \keywords{Schwachstellen, Ilias, ImageMagick, Privilage Escalation in Linux, XSS}
+        \keywords{Ilias, Fehlkonfiguration, ImageMagick, Privilage Escalation, XSS}
     \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -202,24 +199,29 @@
     \subsection{Gegenstand und Motivation}
     \label{subsec:gegenstand-motivation}
     \footnote{In dieser Arbeit wird aus Gründen der besseren Lesbarkeit das generische Maskulinum verwendet. Weibliche und anderweitige Geschlechteridentitäten werden dabei ausdrücklich mitgemeint, soweit es für die Aussage erforderlich ist.}
-    In einer immer stärker miteinander vernetzten Welt wird eines immer wichtiger, die Sicherheit und der Schutz digitaler Infrastruktur.
+    Die Zuverlässigkeit moderner IT-Systeme entscheidet über Erfolg oder Misserfolg vieler Firmen, Branchen oder ganzer Nationen.
+    Betroffen sind aber nicht nur große Organisationen, jeder Einzelne kann zum Opfer werden mit schwerwiegenden Folgen.
+    Deshalb wird eines in unserer immer stärker miteinander vernetzten Welt immer wichtiger, die Sicherheit und der Schutz digitaler Infrastruktur.
     Dies zeigt auch eine immer weiter zunehmenden Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
-    Geschultes IT-Personal mit fundierten Kenntnissen in Bereichen wie.
+    Geschultes IT-Personal mit fundiertenKenntnissen im Umgang mit Schwachstelle ist somit unerlässlich.
     Eine Möglichkeit ein solches Wissen zu erlangen, bietet die Lernplattform \href{https://tryhackme.com/}{TryHackMe}.
     Sie bietet interessierten Personen die Möglichkeit sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
     Und das erworbene Wissen in einer realitätsnahen, aber dennoch abgesicherten Umgebung zu testen.
-    Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen.
-    Eine häufig zur Kommunikation genutzte Software ist das Lernmanagementsystem ILIAS, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellen.
-    Um eine möglichst realistische Lernumgebung des zu entwickelnden TryHackMe Raumes zu schaffen,
+    Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen~\parencite{hhnGehackt}.
+    Eine häufig zur Kommunikation genutzte Software an Universitäten und Hochschualen ist das Lernmanagementsystem ILIAS, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellten.
+    Um eine möglichst realistische Lernumgebung des zu entwickelnden TryHackMe Raumes zu schaffen, greift der zu entwickelnde TryHackMe Raum auf eben diese ILIAS Schwachstellen zurück.
 
 
     \subsection{Zielsetzung}
     \label{subsec:zielsetzung}
-    Das oberste Ziel des zu entwickelnden TryHackMe Raums besteht in der Wissensvermittlung bzw. dem Prüfen erworbener Kenntnisse.
+    Das oberste Ziel des zu TryHackMe Raumes besteht in der Wissensvermittlung bzw. dem Prüfen erworbener Kenntnisse.
     Indem wir interessierte Personen mittels einer Storyline durch einen mit realistischen und in der Vergangenheit aufgetretener Schwachstellen leiten, sollen diese ihr Können unter Beweis stellen.
     Dies soll das Verständnis für die Bedeutung der IT-Sicherheit in der heutigen digitalen Landschaft fördern und gleichzeitig zukünftige Sicherheitsexperten bestmöglich auf Bedrohungen einstellen.
     Die Geschichte handelt von einem jungen Studenten namens TimDerHackerboy, der sich im Laufe seines Kurses \glqq Grundlagen der sicheren Software-Entwicklung\grqq\ zu einer besseren Note hackt.
-    Dabei begegnet er unter anderem Schwachstellen wie dem \ac{xss}, ImageTragick oder einer Misskonfiguration, die bei geschicktem Ausnutzen eine Privilege Escalation zulässt.
+    Dabei begegnet er unter anderem Schwachstellen wie dem \ac{xss}, ImageTragick oder einer Fehlkonfiguration, die bei geschicktem Ausnutzen eine Privilege Escalation zulässt.
+    Es gilt demnach, geeignete Schwachstellen zu bestimmen und diese in die Storyline rund um TimDenHackerboy einzuarbeiten.
+    Passende Technologien sind auszuwählen und die \ac{vm}en, zur späteren Einbindung in den TryHackMe Raum, auszuarbeiten.
+    Abschließend gilt es, alle Komponenten in einem ansprechend designten TryHackMe Raum zu vereinen.
 
 
 
@@ -240,7 +242,7 @@
     Mittlerweile erscheint \ac{ilias} in der achten Version und ermöglicht Lehrenden und Lernenden eine möglichst unkomplizierte Kommunikation.
     \ac{ilias} ist wie eine Bibliothek zu verstehen, die es ermöglicht Wissen in Kursen möglichst einfach bereitzustellen und zu managen.
     Mittlerweile wurde diese Kernkompetenz zudem durch Module zur Kommunikation oder auch dem Durchführen von Onlineprüfungen ergänzt.
-    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die NATO und die Bayerische Polizei.
+    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die NATO und die Bayerische Polizei~\parencite{ilias}.
 
     \subsection{Cross-Site-Scripting}
     \label{subsec:CrossSiteScripting}
@@ -325,11 +327,11 @@
 
 
     \subsubsection{Fehlkonfiguration (/etc/pssswd)}
-    \label{subsubsec:misskonfiguration}
-    Die /etc/passwd Datei in Linux Systeme ist als eine Art Userdatenbank zu verstehen.
-    Sie enthält Informationen zu den Systemnutzern, dazu gehören Nutzer-ID, Gruppen-ID, Shell-Zuordnung uns früher auch Passwörter.
+    \label{subsubsec:fehlkonfiguration}
+    Die /etc/passwd Datei in Linux Systeme ist als eine Art Nutzerdatenbank zu verstehen.
+    Sie enthält Informationen zu den Systemnutzern, dazu gehören Nutzer-ID, Gruppen-ID, Shell-Zuordnung und früher ebenso Passwörter.
     Bei der Datei handelt es sich meistens um eine .txt Datei, die immer für alle Nutzer lesbar ist~\parencite{privilegeEscalationPasswd}.
-    In der \ac{vm}2 werden die Zugriffsrechte für die /etc/passwd Datei mit Befehl chmod 777 geändert.
+    In der \ac{vm}2 werden die Zugriffsrechte für die /etc/passwd Datei unter Verwendung des Befehls chmod 777 geändert.
     Der chmod Befehl wird in Linux dazu verwendet, die Zugriffsrechte auf Dateien und Verzeichnisse zu ändern.
     Die hinterlegten Zugriffsrechte für die passwd Datei sehen nunmehr wie folgt aus: rwxrwxrwx.
     Dementsprechend ist es jedem Nutzer des Systems gestatte, die Datei zu lesen/read, schreiben/write und auszuführen/execute~\parencite{privilegeEscalationFehlkRechte}.
