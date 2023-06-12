@@ -560,8 +560,8 @@
     \subsubsection{Privilege Escalation unter Ausnutzung der /etc/passwd Datei}
     \label{subsubsec:privilegeEscalation1}
     Nachdem mögliche Schwachstellen bereits aufgedeckt wurden, gilt es diese nun auszunutzen.
-    \parencite{privilegeEscalationRaumTryHackMe} beschreibt in seinem Wie der \href{https://tryhackme.com/jr/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}} im anschaulich wie einer neuer Nutzer in die /etc/passwd Datei eingefügt werden kann.
-    Kurz und prägnant zusammengefasst, sind folgende Schritte auszuführen:
+    Tims Freund~\textcite{privilegeEscalationRaumTryHackMe} beschreibt in seinem \href{https://tryhackme.com/room/linprivesc}{\textbf{TryHackMe Raum}} anschaulich wie ein neuer Nutzer in die /etc/passwd Datei eingefügt werden kann.
+    Kurz und prägnant zusammengefasst, sind durch folgende Schritte auszuführen:
 
     \begin{enumerate}[leftmargin=2.5cm]
         \item[1.] \textit{openssl passwd -1 -salt THM password1}  in die Kommandozeile eingeben, um den hash-Wert für das Passwort des neuen Nutzers zu erzeugen.
@@ -592,6 +592,20 @@
 
     \subsubsection{Privilege Escalation unter Ausnutzung Sudo Version 1.8.27}
     \label{subsubsec:privilegeEscalation2}
+    Die Fehlkonfiguration der /etc/passwd Datei konnte erfolgreich ausgenutzt werden, aber diese war nicht die einzige Schwachstelle die beim Scan aufgedeckt wurde.
+    Mit der Sudo Version 1.8.27 existiert eine weitere Schwachstelle im System.
+    \href{https://www.exploit-db.com/exploits/47502}{Exploit-db} und \href{https://www.cvedetails.com/cve/CVE-2019-14287/?q=cve-2019-14287}{CVE Details} bieten auch hier nach kurzer Recherche ausrechnend Informationen.
+    Da wie in~\ref{subsubsec:sudo} beschrieben, gewisse Konfigurationen in der sudoers Datei vorliegen müssen, ist nur durch Ausprobieren festzustellen, ob die Schwachstelle ausnutzbar ist.
+    Zum einen, stellt \textcite{privilegeEscalationSudoExploit} einen Exploit bereit.
+    Zum andern, lässt sich die Schwachstelle durch Eingabe des nachfolgenden Befehls auslösen: \textit{sudo -u\#-1 /bin(bash)}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/escalationSudo}
+        \caption{Privilege Escalation unter Ausnutzung der Sudo 1.8.27 Schwachstelle}
+        \label{fig:privilegeEscalation1SudoScreenshot1}
+    \end{figure}
+
 
 
 
