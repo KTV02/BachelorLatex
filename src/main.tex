@@ -32,7 +32,7 @@
 \usepackage{shorttoc}
 \usepackage[shortlabels]{enumitem}
 \usepackage{threeparttable}
-\usepackage{arabicfnt}
+%\usepackage{arabicfnt}
 \usepackage{tocbibind}
 
 %Ueberschrieben des kewyowrds befehl
@@ -516,9 +516,43 @@
 
 
 
-
     \subsubsection{Privilege Escalation}
     \label{subsubsec:privilegeEscalation}
+    Tim lässt sich zu ersteinmal mit \textit{ls} alle Dateien und Verzeichnisse im aktuellen Verzeichnis zeigen, dabei stößt er direkt auf eine Datei names SuperSecretFlag.txt.
+    Beim Versuch die Datei zu öffnen zeigt sich jedoch, einzig und alleine der root Nutzer hat Zugriff auf die Datei.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/FileDenied}
+        \caption{Zugriff auf die Datei SuperSecretFile.txt nicht möglich}
+        \label{fig:fileDenied}
+    \end{figure}
+    \noindent
+    Für Tim steht fest, er muss root Nutzer werden, denn so leicht gibt er nicht auf.
+    Wie der \href{https://tryhackme.com/jr/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}~\parencite{privilegeEscalationRaumTryHackMe} zeigt, gibt es hierfür verschiedene Herangehensweisen.
+    Tim entscheidet sich erst einmal einen Basic Scan durchzuführen.
+    Dafür nutzt er ein selbstgeschriebenes Skript (\ref{lst:schwachstellentestSkript}), welches auf verschieden Schwachstellen testet.
+    Darunter fallen unter anderem eine fehlerhafte Konfiguration sensibler Dateien, anfällige Versionen von Sudo oder OpenSSl.
+    Hierfür gibt es ebenfalls Skripte auf GitHub oder verschiedene anerkannte Tools wie OpenVas, Nikto oder Lynis die diese Arbeit erleichtern.
+    \\
+    Wie Tim weiß, sind folgenden Schritte notwendig um das Skript auszuführen:
+    \begin{enumerate}[leftmargin=2.5cm]
+        \item[1] \textit{nano scan.sh}  in die Kommandozeile eingeben, um eine Datei namens scan.sh im Texteditor nano zu öffnen.
+        \item[2] Den Code des Skriptes im Editor einfügen und als scan.sh speichern.
+        \item[3] \textit{chmod +x scan.sh}  in die Kommandozeile eingeben, um die Rechte zu ändern und die Datei ausführbar zu machen.
+        \item[3] \textit{bash scan.sh}  anwenden, um die Datei und somit das Skript auszuführen.
+    \end{enumerate}
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{storyline_bilder_vm2/ScanSchwachstellen}
+        \caption{Scan auf Schwachstellen mit dem einem Skript (\ref{lst:schwachstellentestSkript}).
+        Mögliche Schwachstellen erkannt bei den Schreibrechten der /etc/passwd Datei und der Sudo Version 1.8.27.}
+        \label{fig:scan}
+    \end{figure}
+    \noindent
+
 
 
 
