@@ -32,7 +32,7 @@
 \usepackage{shorttoc}
 \usepackage[shortlabels]{enumitem}
 \usepackage{threeparttable}
-%\usepackage{arabicfnt}
+\usepackage{arabicfnt}
 \usepackage{tocbibind}
 
 %Ueberschrieben des kewyowrds befehl
@@ -186,7 +186,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%    \shorttoc{Inhaltsübersicht}{1}
+%    \shorttoc{Inhaltsübersicht}{1} %Inhaltübersicht ohne Unterpunkte
 %    \pagebreak
      \tableofcontents
      \vfill
@@ -517,7 +517,7 @@
 
 
     \subsubsection{Scan auf Schwachstellen}
-    \label{subsubsec:privilegeEscalation}
+    \label{subsubsec:scanSchwachstellen}
     Tim lässt sich zu ersteinmal mit \textit{ls} alle Dateien und Verzeichnisse im aktuellen Verzeichnis zeigen, dabei stößt er direkt auf eine Datei names SuperSecretFlag.txt.
     Beim Versuch die Datei zu öffnen zeigt sich jedoch, einzig und alleine der root Nutzer hat Zugriff auf die Datei.
 
@@ -556,6 +556,12 @@
     \noindent
 
 
+
+    \subsubsection{Privilege Escalation unter Ausnutzung der /etc/passwd Datei}
+    \label{subsubsec:privilegeEscalation1}
+
+    \subsubsection{Privilege Escalation unter Ausnutzung Sudo Version 1.8.27}
+    \label{subsubsec:privilegeEscalation2}
 
 
 
