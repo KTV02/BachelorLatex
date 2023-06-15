@@ -313,6 +313,8 @@
     Diese sind somit in der Lage, Befehle auszuführen, für die es normalerweise die erhöhten Rechte eines anderen Nutzer notwendig sind.
     Die Schwachstelle \href{https://www.cvedetails.com/cve/CVE-2019-14287/?q=CVE-2019-14287}{CVE-2019-14287} tritt in Sudo Versionen vor 1.28 auf.
     Sudo wird dazu mit der manipulierten Nutzer-ID -1 oder 4294967295 wie folgt aufgerufen: sudo -u\#-1 /bin/bash.
+    Da durch Sudo keine Prüfung auf Gültigkeit der ID stattfindet, wird der Befehl unter einer beliebigen ID mit sudo Privilegien ausgeführt.
+    Dabei wird die Nutzer-ID null zurückgegeben, die der root Nutzer-ID entspricht.
     Einem Angreifer ist es bei einer bestimmten sudoers Konfiguration (die den root Zugriff ausführlich verbietet) möglich, Befehle mit root Rechten auszuführen wie ein Exploit von \textcite{privilegeEscalationSudoExploit} zeigt:
     \vspace{0.5cm}
     \begin{lstlisting}[label={lst:examplesudo}]
@@ -484,7 +486,7 @@
     \vspace{0.3cm}
 
     \subsubsection{Verbindung mittels Reverse Shell herstellen und stabilisieren}
-    \label{subsubsec:verbindunHerstellen}
+    \label{subsubsec:verbindungHerstellen}
     Im nächsten Schritt gilt es mittels dem in~\ref{subsubsec:imageMagickFinden} erstellten Exploit eine Verbindung zum Server herzustellen.
     Dazu muss Tim einen Netcat Listener erstellen, der den durch den Exploit angestoßenen Verbindungsversuch entgegennimmt.
     Das kann mittels des nc Befehls wie folgt erreicht werden: \textit{nc -lvnp zielIP zielport}.
@@ -627,6 +629,46 @@
     \newpage
     \section{Lessons Learned}
     \label{sec:lessonsLearned}
+
+    \subsection{Virtuelle Maschine 1}
+    \label{subsec:vm1lessonslearned}
+
+    \subsection{Virtuelle Maschine 2}
+    \label{subsec:vm2LessonsLearned}
+    Ein Großteil der beschriebenen LessonsLearned, welche die \ac{vm}s oder Docker betreffen sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
+
+    \subsubsection{ImageMagick Exploit und anschließendes stabilisieren einer Reverse Sell}
+    \label{subsubsec:lessonslearnedShell}
+    Ein Teil der Lessons Learned entstand nicht nur beim Erstellen der Docker Container und \ac{vm}s, sondern zudem auch beim Erarbeiten der Musterlösung.
+    Angefangen beim richtigen Exploit für die ImageMagick Schwachstelle (\ref{subsubsec:CVE-2016-3714}).
+    Einen fertigen ImageMagick Exploit mit einer Netcat Reverse Shell ist so nicht direkt zu finden.
+    Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} vorhandenen Exploit um eine Netacat Reverse Shell zu erweitern.
+    Mittels des fertigen Expoits lässt sich die ImageMagick Schwachstelle ausnutzen, doch die dadurch zustande kommende Reverse Shell ist zu instabil um weiterzuarbeiten.
+    Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, das es möglich war eine normale Bash Shell zu nutzen.
+    Denn zuvor war es nicht möglich den installierten Editor nano zu nutzen, längere Befehle zu schreiben oder die Pfeiltasten zu nutzen.
+    Wie in Abschnitt ~\ref{subsubsec:verbindungHerstellen} beschrieben ist die Shell nach Anwenden des \textit{python -c 'import pty; pty.spawn("/bin/bash")'} Befehls dahingehen stabilisiert, dass man alls www-data Nutzer die meisten grunsätzlichen Dinge nutzen kann.
+    Verwendet man aber nicht den echo Befehl um einen zusätzlichen Nutzer in die /etc/passwd Datei einzupflegen, muss man auf die Pfeiltasten und einen Texteditor zurückgreifen.
+    Dies ist aber immer noch nicht möglich, dazu sind zusätzlich die nächsten drei beschrieben Schritte notwendig.
+    Das Internet bietet einige Anleitungen eine einfache Reverse Shell zu einem komplett funktionstüchtigen Terminal auszubauen.
+    Nach langem Suchen und vielen fehlgeschlagenen Versuchen, brachte der Lösungsansatz von~\textcite{shellStabilisieren} den erhofften erfolg.
+    Nach Ausführen der von ihm angegeben Schritte, entsteht ein komplett funktionstüchtiges Terminal in dem auch nano und die Pfeiltasten genutzt werden können.
+
+
+    \subsubsection{ImageMagick Path}
+    \label{subsubsec:lessonslearnedPath}
+
+
+
+
+    \subsubsection{Versionen ImageMagick und Sudo}
+    \label{subsubsec:lessonslearnedVersionen}
+    Große Probleme bereitete uns die Verfügbarkeit der anfälligen Versionen von ImageMagick und Sudo.
+    Wie der offiziellen \href{https://security-tracker.debian.org/tracker/CVE-2021-3156}{debian} Webseite zu entnehmen ist, wurde auch in allen anfälligen Versionen unter 1.8.28 die Schwachstelle gepatched.
+    Auch die anfällige ImageMagick Version ist nicht mehr unter den Archiv Releases auf der \href{https://imagemagick.org/archive/releases/}{offiziellen ImageMagick Webseite} gelistet.
+
+
+
+
 
 
 
