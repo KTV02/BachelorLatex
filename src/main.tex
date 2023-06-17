@@ -213,7 +213,7 @@
     Sie bietet interessierten Personen die Möglichkeit sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
     Und das erworbene Wissen in einer realitätsnahen, aber dennoch abgesicherten Umgebung zu testen.
     Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen~\parencite{hhnGehackt}.
-    Eine häufig zur Kommunikation genutzte Software an Universitäten und Hochschualen ist das Lernmanagementsystem ILIAS, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellten.
+    Eine häufig zur Kommunikation genutzte Software an Universitäten und Hochschulen ist das Lernmanagementsystem ILIAS, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellten.
     Um eine möglichst realistische Lernumgebung des zu entwickelnden TryHackMe Raumes zu schaffen, greift der zu entwickelnde TryHackMe Raum auf eben diese ILIAS Schwachstellen zurück.
 
 
@@ -441,7 +441,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginAlsDev01}
-        \caption{Login mit den in~\ref{subsec:vm1} erworben Credentials \textit{tempdev01} und \textit{qLEaZ6P@3#}}
+        \caption{Login mit den in~\ref{subsec:vm1} erworben Credentials \textit{tempdev01} und \textit{qLEaZ6P@3\#}}
         \label{fig:loginAlsDev}
     \end{figure}
     
@@ -651,20 +651,58 @@
     Dies ist aber immer noch nicht möglich, dazu sind zusätzlich die nächsten drei beschrieben Schritte notwendig.
     Das Internet bietet einige Anleitungen eine einfache Reverse Shell zu einem komplett funktionstüchtigen Terminal auszubauen.
     Nach langem Suchen und vielen fehlgeschlagenen Versuchen, brachte der Lösungsansatz von~\textcite{shellStabilisieren} den erhofften erfolg.
-    Nach Ausführen der von ihm angegeben Schritte, entsteht ein komplett funktionstüchtiges Terminal in dem auch nano und die Pfeiltasten genutzt werden können.
+    Durch Ausführen der von ihm angegeben Schritte, entsteht ein komplett funktionstüchtiges Terminal in dem auch nano und die Pfeiltasten genutzt werden können.
 
 
-    \subsubsection{ImageMagick Path}
+    \subsubsection{ImageMagick Pfad}
     \label{subsubsec:lessonslearnedPath}
+    Zu begin wurde ImageMagick erfolgreich installiert, ILIAS konnte die Funktion \textit{convert} jedoch nicht finden und somit konnten keine Profilbilder hochgeladen werden.
+    Nach Auswerten der Error-Logs konnte festgestellt werden, dass der Pfad in der docker-ilias-entrypoint Datei falsch hinterlegt war.
+    Der Pfad musste demnach wie folgt korrigiert werden:
+    \\
+    \textit{
+        convert = /usr/bin/convert
+        -->
+        convert = /usr/\textbf{local/}bin/convert
+    }.
 
 
-
-
+    \fill
+    \newpage
     \subsubsection{Versionen ImageMagick und Sudo}
     \label{subsubsec:lessonslearnedVersionen}
     Große Probleme bereitete uns die Verfügbarkeit der anfälligen Versionen von ImageMagick und Sudo.
-    Wie der offiziellen \href{https://security-tracker.debian.org/tracker/CVE-2021-3156}{debian} Webseite zu entnehmen ist, wurde auch in allen anfälligen Versionen unter 1.8.28 die Schwachstelle gepatched.
-    Auch die anfällige ImageMagick Version ist nicht mehr unter den Archiv Releases auf der \href{https://imagemagick.org/archive/releases/}{offiziellen ImageMagick Webseite} gelistet.
+    Wie der offiziellen \href{https://security-tracker.debian.org/tracker/CVE-2021-3156}{debian} Webseite zu entnehmen ist, wurde auch in allen anfälligen Versionen unter 1.8.28 die Schwachstelle behoben.
+    Die anfällige ImageMagick Version hingegen ist nicht in den Archiven der \href{https://imagemagick.org/archive/releases/}{offiziellen ImageMagick Webseite} gelistet.
+    Das bedeutet, die Programme können nicht über \textit{apt-get updated \&\& apt-get install sudo/imagemagick} heruntergeladen werden.
+    Daher galt es, alternative Quellen für die anfälligen Versionen zu finden.
+    Für \href{https://launchpad.net/imagemagick/main/6.9.3-8/+download/ImageMagick-6.9.3-8.tar.gz}{ImageMagick}\footnote{Zum Download von ImageMagick Version 6.9.3-8 bitte klicken.} sind wird bei Launchpad fündig geworden und für die anfällige \href{https://www.sudo.ws/dist/sudo-1.8.27.tar.gz}{sudo Version}\footnote{Zum Download von Sudo Version 1.8.27 bitte klicken.} auf der auf der sudo.wz Webseite.
+    Zum Downloaden und Einrichten von ImageMagick ist das base dockerfile um folgenden Code zu ergänzen, Hilfe bietet dabei die Anleitung von~\textcite{imageMagickEinrichten}:
+    \vspace{0.1cm}
+    \begin{lstlisting}[label={lst:imageMagickDownload}]
+        RUN wget https://launchpad.net/imagemagick/main/6.9.3-8/+download/
+        ImageMagick-6.9.3-8.tar.gz
+        RUN tar -xf ImageMagick-6.9.3-8.tar.gz
+        RUN cd ImageMagick-6.9.3-8 && ln -sf /bin/bash /bin/sh && ls -l /bin/sh && ls -l && ls -l configure && /bin/sh configure && make && make install && ldconfig /usr/local/lib
+    \end{lstlisting}
+    \vspace{0.5cm}
+    Zum Downloaden und Einrichten von Sudo ist das base dockerfile um folgenden Code zu ergänzen, Hilfe bietet dabei die Anleitung von~\textcite{sudoEinrichten}:
+    \vspace{0.1cm}
+    \begin{lstlisting}[label={lst:sudoDownload}]
+        RUN curl -O https://www.sudo.ws/dist/sudo-1.8.27.tar.gz
+
+        RUN tar -xf sudo-1.8.27.tar.gz && cd sudo-1.8.27 && ./configure --prefix=/usr              \
+            --libexecdir=/usr/lib      \
+            --with-secure-path         \
+            --with-all-insults         \
+            --with-env-editor          \
+            --docdir=/usr/share/doc/sudo-1.8.27 \
+            --with-passprompt="[sudo] password for %p: " && make && make install && ln -sfv libsudo_util.so.0.0.0 /usr/lib/sudo/libsudo_util.so.0
+
+        #Zur Konfiguration der Sudo Schwachstelle Eintrag im Sudoers File
+        RUN echo "www-data ALL=(ALL,!root) NOPASSWD:ALL" >> /etc/sudoers
+    \end{lstlisting}
+    \vspace{0.5}
 
 
 
@@ -677,7 +715,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	7.Danksagung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \vspace{5cm}
+    \fill
+    \newpage
     \hline
     \vspace{1cm}
     \noindent
