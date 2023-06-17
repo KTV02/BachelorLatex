@@ -635,7 +635,7 @@
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2LessonsLearned}
-    Ein Großteil der beschriebenen LessonsLearned, welche die \ac{vm}s oder Docker betreffen sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
+    Ein Großteil der beschriebenen Lessons Learned, welche die \ac{vm}s oder Docker betreffen sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
 
     \subsubsection{ImageMagick Exploit und anschließendes stabilisieren einer Reverse Sell}
     \label{subsubsec:lessonslearnedShell}
@@ -644,10 +644,10 @@
     Einen fertigen ImageMagick Exploit mit einer Netcat Reverse Shell ist so nicht direkt zu finden.
     Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} vorhandenen Exploit um eine Netacat Reverse Shell zu erweitern.
     Mittels des fertigen Expoits lässt sich die ImageMagick Schwachstelle ausnutzen, doch die dadurch zustande kommende Reverse Shell ist zu instabil um weiterzuarbeiten.
-    Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, das es möglich war eine normale Bash Shell zu nutzen.
-    Denn zuvor war es nicht möglich den installierten Editor nano zu nutzen, längere Befehle zu schreiben oder die Pfeiltasten zu nutzen.
-    Wie in Abschnitt ~\ref{subsubsec:verbindungHerstellen} beschrieben ist die Shell nach Anwenden des \textit{python -c 'import pty; pty.spawn("/bin/bash")'} Befehls dahingehen stabilisiert, dass man alls www-data Nutzer die meisten grunsätzlichen Dinge nutzen kann.
-    Verwendet man aber nicht den echo Befehl um einen zusätzlichen Nutzer in die /etc/passwd Datei einzupflegen, muss man auf die Pfeiltasten und einen Texteditor zurückgreifen.
+    Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, das es möglich war mit einem vollständig funktionstüchtigem Terminal weiterzuarbeiten.
+    Denn zuvor war es nicht möglich den installierten Editor nano, die Pfeiltasten zu nutzen oder längere Befehle zu schreiben.
+    Wie in Abschnitt ~\ref{subsubsec:verbindungHerstellen} beschrieben ist die Shell nach Anwenden des \textit{python -c 'import pty; pty.spawn("/bin/bash")'} Befehls dahingehen stabilisiert, dass man als www-data Nutzer die meisten grunsätzlichen Dinge nutzen kann.
+    Verwendet man aber nicht den echo Befehl, um einen zusätzlichen Nutzer in die /etc/passwd Datei einzupflegen, muss man auf die Pfeiltasten und einen Texteditor zurückgreifen.
     Dies ist aber immer noch nicht möglich, dazu sind zusätzlich die nächsten drei beschrieben Schritte notwendig.
     Das Internet bietet einige Anleitungen eine einfache Reverse Shell zu einem komplett funktionstüchtigen Terminal auszubauen.
     Nach langem Suchen und vielen fehlgeschlagenen Versuchen, brachte der Lösungsansatz von~\textcite{shellStabilisieren} den erhofften erfolg.
@@ -676,7 +676,7 @@
     Die anfällige ImageMagick Version hingegen ist nicht in den Archiven der \href{https://imagemagick.org/archive/releases/}{offiziellen ImageMagick Webseite} gelistet.
     Das bedeutet, die Programme können nicht über \textit{apt-get updated \&\& apt-get install sudo/imagemagick} heruntergeladen werden.
     Daher galt es, alternative Quellen für die anfälligen Versionen zu finden.
-    Für \href{https://launchpad.net/imagemagick/main/6.9.3-8/+download/ImageMagick-6.9.3-8.tar.gz}{ImageMagick}\footnote{Zum Download von ImageMagick Version 6.9.3-8 bitte klicken.} sind wird bei Launchpad fündig geworden und für die anfällige \href{https://www.sudo.ws/dist/sudo-1.8.27.tar.gz}{sudo Version}\footnote{Zum Download von Sudo Version 1.8.27 bitte klicken.} auf der auf der sudo.wz Webseite.
+    Für \href{https://launchpad.net/imagemagick/main/6.9.3-8/+download/ImageMagick-6.9.3-8.tar.gz}{ImageMagick}\footnote{Zum Download von ImageMagick Version 6.9.3-8 bitte klicken.} gibt es mit Launchpad eine alternative Quelle und für die anfällige \href{https://www.sudo.ws/dist/sudo-1.8.27.tar.gz}{sudo Version}\footnote{Zum Download von Sudo Version 1.8.27 bitte klicken.} mit der sudo.wz Webseite.
     Zum Downloaden und Einrichten von ImageMagick ist das base dockerfile um folgenden Code zu ergänzen, Hilfe bietet dabei die Anleitung von~\textcite{imageMagickEinrichten}:
     \vspace{0.1cm}
     \begin{lstlisting}[label={lst:imageMagickDownload}]
