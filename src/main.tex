@@ -359,15 +359,15 @@
     \fill
     \newpage
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{other_pictures/Technologien.png}
-        \caption{Grafische Übersicht über unsere genutzten Technologien}
-        \label{technologien_ueberblick}
-    \end{figure}
-
     \section{Technologien}
     \label{sec:technologien}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{other_pictures/Technologien}
+        \caption{Grafische Übersicht über der genutzten Technologien}
+        \label{fig:technologien_ueberblick}
+    \end{figure}
 
     \subsection{Docker}
     \label{subsec:docker}
@@ -377,7 +377,7 @@
     Jedoch konnten wir dieses nicht benutzen, da die angebotenen Versionen unsere Exploits nicht mehr unterstützen beziehungsweise diese darin behoben sind.
     Unsere einzige Möglichkeit war somit ein eigenes Docker Image zu erstellen. Wir haben jedoch als Basis hierfür das Image von \glqq sturai\grqq\ genutzt.
     Um nun die Dependencies korrekt anzupassen, haben wir uns auf der \href{https://docu.ilias.de/goto_docu_lm_367.html}{ILIAS-Supportpage} die Requirementstabelle angeschaut und die Dependencies, wie dort genannt, konfiguriert.
-    Damit ILIAS korrekt gebuildet werden kann, benötigen wir jedoch noch eine Install- und eine Entrypoint-Datei \parencite{dockerEntrypoints}.
+    Damit ILIAS korrekt gebuildet werden kann, benötigen wir jedoch noch eine Install- und eine Entrypoint-Datei~\parencite{dockerEntrypoints}.
     Auch hier haben wir als Basis die Dateien von \glqq sturai\grqq\ genutzt und diese überarbeitet, sodass unsere ILIAS-Version unterstützt wird.
     Zu guter Letzt mussten wir noch die docker-compose.yml anpasssen, sodass unsere lokalen Dateien und Images genutzt werden, um den Container zu erstellen.
 
