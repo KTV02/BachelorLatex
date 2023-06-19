@@ -465,7 +465,8 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginAlsDev01}
-        \caption{Login mit den in~\ref{subsec:vm1} erworben Credentials \textit{tempdev01} und \textit{qLEaZ6P@3\#}}
+        \caption{Login mit den in~\ref{subsec:vm1} erworben Credentials \textit{tempdev01}
+        \break und \textit{tempAccount01}} .
         \label{fig:loginAlsDev}
     \end{figure}
     
@@ -498,6 +499,16 @@
     Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc Ziel-IP Port –e /bin/bash}.
     Es gilt abschließend den in~\ref{lst:imageMagickExploit} beschriebene Exploit um die Netcat Reverse Shell ergänzen.
     Dass der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
+    Beim Erstellen des Exploits gilt es zu beachten, dass es sich bei dem Zielserver um einen Linux System handelt, welches nur unix Linebreaks versteht.
+    Jedes in Windows geöffnete oder erstellt Datei muss demnach vorher umgewandelt werden, da der Exploit sonst fehlschlagen wird.
+    Um das zu erreichen, helfen Tools wie Notepad++ oder das Kommandozeilenprogramm dos2unix:
+    \begin{enumerate}[leftmargin=2.5cm]
+        \item[1.] Datei in Notepad++ öffnen --> Menüpunkt \textit{Bearbeiten} auswählen --> \textit{EOL-Konvertierung} wählen --> \textit{Unix(LF)}.
+        \item[2.] Oder \textit{dos2unix filename.txt} in die Kommandozeile eingeben.
+        Zu Beachten gilt es, dass nicht jedes System dos2unix unterstützt.
+    \end{enumerate}
+
+
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
         #Als .txt bearbeiten und in einem akzeptiertem Dateiformat speichern
@@ -536,7 +547,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/shellStabilisierenGanz}
-        \caption{Stabile Bash Shell nach Durführung der oben genannten Schritte}
+        \caption{Vollständiges Terminal nach Ausführen der oben beschriebenen Schritte.}
         \label{fig:shellStabilisiert}
     \end{figure}
     \noindent
