@@ -365,7 +365,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{other_pictures/Technologien}
-        \caption{Grafische Übersicht über der genutzten Technologien}
+        \caption{Grafische Übersicht der genutzten Technologien}
         \label{fig:technologien_ueberblick}
     \end{figure}
 
@@ -374,32 +374,62 @@
     Docker ist eine Open-Source-Plattform, die es Entwicklern ermöglicht, Anwendungen in Containern zu erstellen, zu verpacken und auszuführen.
     Container sind eigenständige und isolierte Einheiten, die alle erforderlichen Abhängigkeiten enthalten, um Anwendungen auf verschiedenen Systemen konsistent auszuführen.\parencite{docker}
     Theoretisch stellt der User \glqq sturai\grqq\ ein ILIAS-Image über Docker Hub bereit (\href{https://hub.docker.com/r/sturai/ilias#!}{s. hier}).
-    Jedoch konnten wir dieses nicht benutzen, da die angebotenen Versionen unsere Exploits nicht mehr unterstützen beziehungsweise diese darin behoben sind.
-    Unsere einzige Möglichkeit war somit ein eigenes Docker Image zu erstellen. Wir haben jedoch als Basis hierfür das Image von \glqq sturai\grqq\ genutzt.
-    Um nun die Dependencies korrekt anzupassen, haben wir uns auf der \href{https://docu.ilias.de/goto_docu_lm_367.html}{ILIAS-Supportpage} die Requirementstabelle angeschaut und die Dependencies, wie dort genannt, konfiguriert.
-    Damit ILIAS korrekt gebuildet werden kann, benötigen wir jedoch noch eine Install- und eine Entrypoint-Datei~\parencite{dockerEntrypoints}.
-    Auch hier haben wir als Basis die Dateien von \glqq sturai\grqq\ genutzt und diese überarbeitet, sodass unsere ILIAS-Version unterstützt wird.
-    Zu guter Letzt mussten wir noch die docker-compose.yml anpasssen, sodass unsere lokalen Dateien und Images genutzt werden, um den Container zu erstellen.
+    Jedoch konnten diese nicht genutzt werden, da die angebotenen Versionen die angedachten Schwachstellen nicht mehr unterstützen beziehungsweise diese darin bereits behoben sind.
+    Die einzige Möglichkeit war somit ein eigenes Docker Image zu erstellen. Als Basis hierfür wurde dennoch das Image von \glqq sturai\grqq\ genutzt.
+    Um nun die Dependencies korrekt anzupassen, wurde auf der \href{https://docu.ilias.de/goto_docu_lm_367.html}{ILIAS-Supportpage} die Requirementstabelle angeschaut und die Dependencies, wie dort genannt, konfiguriert.
+    Damit ILIAS korrekt gebuildet werden kann, wird jedoch noch eine Install- und eine Entrypoint-Datei~\parencite{dockerEntrypoints} benötigt.
+    Auch hier wurden als Basis die Dateien von \glqq sturai\grqq\ genutzt und so überarbeitet, dass unsere ILIAS-Version unterstützt wird.
+    Zu guter Letzt musste noch die docker-compose.yml angepasst werden, sodass unsere lokalen Dateien und Images genutzt werden, um die Container zu erstellen.
 
     \subsection{VM mit einem Ubuntu Betriebssystem}
     \label{subsec:ubuntu}
+    Um die virtuelle Maschine zu erstellen, die auf TryHackMe hochgeladen werden kann, wurde Virtual Box genutzt.
+    \href{https://www.virtualbox.org/}{VirtualBox} ist eine kostenlose und plattformübergreifende Virtualisierungssoftware.
+    Sie ermöglicht das Ausführen verschiedener Betriebssysteme innerhalb virtueller Maschinen auf einem physischen Computer.
+    Mit umfangreichen Konfigurationsoptionen, Snapshot-Funktionen und Netzwerkunterstützung ist VirtualBox eine beliebte Wahl für Entwickler und IT-Profis, um Software zu testen, Entwicklungsumgebungen zu erstellen und Betriebssysteme zu isolieren.
+    Es ist eine flexible und leistungsstarke Lösung für Virtualisierungszwecke.
+    Auf der virtuellen Maschine wurde dann eine Ubuntu-Serverinstanz eingerichtet.
+    \href{https://ubuntu.com/server}{Ubuntu Server} ist eine kostenlose und Open-Source-Version des Ubuntu-Betriebssystems, speziell entwickelt für Serveranwendungen.
+    Mit Fokus auf Sicherheit und Stabilität bietet es eine zuverlässige Umgebung für verschiedene Serverfunktionen wie Webserver, Datenbanken und E-Mail-Server.
+    Mit der Unterstützung von APT für einfache Paketverwaltung, einer aktiven Community und Integration mit Cloud-Plattformen ist Ubuntu Server eine beliebte Wahl für skalierbare und flexible Serverumgebungen.
+    Zudem wurde Ubuntu eingesetzt, da diese Linux Distribution am benutzerfreundlichsten ist.
+
 
     \subsection{MySQL Datenbank}
     \label{subsec:mysqlDatenbank}
     \href{https://www.mysql.com/}{MySQL} ist ein Open-Source-relationales Datenbankverwaltungssystem (RDBMS), das effiziente Speicherung, Verwaltung und Abfrage großer Datenmengen ermöglicht.
     Es organisiert Daten in Tabellen mit Zeilen und Spalten, bietet hohe Geschwindigkeit und Leistung, Skalierbarkeit für wachsende Datenmengen, Mehrbenutzerfähigkeit und Sicherheitsfunktionen.
     MySQL wird in einer Vielzahl von Anwendungen eingesetzt und ist besonders beliebt für Webanwendungen, Content-Management-Systeme, E-Commerce-Plattformen und Datenanalyse.
-    Da auch unsere ILIAS-Instanz eine Datenbank benötigt, wo wir benötigte Bild-, User- und sonstige Dateien abspeichern können.
+    Da die ILIAS-Instanz eine Datenbank benötigt, in der Bild-, Nutzer- und sonstige Daten gespeichert werden können, wurde ebenfalls auf eine MySQL Datenbank zurückgegriffen.
+    Diese läuft in einem eigenständigen Docker Container und speichert vorwiegend Nutzerdaten.
 
     \subsection{Apache Server mit einem Debian Betriebssystem}
     \label{subsec:apacheServer}
+    Der \href{https://httpd.apache.org/}{Apache Webserver} ist ein beliebter Open-Source-Webserver für das Hosting von Websites.
+    Er bietet Leistung, Stabilität und eine modulare Architektur für zusätzliche Funktionen.
+    Mit einer umfangreichen Konfigurationsmöglichkeit, Fokus auf Sicherheit und Unterstützung durch eine aktive Community ist der Apache Webserver eine verlässliche Lösung für das Bereitstellen von Webinhalten.
+    \href{https://www.debian.org/}{Debian} ist eine beliebte und stabile Linux-Distribution, die auf dem Linux-Kernel basiert.
+    Mit einem fortschrittlichen Paketverwaltungssystem, Fokus auf Stabilität und Sicherheit sowie einer vielseitigen Hardwareunterstützung ist Debian eine verlässliche Wahl für Desktop- und Serverumgebungen.
+    Es wird von einer aktiven Community unterstützt und folgt den Prinzipien freier Software.
+    Debian wurde als Linux Distribution für den Apache Webserver genutzt, da es sehr leichtgewichtig ist.
+    Somit nimmt der Docker Container weniger Speicherplatz in Anspruch.
 
     \subsection{ILIAS mit ImageMagick}
     \label{subsec:iliasTechnologie}
-    
+    %ILIAS 5.2.3 Container und ILIAS 5.2.4 Container --> ImageMagick nur auf 5.2.4 da Schwachstelle sonst in beiden Maschinen möglich (klare Trennung)
+
+
     \subsection{Selenium}
     \label{subsec:selenium}
-
+    \href{https://www.selenium.dev}{Selenium} ist ein Open-Source-Framework zur Automatisierung von Webbrowsern.
+    Es ermöglicht die automatische Interaktion mit Webanwendungen, das Durchführen von Tests und das Überprüfen der Funktionalität.
+    Mit Cross-Browser-Kompatibilität, Unterstützung verschiedener Programmiersprachen und Integration in Test-Frameworks ist Selenium ein flexibles und leistungsstarkes Werkzeug für die Webautomatisierung.
+    Es wird von Entwicklern und Testern genutzt, um die Effizienz und Qualität von Webanwendungen zu verbessern.
+    Es wurde ein Python-Skript mit Selenium erstellt, welches bei jedem (Re-)Boot der Maschine ausgeführt wird, um die, für die Storyline, nötigen Nutzeraccounts zu erstellen.
+    Zudem wird in der ersten Maschine auch der Kurs \glqq PSSWE\grqq\ erstellt, sowie die Flag als Forumeintrag eingetragen.
+    Selenium läuft hierbei in einem eigenen Docker Container und stellt die Verbindung zu ILIAS über die Remote Webserver-Funktion her.
+    Somit muss auf der Virtual Machine kein Selenium eingerichtet werden.
+    Der Selenium Container baut die Verbindung zur ILIAS Instanz über die Docker-eigene IP-Adresse auf.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	4. Storyline und Musterlösung
@@ -673,7 +703,7 @@
     \section{Lessons Learned}
     \label{sec:lessonsLearned}
 
-    \subsection{Virtuelle Maschine 1}
+    \subsection{Virtuelle Maschine 1} %Umut
     \label{subsec:vm1lessonslearned}
 
     \subsection{Virtuelle Maschine 2}
