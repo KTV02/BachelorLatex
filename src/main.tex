@@ -614,7 +614,7 @@
     \begin{enumerate}[leftmargin=2.5cm]
         \item[1.] \textit{openssl passwd -1 -salt THM password1}  in die Kommandozeile eingeben, um den hash-Wert für das Passwort des neuen Nutzers zu erzeugen.
         \item[2.] \textit{nano /etc/passwd}  in die Kommandozeile eingeben, um die /etc/passwd Datei im Texteditor nano zu öffnen.
-        \item[3.] \textit{hacker:in Schritt 1. erzeugtes Passwort:0:0:root:/root:/bin/bash}  als neue Zeile einfügen, um einen neuen root Nutzer names Hacker zu erzeugen.
+        \item[3.] \textit{hacker:PasswortAus1:0:0:root:/root:/bin/bash}  als neue Zeile einfügen, um einen neuen root Nutzer names Hacker zu erzeugen.
                 Wichtig ist die Verwendung von :/root./bin/bash um eine root Shell zu erzeugen.
         \item[4.] Die Datei schließe und vorgenommene Änderungen speichern.
         \item[5.] \textit{su hacker} in die Kommandozeile eingeben, um den Nutzer zu wechseln.
