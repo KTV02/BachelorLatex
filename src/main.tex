@@ -478,10 +478,13 @@
     \section{Musterlösung}
     \label{sec:musterloesung}
 
-    \subsection{Virtuelle Maschine 1} %Freddy
-    \label{subsec:vm1}
-    Ziel von TimDerHackerboy ist es also seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen. Wenn Tim versucht die login Seite zu besuchen wird er nur von einer weißen Seite begrüßt,
-    er hat jetzt also zwei Probleme: Keine Login Seite und keine Login Credentials. Auf der Suche nach der Lösung einer dieser Probleme schaut er sich auch die robots.txt und stößt dabei auf einen interessanten Header.
+    %Freddy
+    \subsection{Virtuelle Maschine 1}
+    \label{subsec:virtuelle-maschine-1}
+    Ziel von TimDerHackerboy ist es also seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen.
+    Wenn Tim versucht die login Seite zu besuchen wird er nur von einer weißen Seite begrüßt,
+    er hat jetzt also zwei Probleme: Keine Login Seite und keine Login Credentials.
+    Auf der Suche nach der Lösung einer dieser Probleme schaut er sich auch die robots.txt und stößt dabei auf einen interessanten Header.
 
     \begin{figure}[H]
         \centering
@@ -492,7 +495,7 @@
 
     \noindent
     Nach einer kurzen Google Suche dieser Information in Kombination mit der Ilias Version findet er den passenden Eintrag auf \href{https://www.exploit-db.com/exploits/43595}{\textbf{exlpoit-db}}.
-    In diesem Eintrag dreht es sich natürlich um den in \ref{subsubsec:CVE-2018-5688} erwähnten \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688}.
+    In diesem Eintrag dreht es sich natürlich um den in~\ref{subsubsec:CVE-2018-5688} erwähnten \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688}.
     Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein script ausführen. Leider steht auf exploitDB nur der proof of concept,
     somit muss sich Tim seinen eigenen payload zusammen bauen. Durch sein Wissen aus dem Studium weiß Tim, dass JavaScript client-seitig ausgeführt wird, er kann also
     keine directorys nach der, in der robots.txt beschriebenen, SuperSecretFile.txt durchsuchen. Tim hofft also ersteinmal darauf, dass die Datei im momentanen root directory
@@ -598,7 +601,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginAlsDev01}
-        \caption{Login mit den in~\ref{subsec:vm1} erworben Credentials \textit{tempdev01}
+        \caption{Login mit den in~\ref{subsec:virtuelle-maschine-1} erworben Credentials \textit{tempdev01}
         \break und \textit{tempAccount01}} .
         \label{fig:loginAlsDev}
     \end{figure}
@@ -806,7 +809,8 @@
     \section{Lessons Learned}
     \label{sec:lessonsLearned}
 
-    \subsection{Virtuelle Maschine 1} %Umut
+    %Umut
+    \subsection{Virtuelle Maschine 1}
     \label{subsec:vm1lessonslearned}
 
     \subsection{Virtuelle Maschine 2}
