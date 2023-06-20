@@ -416,8 +416,11 @@
 
     \subsection{ILIAS mit ImageMagick}
     \label{subsec:iliasTechnologie}
-    %ILIAS 5.2.3 Container und ILIAS 5.2.4 Container --> ImageMagick nur auf 5.2.4 da Schwachstelle sonst in beiden Maschinen möglich (klare Trennung)
-
+    Die zwei virtuellen Maschinen arbeiten mit zwei verschiedenen ILIAS-Versionen.
+    Auf der \ac{vm}1 für die \ac{xss}-Schwachstelle läuft die ILIAS-Version 5.2.3, da diese noch von der \hyperref[subsubsec:CVE-2018-5688]{CVE-2018-5688} betroffen ist.
+    Hier wurde darauf verzichtet ImageMagick einzufügen, da die \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle auch hier funktioniert.
+    Auf der \ac{vm}2 hingegen läuft die ILIAS-Version 5.2.4 inklusive ImageMagick, da die \ac{xss}-Schwachstelle hier behoben ist und der Angreifer somit gezwungen ist, die ImageTragick-Schwachstelle auszunutzen.
+    So wird eine klare Trennung der Schwachstellen erzielt.
 
     \subsection{Selenium}
     \label{subsec:selenium}
@@ -571,7 +574,7 @@
     \end{figure}
 
     \noindent
-    Durch das öffnen der IliasChangeLog.txt findet Tim die 2. Flag, außerdem kann er den SECURITYINFO Eintrag über das ändern der Note löschen. Jetzt bleibt nur die
+    Durch das Öffnen der IliasChangeLog.txt findet Tim die 2. Flag, außerdem kann er den SECURITYINFO Eintrag über das ändern der Note löschen. Jetzt bleibt nur die
     ImportantNote.txt Datei.
 
     \begin{figure}[H]
