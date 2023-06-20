@@ -1,5 +1,14 @@
 /out/
-
+main.aux
+main.bcf
+main.blg
+main.log
+main.pdf
+main.synctex.gz
+main.toc
+vcs.xml
+workspace.cml
+modules.xml
 # Created by https://www.toptal.com/developers/gitignore/api/latex,macos,windows,intellij
 # Edit at https://www.toptal.com/developers/gitignore?templates=latex,macos,windows,intellij
 
@@ -486,3 +495,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/latex,macos,windows,intellij
+
