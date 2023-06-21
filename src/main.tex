@@ -416,8 +416,11 @@
 
     \subsection{ILIAS mit ImageMagick}
     \label{subsec:iliasTechnologie}
-    %ILIAS 5.2.3 Container und ILIAS 5.2.4 Container --> ImageMagick nur auf 5.2.4 da Schwachstelle sonst in beiden Maschinen möglich (klare Trennung)
-
+    Die zwei virtuellen Maschinen arbeiten mit zwei verschiedenen ILIAS-Versionen.
+    Auf der \ac{vm}1 für die \ac{xss}-Schwachstelle läuft die ILIAS-Version 5.2.3, da diese noch von der \hyperref[subsubsec:CVE-2018-5688]{CVE-2018-5688} betroffen ist.
+    Hier wurde darauf verzichtet ImageMagick einzufügen, da die \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle auch hier funktioniert.
+    Auf der \ac{vm}2 hingegen läuft die ILIAS-Version 5.2.4 inklusive ImageMagick, da die \ac{xss}-Schwachstelle hier behoben ist und der Angreifer somit gezwungen ist, die ImageTragick-Schwachstelle auszunutzen.
+    So wird eine klare Trennung der Schwachstellen erzielt.
 
     \subsection{Selenium}
     \label{subsec:selenium}
@@ -425,7 +428,7 @@
     Es ermöglicht die automatische Interaktion mit Webanwendungen, das Durchführen von Tests und das Überprüfen der Funktionalität.
     Mit Cross-Browser-Kompatibilität, Unterstützung verschiedener Programmiersprachen und Integration in Test-Frameworks ist Selenium ein flexibles und leistungsstarkes Werkzeug für die Webautomatisierung.
     Es wird von Entwicklern und Testern genutzt, um die Effizienz und Qualität von Webanwendungen zu verbessern.
-    Es wurde ein Python-Skript mit Selenium erstellt, welches bei jedem (Re-)Boot der Maschine ausgeführt wird, um die, für die Storyline, nötigen Nutzeraccounts zu erstellen.
+    Es wurde ein Python-Skript mit Selenium erstellt, welches bei jedem (Re-)Boot der Maschine ausgeführt wird, um die, für die Storyline, nötigen Nutzeraccounts zu erstellen, da dies nur über das Graphical User Interface von ILIAS funktioniert.
     Zudem wird in der ersten Maschine auch der Kurs \glqq PSSWE\grqq\ erstellt, sowie die Flag als Forumeintrag eingetragen.
     Selenium läuft hierbei in einem eigenen Docker Container und stellt die Verbindung zu ILIAS über die Remote Webserver-Funktion her.
     Somit muss auf der Virtual Machine kein Selenium eingerichtet werden.
@@ -571,7 +574,7 @@
     \end{figure}
 
     \noindent
-    Durch das öffnen der IliasChangeLog.txt findet Tim die 2. Flag, außerdem kann er den SECURITYINFO Eintrag über das ändern der Note löschen. Jetzt bleibt nur die
+    Durch das Öffnen der IliasChangeLog.txt findet Tim die 2. Flag, außerdem kann er den SECURITYINFO Eintrag über das ändern der Note löschen. Jetzt bleibt nur die
     ImportantNote.txt Datei.
 
     \begin{figure}[H]
@@ -809,15 +812,69 @@
     \section{Lessons Learned}
     \label{sec:lessonsLearned}
 
-    %Umut
+    \subsection{TryHackMe Limitationen}
+    \label{subsec:lessonslearnedTHM}
+    Bei dem Hochladen der \ac{vm}s auf TryHackMe haben sich viele Problematiken ergeben.
+    Am Anfang war die größte Problematik, dass die \ac{vm} größer als 20 Gigabyte war, wobei das Limit von TryHackMe auf 20 Gigabyte gesetzt ist.
+    Es musste daher sorgfältig überlegt werden, welche Dateien entbehrlich waren und ob sie gelöscht werden konnten, ohne die zuverlässige Funktionalität von ILIAS oder unseren Schwachstellen zu beeinträchtigen.
+    Nachdem das genannte Problem gelöst wurde, stellte sich heraus, dass es bei TryHackMe einen Bug gibt, der das Hochladen einer \ac{vm} verhindert.
+    Daher konnte nicht getestet werden, ob die \ac{vm} erfolgreich auf TryHackMe ausgeführt werden kann.
+    TryHackMe hat nach mehreren Wochen den Bug fixen können, sodass die \ac{vm} nun ausgeführt werden konnte.
+    Dabei wurde jedoch klar, dass der zugewiesene Arbeitsspeicher nicht genügt, um die \ac{vm} zuverlässig auszuführen.
+    Auch hier hat der TryHackMe-Support mehr Arbeitsspeicher zuweisen können, sodass die \ac{vm} nun zuverlässig läuft.
+    Dennoch bleibt das Problem bestehen, dass die AttackBox über unzureichenden Arbeitsspeicher verfügt, wodurch das Bruteforcen mehrere Stunden in Anspruch nehmen kann.
+    Diese Situation ist jedoch akzeptabel, da eine tatsächliche Bruteforce-Attacke ebenfalls mehrere Stunden dauern kann.
+
     \subsection{Virtuelle Maschine 1}
     \label{subsec:vm1lessonslearned}
+
+    \subsubsection{Selbstständiges Erstellen eines Docker Images auf Basis von sturai}
+    \label{subsubsec:lessonslearnedDocker}
+    Es gibt viele verschiedene Befehle für Docker, die ähnliche aber nicht gleiche Funktionen haben.
+    Die Befehle \glqq COPY\grqq\ und \glqq ADD\grqq\ fügen beide Dateien zum Image hinzu, wobei der Unterschied darin liegt, dass bei \glqq COPY\grqq\ die Datei innerhalb des Docker Containers liegen muss und bei \glqq ADD\grqq\ auch aus dem Betriebssystem, respektive der \ac{vm}, zum Container hinzugefügt werden kann.
+    Dies war relevant, da sturai \glqq COPY\grqq\ nutzt, da die Dateien bei ihm schon im Container sind. Bei unseren \ac{vm} müssen die Dateien jedoch aus dem lokalen System hinzugefügt werden, weshalb es hier den \glqq\ ADD\grqq-Befehl braucht.
+
+    \subsubsection{XSS Schwachstelle}
+    \label{subsubsec:lessonslearnedXSS}
+    Um die \ac{xss}-Schwachstelle korrekt einsetzen zu können, musste ein gewisses Verständnis für diese etabliert werden.
+    Dabei war vor allem relevant zu verstehen, wie genau sensible Daten per \ac{xss} offengelegt werden können.
+    So konnten dann die \ac{xss}-Payloads korrekt designt werden.
+
+    \subsubsection{Einfügen eines gelben Banners auf der \glqq My Workplace\grqq-Seite in ILIAS}
+    \label{subsubsec:lessonslearnedHTTP}
+    Um einen gelben Banner auf der \glqq My Workplace\grqq-Seite in ILIAS zu erstellen, werden grundlegende Kenntnisse in HTML, JavaScript und CSS benötigt.
+    Die Seitenstruktur in ILIAS besteht aus einzelnen HTML-Bausteinen, die mithilfe von PHP-Skripten in HTML-Template-Dateien integriert werden.
+    Es wurde festgestellt, dass die Einbindung eigener Komponenten in diese Seiten problematisch sein kann, da es zu Kollisionen oder Überlagerungen mit vorhandenen Elementen kommen kann.
+    Die Bearbeitung des Webseiteninhalts in der Datei \glqq tpl.main.html\grqq\ gestaltete sich als anspruchsvoll, insbesondere bei der Integration neuer Elemente.
+    Es wurde festgestellt, dass manuelle Änderungen verloren gehen, sobald der Container neu gestartet wird.
+    Aufgrund der Einschränkungen des \glqq RUN\grqq-Befehls, bei dem jede Anweisung eine eigene Shell-Sitzung hat, gestaltete sich das Wechseln des Arbeitsverzeichnisses als problematisch.
+    Zur Bewältigung dieser Herausforderungen wurde eine automatisierte Methode entwickelt, um den neuen Code einzufügen.
+    Dadurch konnte der Verlust von Änderungen bei einem Containerneustart vermieden werden.
+    Es war erforderlich, die Dateistruktur im ILIAS-Container genau zu analysieren, um die richtige Vorgehensweise für die Einbindung eigener Komponenten zu ermitteln.
+
+    \subsubsection{Verstecken der ILIAS Login-Seite}
+    \label{subsubsec:lessonslearnedLogin}
+    Beim Versuch, die Login-Seite zu verstecken, wurden verschiedene Ansätze wie die Verwendung von .htaccess (einer Datei zur Festlegung von \glqq Regeln\grqq\ wie z.B. das Verbieten von Sonderzeichen in der URL) und apache2.conf (der Konfigurationsdatei des Webservers) ausprobiert.
+    Die Idee bestand darin, die \glqq/login.php\grqq\ -Seite auf eine neue URL umzuleiten, z.B. \glqq/newUrl\grqq, und die alte \glqq/login.php\grqq-Seite mit einem 410 GONE-Fehler zu sperren.
+    Es stellte sich jedoch heraus, dass unabhängig von der verwendeten Umleitungsmethode (in verschiedenen Varianten von .htaccess, apache2.conf, HTML, PHP) und der verwendeten Sperrmethode (in verschiedenen Varianten von .htaccess und apache2.conf) entweder beide URLs erreichbar waren oder keine der URLs gesperrt wurde.
+    Als zweite Idee wurde erwogen, die Dateien (von nur \glqq login.php\grqq\ bis zum gesamten Webserver) in ein tieferes Verzeichnis zu verschieben, sodass sie nicht gefunden werden konnten.
+    Dies führte jedoch zu erheblichem Konfigurationsaufwand und Komplexität, ohne dass das gewünschte Ergebnis erzielt wurde, da die Dateien nicht mehr auffindbar waren.
+    Schließlich wurde eine Lösung gefunden, indem die \glqq /login.php\grqq-Seite durch das Fehlen eines Query-Parameters gesperrt wurde.
+    In der \glqq login.php\grqq-Datei wurde überprüft, ob \glqq init==true\grqq\ ist.
+    Falls nicht, wurde die Login-Seite nicht angezeigt.
+    Die Datei \glqq secretpath.php\grqq\ enthielt eine Umleitung auf \glqq /login.php?init=true\grqq, um die Login-Seite anzuzeigen.
+    Dies erfolgte mithilfe von JavaScript, da sich die IP-Adresse ständig ändert und \glqq localhost\grqq\ nicht verwendet werden konnte.
+    Somit war die Login-Seite nur über \glqq secretpath.php\grqq\ erreichbar (oder man kannte den genauen Parameter und setzte ihn manuell).
+
+    %Freddy
+    \subsubsection{Verbindungsaufbau zum Docker Container über SSH}
+    \label{subsubsec:lessonslearnedDockerSSH}
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2LessonsLearned}
     Ein Großteil der beschriebenen Lessons Learned, welche die \ac{vm}s oder Docker betreffen sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
 
-    \subsubsection{ImageMagick Exploit und anschließendes stabilisieren einer Reverse Sell}
+    \subsubsection{ImageMagick Exploit und anschließendes stabilisieren einer Reverse Shell}
     \label{subsubsec:lessonslearnedShell}
     Ein Teil der Lessons Learned entstand nicht nur beim Erstellen der Docker Container und \ac{vm}s, sondern zudem auch beim Erarbeiten der Musterlösung.
     Angefangen beim richtigen Exploit für die ImageMagick Schwachstelle (\ref{subsubsec:CVE-2016-3714}).
