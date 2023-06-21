@@ -435,7 +435,7 @@
     Der Selenium Container baut die Verbindung zur ILIAS Instanz über die Docker-eigene IP-Adresse auf.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	4. Storyline und Musterlösung
+%	4. Storyline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \fill
     \newpage
@@ -478,6 +478,11 @@
         \label{fig:storylineGraphic}
     \end{figure}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Musterlösung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     \section{Musterlösung}
     \label{sec:musterloesung}
 
@@ -511,12 +516,12 @@
             var fileUrl = './SuperSecretFile.txt';
             xhr.open('GET', fileUrl, true);
             xhr.onload = function () {
-                if (xhr.status === 200) {
-                    var fileContents = xhr.responseText;
-                    alert(fileContents);
-                }
+             if (xhr.status === 200) {
+                var fileContents = xhr.responseText;
+                alert(fileContents);
+               }
             };
-            xhr.send();
+        xhr.send();
         </script>
     \end{lstlisting}
     \vspace{0.3cm}
