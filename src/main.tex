@@ -501,7 +501,7 @@
         \label{fig:robotsTxt}
     \end{figure}
 
-    \noindent
+    \subsubsection{Erlangen der login credentials durch XSS Schwachstelle}
     Nach einer kurzen Google Suche dieser Information in Kombination mit der Ilias Version findet er den passenden Eintrag auf \href{https://www.exploit-db.com/exploits/43595}{\textbf{exlpoit-db}}.
     In diesem Eintrag dreht es sich natürlich um den in~\ref{subsubsec:CVE-2018-5688} erwähnten \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688}.
     Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein script ausführen. Leider steht auf exploitDB nur der proof of concept,
@@ -539,7 +539,7 @@
         \label{fig:XSSHash}
     \end{figure}
 
-    \noindent
+    \subsubsection{Finden der Login Seite mit Gobuster}
     Tim ist sich sicher, dass die Login Seite existiert und die Entwickler sie nur versteckt haben. Nachdem seine manuelle Suche jedoch erfolglos blieb entschließt er
     sich ein Tool zum finden von directories zu benutzen. Für diese Art von Aufgabe eignet sich z.B. \href{https://github.com/OJ/gobuster}{gobuster}.
     Nach einem schnellen Scan mit dem Befehl \textit{gobuster dir -u http://<MACHINEIP>:8080 -w directory-list-2.3-medium.txt -x .php}
@@ -563,7 +563,7 @@
         \label{fig:ForumPost}
     \end{figure}
 
-    \noindent
+    \subsubsection{Knacken des SSH Passworts mit Hydra}
     Tim hat jetzt sein eigentliches Ziel erreicht, er hat seine Note von 5.0 auf 1.0 geändert und besteht dadurch mit Sicherheit das Fach PSSWE.
     Jedoch hat er beim herumstöbern einen auffälligen Banner auf der \glqq My Workspace\grqq\ Seite von SuperSecureAndi gefunden und entschließt sich dem Ganzen auf den Grund zu gehen,
     vielleicht ist es ihm ja sogar möglich seine Spuren zu verwischen.
@@ -618,7 +618,7 @@
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2}
-    Nachdem TimDerHackerboy sicher erfolgreich durch die \ac{vm}1 gekämpft hat und sogar Credentials für neue ILIAS Version 5.2.3 in die Finger bekam, wird es Zeit für eine neue Aufgabe.
+    Nachdem TimDerHackerboy sicher erfolgreich durch die \ac{vm}1 gekämpft hat und sogar Credentials für neue ILIAS Version 5.2.4 in die Finger bekam, wird es Zeit für eine neue Aufgabe.
     Die neue ILIAS Version wird durch Administratoren der Hochschule gerade neu aufgesetzt und ist noch nicht für die Studenten zugänglich.
     Die Verantwortlichen der Hochschule, zu denen auch der Professor SuperSicherAndi zählt, entschieden sich so die bekannte XSS Schachstelle aus Version 5.2.3 zu beheben.
     Doch Tims Nachname wäre nicht Hackerboy, würde er sich nicht direkt an die Arbeit machen und den Administratoren zeigen, dass sie ihre Arbeit nicht richtig machen.
