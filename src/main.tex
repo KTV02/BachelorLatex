@@ -542,7 +542,7 @@
     \noindent
     Tim ist sich sicher, dass die Login Seite existiert und die Entwickler sie nur versteckt haben. Nachdem seine manuelle Suche jedoch erfolglos blieb entschließt er
     sich ein Tool zum finden von directories zu benutzen. Für diese Art von Aufgabe eignet sich z.B. \href{https://github.com/ffuf/ffuf}{FUFF} und tatsächlich entdeckt Tim,
-    dass man durch die Datei secretpath.php auf die richtige login Seite weiter geleitet wird. Jetzt kann Tim sich einloggen und sich ein wenig auf dem Account von SuperSecureAndi umschauen.
+    dass man durch die Datei insidersecrets.php auf die richtige login Seite weiter geleitet wird. Jetzt kann Tim sich einloggen und sich ein wenig auf dem Account von SuperSecureAndi umschauen.
     Zu aller erst findet er den Kurs PSSWE, darin befindet sich ein Eintrag, indem sich die Note ändern lässt, hier befindet sich auch die 1. Flag.
 
     \begin{figure}[H]
@@ -867,13 +867,20 @@
     Schließlich wurde eine Lösung gefunden, indem die \glqq /login.php\grqq-Seite durch das Fehlen eines Query-Parameters gesperrt wurde.
     In der \glqq login.php\grqq-Datei wurde überprüft, ob \glqq init==true\grqq\ ist.
     Falls nicht, wurde die Login-Seite nicht angezeigt.
-    Die Datei \glqq secretpath.php\grqq\ enthielt eine Umleitung auf \glqq /login.php?init=true\grqq, um die Login-Seite anzuzeigen.
+    Die Datei \glqq insidersecrets.php\grqq\ enthielt eine Umleitung auf \glqq /login.php?init=true\grqq, um die Login-Seite anzuzeigen.
     Dies erfolgte mithilfe von JavaScript, da sich die IP-Adresse ständig ändert und \glqq localhost\grqq\ nicht verwendet werden konnte.
-    Somit war die Login-Seite nur über \glqq secretpath.php\grqq\ erreichbar (oder man kannte den genauen Parameter und setzte ihn manuell).
+    Somit war die Login-Seite nur über \glqq insidersecrets.php\grqq\ erreichbar (oder man kannte den genauen Parameter und setzte ihn manuell).
 
     %Freddy
     \subsubsection{Verbindungsaufbau zum Docker Container über SSH}
     \label{subsubsec:lessonslearnedDockerSSH}
+    Den Docker Container über SSH erreichbar zu machen, benötigt mehrere verschiedene Schritte. Generell muss natürlich erst einmal \href{https://github.com/openssh}{openssh-server} über das base Dockerfile
+    installiert werden. Ein Nutzer inklusive passwort kann über das dockerfile des ilias images angelegt werden. Ein größeres Problem stellt jedoch das Starten des ssh services auf dem Ilias Container dar.
+    Manuell kann der Service ohne Probleme gestartet werden, jedoch geschieht das nicht per default beim Starten der Maschine, da Debian auf dem Container ein sehr leichtes init System ist. Um dieses Problem
+    zu lösen wurde dann die Ubuntu VM ins Spiel gebracht, vorher lief die Anwendung über Docker auf Windows direkt. Die VM war zu diesem Zeitpunkt zwar schon für Ilias 5.2.4 mit \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle
+    vor konfiguriert, kam jedoch trotzdem mit jede Menge Problemen und Konfigurationsaufwand. Das Problem des nicht laufenden SSH services wurde dann über den sudo crontab der VM gelöst, welcher den SSH service startet.
+    Der crontab kann den Container über den Befehl \textit{docker exec} auf den Container zugreifen, dabei muss man jedoch beachten, dass die flags \textit{-it} nicht gesetzt sind, da sonst eine Interaktive shell gestartet wird.
+    Danach muss nur doch die Portweiterleitung eingerichtet werden, was nicht schwer ist, jedoch ein gewisses Verständnis benötigt. Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2LessonsLearned}
