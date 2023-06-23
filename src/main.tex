@@ -172,13 +172,17 @@
 
         \vspace{0.5cm}
         \hline
-        \vspace{5cm}
+        \vspace{1cm}
         \noindent
         \keywords{Ilias, Fehlkonfiguration, ImageMagick, Privilage Escalation, XSS}
 
-        \vspace{3cm}
+        \vspace{2cm}
         \noindent
         Für Zugang zum Git-Repository oder bei Fragen und Anregungen melden Sie sich bitte unter den angegebene Mail-Adressen der Autorenschaft.
+
+        \vspace{1cm}
+        \noindent
+        Hier geht es zum \href{https://tryhackme.com/room/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}.
     \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -442,7 +446,7 @@
 
     \section{Storyline}
     \label{sec:storyline}
-    Hier geht es zum \href{https://tryhackme.com/jr/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}.\vspace{0.5cm}
+    Hier geht es zum \href{https://tryhackme.com/room/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}.\vspace{0.5cm}
     \\
     Die Storyline dreht sich rund um den jungen Studenten TimDerHackerboy.
     Dieser besucht im aktuellen Semester den Kurs \glqq Grundlagen der sicheren Software-Entwicklung\grqq, in dem den Studenten die Grundlagen in Bezug auf Schwachstellen und sichere Software vermittelt werden.
@@ -742,7 +746,7 @@
     \end{figure}
     \noindent
     Für Tim steht fest, er muss root Nutzer werden, denn so leicht gibt er nicht auf.
-    Wie der \href{https://tryhackme.com/jr/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}~\parencite{privilegeEscalationRaumTryHackMe} zeigt, gibt es hierfür verschiedene Herangehensweisen.
+    Wie der \href{https://tryhackme.com/room/linprivesc}{\textbf{TryHackMe Raum}}~\parencite{privilegeEscalationRaumTryHackMe} zeigt, gibt es hierfür verschiedene Herangehensweisen.
     Tim entscheidet sich erst einmal einen Basic Scan durchzuführen.
     Dafür nutzt er ein selbstgeschriebenes Skript (\ref{lst:schwachstellentestSkript}), welches auf verschieden Schwachstellen testet.
     Darunter fallen unter anderem eine fehlerhafte Konfiguration sensibler Dateien, anfällige Versionen von Sudo oder OpenSSl.
@@ -1030,6 +1034,11 @@
     \newpage
     \section{Anhang}
     \label{sec:Anhang}
+
+    Link zum TryHackMe Raum: https://tryhackme.com/room/t1mth3h4ck3rb0y
+    Passwort falls gefragt: t1mth3h4ck3rb0y
+    
+    \vspace{1cm}
 
     \begin{lstlisting}[label={lst:schwachstellentestSkript}]
         #!/bin/bash
