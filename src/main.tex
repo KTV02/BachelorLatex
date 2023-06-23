@@ -493,8 +493,16 @@
     %Freddy
     \subsection{Virtuelle Maschine 1}
     \label{subsec:virtuelle-maschine-1}
-    Ziel von TimDerHackerboy ist es also seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen.
-    Wenn Tim versucht die login Seite zu besuchen wird er nur von einer weißen Seite begrüßt,
+    Ziel von TimDerHackerboy ist es also seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen. Erst einmal macht Tim einen \href{https://github.com/nmap/nmap}{\textbf{Nmap}} scan
+    um offene Ports zu entdecken. Tatsächlich ist der Port 8080 geöffnet, was Tim vermuten lässt, dass dort Ilias zu erreichen ist.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{VM1_Bilder/NmapScan.PNG}
+        \caption{Output des Nmap Scans}
+        \label{fig:NmapScan}
+    \end{figure}
+    \noindent
+    Wenn Tim versucht die login Seite über Port 8080 zu besuchen wird er nur von einer weißen Seite begrüßt,
     er hat jetzt also zwei Probleme: Keine Login Seite und keine Login Credentials.
     Auf der Suche nach der Lösung einer dieser Probleme schaut er sich auch die robots.txt und stößt dabei auf einen interessanten Header.
 
@@ -506,7 +514,7 @@
     \end{figure}
 
     \subsubsection{Erlangen der login credentials durch XSS Schwachstelle}
-    Nach einer kurzen Google Suche dieser Information in Kombination mit der Ilias Version findet er den passenden Eintrag auf \href{https://www.exploit-db.com/exploits/43595}{\textbf{exlpoit-db}}.
+    Nach einer kurzen Google Suche dieser Information in Kombination mit der Ilias Version findet er den passenden Eintrag auf \href{https://www.exploit-db.com/exploits/43595}{\textbf{exploit-db}}.
     In diesem Eintrag dreht es sich natürlich um den in~\ref{subsubsec:CVE-2018-5688} erwähnten \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688}.
     Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein script ausführen. Leider steht auf exploitDB nur der proof of concept,
     somit muss sich Tim seinen eigenen payload zusammen bauen. Durch sein Wissen aus dem Studium weiß Tim, dass JavaScript client-seitig ausgeführt wird, er kann also
@@ -650,7 +658,7 @@
 
     \noindent
     Er hatte vor kurzem etwas über ImageTragick gelesen.
-    Und wie so oft, bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} direkt die richtigen Informationen.
+    Und wie so oft, bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exploit-db}} direkt die richtigen Informationen.
 
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploit}]
@@ -916,7 +924,7 @@
     Ein Teil der Lessons Learned entstand nicht nur beim Erstellen der Docker Container und \ac{vm}s, sondern zudem auch beim Erarbeiten der Musterlösung.
     Angefangen beim richtigen Exploit für die ImageMagick Schwachstelle (\ref{subsubsec:CVE-2016-3714}).
     Einen fertigen ImageMagick Exploit mit einer Netcat Reverse Shell ist so nicht direkt zu finden.
-    Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} vorhandenen Exploit um eine Netacat Reverse Shell zu erweitern.
+    Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exploit-db}} vorhandenen Exploit um eine Netacat Reverse Shell zu erweitern.
     Mittels des fertigen Expoits lässt sich die ImageMagick Schwachstelle ausnutzen, doch die dadurch zustande kommende Reverse Shell ist zu instabil um weiterzuarbeiten.
     Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, das es möglich war mit einem vollständig funktionstüchtigem Terminal weiterzuarbeiten.
     Denn zuvor war es nicht möglich den installierten Editor nano, die Pfeiltasten zu nutzen oder längere Befehle zu schreiben.
