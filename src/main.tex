@@ -929,12 +929,12 @@
     \subsubsection{Verbindungsaufbau zum Docker Container über SSH}
     \label{subsubsec:lessonslearnedDockerSSH}
     Den Docker Container über SSH erreichbar zu machen, benötigt mehrere verschiedene Schritte. Generell muss natürlich erst einmal \href{https://github.com/openssh}{openssh-server} über das base Dockerfile
-    installiert werden. Ein Nutzer inklusive passwort kann über das dockerfile des ilias images angelegt werden. Ein größeres Problem stellt jedoch das Starten des ssh services auf dem Ilias Container dar.
+    installiert werden. Ein Nutzer inklusive Passwort kann über das Dockerfile des Ilias Images angelegt werden. Ein größeres Problem stellt jedoch das Starten des SSH Services auf dem Ilias Container dar.
     Manuell kann der Service ohne Probleme gestartet werden, jedoch geschieht das nicht per default beim Starten der Maschine, da Debian auf dem Container ein sehr leichtes init System ist. Um dieses Problem
-    zu lösen wurde dann die Ubuntu VM ins Spiel gebracht, vorher lief die Anwendung über Docker auf Windows direkt. Die VM war zu diesem Zeitpunkt zwar schon für Ilias 5.2.4 mit \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle
-    vor konfiguriert, kam jedoch trotzdem mit jede Menge Problemen und Konfigurationsaufwand. Das Problem des nicht laufenden SSH services wurde dann über den sudo crontab der VM gelöst, welcher den SSH service startet.
-    Der crontab kann den Container über den Befehl \textit{docker exec} auf den Container zugreifen, dabei muss man jedoch beachten, dass die flags \textit{-it} nicht gesetzt sind, da sonst eine Interaktive shell gestartet wird.
-    Danach muss nur doch die Portweiterleitung eingerichtet werden, was nicht schwer ist, jedoch ein gewisses Verständnis benötigt. Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
+    zu lösen wurde dann die Ubuntu \ac{vm} ins Spiel gebracht, vorher lief die Anwendung über Docker auf Windows direkt. Die VM war zu diesem Zeitpunkt zwar schon für Ilias 5.2.4 mit \hyperref[subsubsec:CVE-2016-3714]{ImageTragick}-Schwachstelle
+    vorkonfiguriert, kam jedoch trotzdem mit jeder Menge Problemen und Konfigurationsaufwand. Das Problem des nicht laufenden SSH Services wurde dann über den sudo crontab der \ac{vm} gelöst, welcher den SSH Service startet.
+    Der crontab kann den Container über den Befehl \textit{docker exec} auf den Container zugreifen, dabei muss man jedoch beachten, dass die Flags \textit{-it} nicht gesetzt sind, da sonst eine interaktive Shell gestartet wird.
+    Danach muss nur doch die Portweiterleitung eingerichtet werden, was jedoch ein gewisses Verständnis benötigt. Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
 
 
     \fill
