@@ -942,8 +942,15 @@
     Das liegt daran, dass in der docker-compose.yml zwar eine Portweiterleitung des \ac{ilias} Containers auf die \ac{vm} eingerichtet ist, das Zugreifen auf den \ac{ilias} Container jedoch nicht so einfach vom Selenium Container aus möglich ist.
     Um das Problem zu beheben, muss entweder eine eigene Docker-Network Konfiguration eingeführt werden oder es muss die Docker-eigene IP des \ac{ilias} Containers herausgefunden werden.
     Es wurde sich für Letzteres entschieden und so wird vor dem Starten des Skripts, die IP über den \glqq docker inspect\grqq\ command und den Namen des Containers herausgefunden und als Entrypage für das Skript konfiguriert.
-
+    \noindent
     Sehr nützlich war auch die Funktion des Docker-Images, über den Port 7900 das Ausführen des Selenium-Skripts innerhalb der Docker Umgebung beobachten zu können.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{other_pictures/selenium}
+        \caption{Zusammenspiel aller Komponenten.}
+        \label{fig:seleniumPicture}
+    \end{figure}
 
     \fill
     \newpage
