@@ -508,7 +508,7 @@
     %Freddy
     \subsection{Virtuelle Maschine 1}
     \label{subsec:virtuelle-maschine-1}
-    Ziel von TimDerHackerboy ist es also seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen. Erst einmal macht Tim einen \href{https://github.com/nmap/nmap}{\textbf{Nmap}} scan
+    Ziel von TimDerHackerboy ist es also, seine Note im Fach PSSWE zu ändern und dabei bestenfalls keine Spuren zu hinterlassen. Erst einmal macht Tim einen \href{https://github.com/nmap/nmap}{\textbf{Nmap}} Scan
     um offene Ports zu entdecken. Tatsächlich ist der Port 8080 geöffnet, was Tim vermuten lässt, dass dort Ilias zu erreichen ist.
     \begin{figure}[H]
         \centering
@@ -517,7 +517,7 @@
         \label{fig:NmapScan}
     \end{figure}
     \noindent
-    Wenn Tim versucht die login Seite über Port 8080 zu besuchen wird er nur von einer weißen Seite begrüßt,
+    Wenn Tim versucht die Login Seite über Port 8080 zu besuchen wird er nur von einer weißen Seite begrüßt,
     er hat jetzt also zwei Probleme: Keine Login Seite und keine Login Credentials.
     Auf der Suche nach der Lösung einer dieser Probleme schaut er sich auch die robots.txt und stößt dabei auf einen interessanten Header.
 
@@ -531,10 +531,10 @@
     \subsubsection{Erlangen der login credentials durch XSS Schwachstelle}
     Nach einer kurzen Google Suche dieser Information in Kombination mit der Ilias Version findet er den passenden Eintrag auf \href{https://www.exploit-db.com/exploits/43595}{\textbf{exploit-db}}.
     In diesem Eintrag dreht es sich natürlich um den in~\ref{subsubsec:CVE-2018-5688} erwähnten \href{https://www.cve.org/CVERecord?id=CVE-2018-5688}{CVE-2018-5688}.
-    Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein script ausführen. Leider steht auf exploitDB nur der proof of concept,
-    somit muss sich Tim seinen eigenen payload zusammen bauen. Durch sein Wissen aus dem Studium weiß Tim, dass JavaScript client-seitig ausgeführt wird, er kann also
-    keine directorys nach der, in der robots.txt beschriebenen, SuperSecretFile.txt durchsuchen. Tim hofft also ersteinmal darauf, dass die Datei im momentanen root directory
-    der Webseite \textit{/setup} liegt und baut sich auf dieser Basis seinen payload zusammen.
+    Auf der Seite \textit{/setup/setup.php} kann man über den query Parameter \textit{?cmd=} ein Script ausführen. Leider steht auf exploit-db nur der Proof of Concept,
+    somit muss sich Tim seinen eigenen Payload zusammen bauen. Durch sein Wissen aus dem Studium weiß Tim, dass JavaScript clientseitig ausgeführt wird, trotzdem können auf dem
+    Server gelegene Bilder und Dateien über JavaScript geladen werden. Jedoch hat XSS auch seine Limitationen, im Vergleich zu Command-Injection kann Tim keine Directories nach der SuperSecretFile.txt durchsuchen.
+    Tim hofft also erst einmal darauf, dass die Datei im momentanen root Directory der Webseite \textit{/setup} liegt und baut sich auf dieser Basis seinen Payload zusammen.
 
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:setupXSSpayload}]
@@ -554,10 +554,10 @@
     \vspace{0.3cm}
 
     \noindent
-    Tatsächlich hat Tim Glück, die Datei befindet sich im root directory, dadurch kann er sich anstrengende Sucharbeit sparen. Wenn Tim seinen Payload ausführt
-    bekommt er ein Javascript PopUp als Antwort, dieses Enthält den Nutzernamen \\ \glqq SuperSecureAndi\grqq\ und einen Hash. Hoffentlich verbirgt sich hinter dem Hash das Passwort
-    zum Account, denkt sich Tim. Mithilfe von \href{https://crackstation.net/}{Crackstation.net} kann er den Hash knacken, das Passwort lautet \textit{iam123cute}, jedoch weiß Tim noch nicht ob er sich mit
-    diesem Passwort tatsächlich einloggen kann, da er die login Seite noch nicht gefunden hat.
+    Tatsächlich hat Tim Glück, die Datei befindet sich im root Directory, dadurch kann er sich anstrengende Sucharbeit sparen. Wenn Tim seinen Payload ausführt,
+    bekommt er ein Javascript PopUp als Antwort, dieses enthält den Nutzernamen \\ \glqq SuperSecureAndi\grqq\ und einen Hash. Hoffentlich verbirgt sich hinter dem Hash das Passwort
+    zum Account, denkt sich Tim. Mithilfe von \href{https://crackstation.net/}{Crackstation.net} kann er den Hash knacken, das Passwort lautet \textit{iam123cute}, jedoch weiß Tim noch nicht, ob er sich mit
+    diesem Passwort tatsächlich einloggen kann, da er die Login Seite noch nicht gefunden hat.
 
     \begin{figure}[H]
         \centering
@@ -567,10 +567,10 @@
     \end{figure}
 
     \subsubsection{Finden der Login Seite mit Gobuster}
-    Tim ist sich sicher, dass die Login Seite existiert und die Entwickler sie nur versteckt haben. Nachdem seine manuelle Suche jedoch erfolglos blieb entschließt er
-    sich ein Tool zum finden von directories zu benutzen. Für diese Art von Aufgabe eignet sich z.B. \href{https://github.com/OJ/gobuster}{gobuster}.
+    Tim ist sich sicher, dass die Login Seite existiert und die Entwickler sie nur versteckt haben. Nachdem seine manuelle Suche jedoch erfolglos blieb, entschließt er
+    sich ein Tool zum Finden von Directories zu benutzen. Für diese Art von Aufgabe eignet sich z.B. \href{https://github.com/OJ/gobuster}{Gobuster}.
     Nach einem schnellen Scan mit dem Befehl \textit{gobuster dir -u http://<MACHINEIP>:8080 -w directory-list-2.3-medium.txt -x .php}
-    entdeckt Tim tatsächlich, dass man durch die Datei insidersecrets.php auf die richtige login Seite weiter geleitet wird.
+    entdeckt Tim tatsächlich, dass man durch die Datei insidersecrets.php auf die richtige Login Seite weiter geleitet wird.
 
     \begin{figure}[H]
         \centering
@@ -592,7 +592,7 @@
 
     \subsubsection{Knacken des SSH Passworts mit Hydra}
     Tim hat jetzt sein eigentliches Ziel erreicht, er hat seine Note von 5.0 auf 1.0 geändert und besteht dadurch mit Sicherheit das Fach PSSWE.
-    Jedoch hat er beim herumstöbern einen auffälligen Banner auf der \glqq My Workspace\grqq\ Seite von SuperSecureAndi gefunden und entschließt sich dem Ganzen auf den Grund zu gehen,
+    Jedoch hat er beim Herumstöbern ein auffälliges Banner auf der \glqq My Workspace\grqq\ Seite von SuperSecureAndi gefunden und entschließt sich dem Ganzen auf den Grund zu gehen,
     vielleicht ist es ihm ja sogar möglich seine Spuren zu verwischen.
 
     \begin{figure}[H]
@@ -603,8 +603,8 @@
     \end{figure}
 
     \noindent
-    Tim versucht eine Weile das Passwort für den SSH Zugang von SuperSecureAndi heraus zu finden, jedoch ohne Erfolg. Mit seinem Latein etwas am Ende hofft Tim einfach,
-    dass SuperSecureAndi ein standard Passwort verwendet und entschließt sich eine Brute-Force Attacke mit \href{https://github.com/vanhauser-thc/thc-hydra}{Hydra}
+    Tim versucht eine Weile das Passwort für den SSH Zugang von SuperSecureAndi herauszufinden, jedoch ohne Erfolg. Mit seinem Latein etwas am Ende hofft Tim einfach,
+    dass SuperSecureAndi ein Standardpasswort verwendet und entschließt sich eine Brute-Force Attacke mit \href{https://github.com/vanhauser-thc/thc-hydra}{Hydra}
     zu starten. Und tatsächlich, bei Benutzung des Befehls \textit{hydra -V -l SuperSecureAndi -P rockyou.txt ssh://<MACHINEIP>:2222} gibt Hydra nach einer kurzen Weile das Passwort \textit{bubbles} zurück.
 
     \begin{figure}[H]
@@ -627,7 +627,7 @@
     \end{figure}
 
     \noindent
-    Durch das Öffnen der IliasChangeLog.txt findet Tim die 2. Flag, außerdem kann er den SECURITYINFO Eintrag über das ändern der Note löschen. Jetzt bleibt nur die
+    Durch das Öffnen der IliasChangeLog.txt findet Tim die 2. Flag, außerdem kann er den SECURITYINFO Eintrag über das Ändern der Note löschen. Jetzt bleibt nur die
     ImportantNote.txt Datei.
 
     \begin{figure}[H]
@@ -639,7 +639,7 @@
 
     \noindent
     Jetzt ist Tims Interesse so richtig geweckt! Temporäre Zugangsdaten für einen Entwicklungsserver mit einer neuen Ilias Version! Auch wenn Tim
-    seine eigentliche Mission abgeschlossen hat macht er sich direkt auf zur nächsten Virtual Machine in der Hoffnung, dass auch dort Geheimnisse
+    seine eigentliche Mission abgeschlossen hat, macht er sich direkt auf zur nächsten Virtual Machine in der Hoffnung, dass auch dort Geheimnisse
     darauf warten von ihm gelüftet zu werden.
 
 
