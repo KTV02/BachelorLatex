@@ -1036,9 +1036,10 @@
     \label{sec:Anhang}
 
     Link zum TryHackMe Raum: https://tryhackme.com/room/t1mth3h4ck3rb0y
-    Passwort falls gefragt: t1mth3h4ck3rb0y
+    Passwort, falls gefragt: t1mth3h4ck3rb0y
+    GitHub Repository: https://github.com/KTV02/PSSWE
     
-    \vspace{1cm}
+    \vspace{3cm}
 
     \begin{lstlisting}[label={lst:schwachstellentestSkript}]
         #!/bin/bash
@@ -1095,6 +1096,247 @@
 
         echo "Vulnerability tests completed."
     \end{lstlisting} Skript zum Testen verschiedener Schwachstellen (Schreibrechte wichtiger Dateien, Sudo, ImageMagick, OpenSSL).
+
+    \fill
+    \newpage
+    \begin{lstlisting}[label={lst:SeleniumSkript}]
+        from selenium import webdriver
+        from selenium.webdriver import ActionChains
+        from selenium.webdriver.common.keys import Keys
+        import requests
+        import time
+        import datetime
+        from selenium.webdriver.common.by import By
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+        from selenium.webdriver.common.action_chains import ActionChains
+        from selenium.webdriver.support.ui import Select
+        from selenium.webdriver.chrome.options import Options
+        import subprocess
+
+        #root passwort gesetzt in docker-compose.yml
+        pw="V1ryS2c3r4p5ssw6rd"
+
+        new_user="SuperSecureAndi"
+        tmp_passwd="123456a"
+        new_passwd="iam123cute"
+
+        # Run docker to get the IP address of the ilias webserver
+        result = subprocess.run(['docker', 'inspect', '-f', '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}', 'ilias524-ilias-1'], capture_output=True, text=True)
+
+        # Extract the IP address from the command output
+        container_ip = result.stdout.strip()
+        adress="http://"+str(container_ip)+"/" #LETZTES "/" IST WICHTIG!!!!!!
+
+
+
+
+
+
+        options = webdriver.ChromeOptions()
+        driver = webdriver.Remote(
+        command_executor='http://localhost:4444/wd/hub',
+        options=options
+        )
+
+
+
+        #open login page, enter provided credentials and login
+        def perform_login(user_login,user_password):
+            driver.get(adress)
+
+            username=driver.find_element("id", "username")
+            username.send_keys(user_login)
+
+            password=driver.find_element("id", "password")
+            password.send_keys(user_password)
+
+            login=driver.find_element("name", "cmd[doStandardAuthentication]")
+            login.click()
+            time.sleep(2)
+
+        def add_user(flogin,fpassword,ffirstname,flastname,boolean_is_male,fmail,boolean_is_admin):
+            #make sure current page is homepage
+            driver.get(adress)
+            #click on admin menu
+            wait = WebDriverWait(driver, 10)
+            admin = wait.until(EC.element_to_be_clickable((By.ID, "mm_adm_tr")))
+            admin.click()
+            #select user controll element
+            wait = WebDriverWait(driver, 10)
+            usercontroll = wait.until(EC.element_to_be_clickable((By.ID, "mm_adm_usrf")))
+            usercontroll.click()
+            #Button that opens user creation menu
+            wait = WebDriverWait(driver, 10)
+            adduser = wait.until(EC.element_to_be_clickable((By.XPATH,
+            "/html/body/div[2]/div[5]/div/div/div/div[3]/div[3]/div/
+            div/nav/div/div[2]/ul/li[1]/div[1]/a")))
+            adduser.click()
+
+            #FORM FOR USER CREATION
+            wait = WebDriverWait(driver, 10)
+            login = wait.until(EC.element_to_be_clickable((By.ID, "login")))
+            login.send_keys(flogin)
+
+            wait = WebDriverWait(driver, 10)
+            password = wait.until(EC.element_to_be_clickable((By.ID, "passwd")))
+            password.send_keys(fpassword)
+
+            wait = WebDriverWait(driver, 10)
+            retype = wait.until(EC.element_to_be_clickable((By.ID, "passwd_retype")))
+            retype.send_keys(fpassword)
+
+            wait = WebDriverWait(driver, 10)
+            firstname = wait.until(EC.element_to_be_clickable((By.ID, "firstname")))
+            firstname.send_keys(ffirstname)
+
+            wait = WebDriverWait(driver, 10)
+            lastname = wait.until(EC.element_to_be_clickable((By.ID, "lastname")))
+            lastname.send_keys(flastname)
+
+            gender=""
+            wait = WebDriverWait(driver, 10)
+
+            if(boolean_is_male):
+                gender=wait.until(EC.element_to_be_clickable((By.ID, "gender_m")))
+            else:
+                gender=wait.until(EC.element_to_be_clickable((By.ID, "gender_f")))
+
+            gender.click()
+
+            wait = WebDriverWait(driver, 10)
+            email=wait.until(EC.element_to_be_clickable((By.ID, "email")))
+            email.send_keys(fmail)
+
+            #make user admin
+            if(boolean_is_admin):
+                wait = WebDriverWait(driver, 10)
+                select = Select(wait.until(EC.element_to_be_clickable((By.ID, "default_role"))))
+                select.select_by_visible_text('Administrator')
+
+            time.sleep(2)
+            #FInd save button, make sure it is clickable, and save the user
+            wait = WebDriverWait(driver, 10)
+            save_button = wait.until(EC.element_to_be_clickable((By.NAME, "cmd[save]")))
+            # Scroll to the button using ActionChains
+            actions = ActionChains(driver)
+            actions.move_to_element(save_button)
+            actions.perform()
+            # Wait for the scrolling to finish
+            time.sleep(2)
+
+            # Click the button
+            save_button.click()
+            time.sleep(2)
+
+        def set_init_passwd(user,oldp,newp):
+            #make sure user is logged out
+            driver.get(adress+"logout.php?lang=en")
+
+            #login with old credentials
+            perform_login(user,oldp)
+            #PROMPT TO SET INITIAL PASSWORD APPEARS
+
+            wait = WebDriverWait(driver, 10)
+            oldpwd = wait.until(EC.element_to_be_clickable((By.ID, "current_password")))
+            oldpwd.send_keys(oldp)
+
+            wait = WebDriverWait(driver, 10)
+            newpwd = wait.until(EC.element_to_be_clickable((By.ID, "new_password")))
+            newpwd.send_keys(newp)
+
+            wait = WebDriverWait(driver, 10)
+            newpwdretype = wait.until(EC.element_to_be_clickable((By.ID, "new_password_retype")))
+            newpwdretype.send_keys(newp)
+
+            wait = WebDriverWait(driver, 10)
+            savenewcredentials = wait.until(EC.element_to_be_clickable((By.NAME, "cmd[savePassword]")))
+            savenewcredentials.click()
+
+            time.sleep(5)
+
+        def add_course():
+            time.sleep(2)
+            wait = WebDriverWait(driver, 10)
+            repository = wait.until(EC.element_to_be_clickable((By.ID, "mm_rep_tr")))
+            repository.click()
+
+            wait = WebDriverWait(driver, 10)
+            home = wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[4]/div/div/nav/div[2]/ul/li[2]/ul/li/a")))
+            home.click()
+
+            wait = WebDriverWait(driver, 10)
+            new_item = wait.until(EC.element_to_be_clickable((By.ID, "ilAdvSelListAnchorText_asl")))
+            new_item.click()
+
+            wait = WebDriverWait(driver, 10)
+            new_course = wait.until(EC.element_to_be_clickable((By.ID, "crs")))
+            new_course.click()
+
+            wait = WebDriverWait(driver, 10)
+            title = wait.until(EC.element_to_be_clickable((By.ID, "title")))
+            title.send_keys("PSSWE")
+
+            wait = WebDriverWait(driver, 10)
+            save_course = wait.until(EC.element_to_be_clickable((By.NAME, "cmd[save]")))
+            save_course.click()
+
+            wait = WebDriverWait(driver, 10)
+            set_online = wait.until(EC.element_to_be_clickable((By.ID, "activation_online")))
+            set_online.click()
+
+            wait = WebDriverWait(driver, 10)
+            update = wait.until(EC.element_to_be_clickable((By.NAME, "cmd[update]")))
+            update.click()
+
+            wait = WebDriverWait(driver, 10)
+            content = wait.until(EC.element_to_be_clickable((By.ID, "tab_view_content")))
+            content.click()
+
+            wait = WebDriverWait(driver, 10)
+            add_content = wait.until(EC.element_to_be_clickable((By.ID, "ilAdvSelListAnchorText_asl")))
+            add_content.click()
+
+            wait = WebDriverWait(driver, 10)
+            add_forum = wait.until(EC.element_to_be_clickable((By.ID, "frm")))
+            add_forum.click()
+
+            wait = WebDriverWait(driver, 10)
+            forum_title = wait.until(EC.element_to_be_clickable((By.ID, "title")))
+            forum_title.send_keys("Grades")
+
+            wait = WebDriverWait(driver, 10)
+            save_forum = wait.until(EC.element_to_be_clickable((By.NAME, "cmd[save]")))
+            save_forum.click()
+
+            year=datetime.date.today().year
+            wait = WebDriverWait(driver, 10)
+            thread_title = wait.until(EC.element_to_be_clickable((By.ID, "subject")))
+            thread_title.send_keys("Grades "+str(year))
+
+            wait = WebDriverWait(driver, 10)
+            thread_content = wait.until(EC.element_to_be_clickable((By.ID, "message")))
+            thread_content.send_keys("TimDerHackerBoy: 5.0 \n THM{GRADE_CHANGED}")
+
+            wait = WebDriverWait(driver, 10)
+            save_thread = wait.until(EC.element_to_be_clickable((By.NAME, "cmd[addThread]")))
+            save_thread.click()
+
+
+
+
+
+            perform_login("root",pw)
+            add_user(new_user,tmp_passwd,"Andi","SuperSecure",True,"andy.derprofessor@email.com",True)
+            set_init_passwd(new_user,tmp_passwd,new_passwd)
+            #perform_login(new_user,new_passwd)
+            add_course()
+
+
+
+    \end{lstlisting} Beispiel eines erstellten Seleniumskripts.
+    Für Zugang zum Git-Repository mit allen Dateien oder bei Fragen und Anregungen melden Sie sich bitte unter den angegebene Mail-Adressen der Autorenschaft.
+
 
 
 
