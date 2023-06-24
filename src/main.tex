@@ -396,7 +396,7 @@
     Um nun die Dependencies korrekt anzupassen, wurde auf der \href{https://docu.ilias.de/goto_docu_lm_367.html}{ILIAS-Supportpage} die Requirementstabelle angeschaut und die Dependencies, wie dort genannt, konfiguriert.
     Damit ILIAS korrekt gebuildet werden kann, wird jedoch noch eine Install- und eine Entrypoint-Datei~\parencite{dockerEntrypoints} benötigt.
     Auch hier wurden als Basis die Dateien von \glqq sturai\grqq\ genutzt und so überarbeitet, dass unsere ILIAS-Version unterstützt wird.
-    Zu guter Letzt musste noch die docker-compose.yml angepasst werden, sodass unsere lokalen Dateien und Images genutzt werden, um die Container zu erstellen.
+    Zu guter Letzt musste noch die docker-compose.yml angepasst werden, sodass unsere lokalen Dateien und Images genutzt werden, um die Container zu erstellen und alle Abhängigkeiten zwischen den Containern korrekt gesetzt sind.
 
     \subsection{VM mit einem Ubuntu Betriebssystem}
     \label{subsec:ubuntu}
@@ -409,7 +409,7 @@
     \href{https://ubuntu.com/server}{Ubuntu Server} ist eine kostenlose und Open-Source-Version des Ubuntu-Betriebssystems, speziell entwickelt für Serveranwendungen.
     Mit Fokus auf Sicherheit und Stabilität bietet es eine zuverlässige Umgebung für verschiedene Serverfunktionen wie Webserver, Datenbanken und E-Mail-Server.
     Mit der Unterstützung von APT für einfache Paketverwaltung, einer aktiven Community und Integration mit Cloud-Plattformen ist Ubuntu Server eine beliebte Wahl für skalierbare und flexible Serverumgebungen.
-    Zudem wurde Ubuntu eingesetzt, da diese Linux Distribution am benutzerfreundlichsten ist.
+    Zudem wurde Ubuntu eingesetzt, da diese Linux Distribution am benutzerfreundlichsten ist und von TryHackMe als Betriebssystem der \ac{vm} akzeptiert wird.
 
 
     \subsection{MySQL Datenbank}
@@ -429,7 +429,7 @@
     Mit einem fortschrittlichen Paketverwaltungssystem, Fokus auf Stabilität und Sicherheit sowie einer vielseitigen Hardwareunterstützung ist Debian eine verlässliche Wahl für Desktop- und Serverumgebungen.
     Es wird von einer aktiven Community unterstützt und folgt den Prinzipien freier Software.
     Debian wurde als Linux Distribution für den Apache Webserver genutzt, da es sehr leichtgewichtig ist.
-    Somit nimmt der Docker Container weniger Speicherplatz in Anspruch.
+    Somit nimmt der Docker Container weniger Speicherplatz und Ressourcen in Anspruch.
 
     \subsection{ILIAS mit ImageMagick}
     \label{subsec:iliasTechnologie}
@@ -447,9 +447,10 @@
     Es wird von Entwicklern und Testern genutzt, um die Effizienz und Qualität von Webanwendungen zu verbessern.
     Es wurde ein Python-Skript mit Selenium erstellt, welches bei jedem (Re-)Boot der Maschine ausgeführt wird, um die, für die Storyline, nötigen Nutzeraccounts zu erstellen, da dies nur über das Graphical User Interface von ILIAS funktioniert.
     Zudem wird in der ersten Maschine auch der Kurs \glqq PSSWE\grqq\ erstellt, sowie die Flag als Forumeintrag eingetragen.
-    Selenium läuft hierbei in einem eigenen Docker Container und stellt die Verbindung zu ILIAS über die Remote Webserver-Funktion her.
-    Somit muss auf der Virtual Machine kein Selenium eingerichtet werden.
-    Der Selenium Container baut die Verbindung zur ILIAS Instanz über die Docker-eigene IP-Adresse auf.
+    Das Python-Skript liegt dabei auf der \ac{vm}, wobei es die Remote-Webserver-Funktion von Selenium nutzt, um das Ausführen in einem Docker-Container zu ermöglichen.
+    Hierfür wurde das \href{https://hub.docker.com/r/selenium/standalone-chrome/}{Standalone-Chrome Image von Selenium auf Docker Hub} verwendet.
+    Dies ermöglicht das Abstimmen der korrekten Selenium-, Chromedriver- und Chrome-Version auszulagern und dem Skript eine immer gleiche Schnittstelle über den Port 4444 bereitzustellen.
+    Die Abhängigkeiten laufen so in einer isolierten Umgebung und können getrennt verwaltet werden.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	4. Storyline
@@ -881,17 +882,14 @@
     TryHackMe hat nach mehreren Wochen den Bug fixen können, sodass die \ac{vm} nun ausgeführt werden konnte.
     Dabei wurde jedoch klar, dass der zugewiesene Arbeitsspeicher nicht genügt, um die \ac{vm} zuverlässig auszuführen.
     Auch hier hat der TryHackMe-Support mehr Arbeitsspeicher zuweisen können, sodass die \ac{vm} nun zuverlässig läuft.
-    Dennoch bleibt das Problem bestehen, dass die AttackBox über unzureichenden Arbeitsspeicher verfügt, wodurch das Bruteforcen mehrere Stunden in Anspruch nehmen kann.
-    Diese Situation ist jedoch akzeptabel, da eine tatsächliche Bruteforce-Attacke ebenfalls mehrere Stunden dauern kann.
 
     \subsection{Virtuelle Maschine 1}
     \label{subsec:vm1lessonslearned}
 
     \subsubsection{Selbstständiges Erstellen eines Docker Images auf Basis von sturai}
     \label{subsubsec:lessonslearnedDocker}
-    Es gibt viele verschiedene Befehle für Docker, die ähnliche aber nicht gleiche Funktionen haben.
     Die Befehle \glqq COPY\grqq\ und \glqq ADD\grqq\ fügen beide Dateien zum Image hinzu, wobei der Unterschied darin liegt, dass bei \glqq COPY\grqq\ die Datei innerhalb des Docker Containers liegen muss und bei \glqq ADD\grqq\ auch aus dem Betriebssystem, respektive der \ac{vm}, zum Container hinzugefügt werden kann.
-    Dies war relevant, da sturai \glqq COPY\grqq\ nutzt, da die Dateien bei ihm schon im Container sind. Bei unseren \ac{vm} müssen die Dateien jedoch aus dem lokalen System hinzugefügt werden, weshalb es hier den \glqq\ ADD\grqq-Befehl braucht.
+    Dies war relevant, da sturai \glqq COPY\grqq\ nutzt, da die Dateien bei ihm schon im Container sind. Bei unseren \ac{vm}s müssen die von uns überarbeiteten Dateien jedoch aus dem lokalen System hinzugefügt werden, weshalb es hier den \glqq\ ADD\grqq-Befehl braucht.
 
     \subsubsection{XSS Schwachstelle}
     \label{subsubsec:lessonslearnedXSS}
@@ -905,10 +903,10 @@
     Die Seitenstruktur in ILIAS besteht aus einzelnen HTML-Bausteinen, die mithilfe von PHP-Skripten in HTML-Template-Dateien integriert werden.
     Es wurde festgestellt, dass die Einbindung eigener Komponenten in diese Seiten problematisch sein kann, da es zu Kollisionen oder Überlagerungen mit vorhandenen Elementen kommen kann.
     Die Bearbeitung des Webseiteninhalts in der Datei \glqq tpl.main.html\grqq\ gestaltete sich als anspruchsvoll, insbesondere bei der Integration neuer Elemente.
-    Es wurde festgestellt, dass manuelle Änderungen verloren gehen, sobald der Container neu gestartet wird.
+    Es wurde auch festgestellt, dass manuelle Änderungen verloren gehen, sobald der Container neu gestartet wird.
     Aufgrund der Einschränkungen des \glqq RUN\grqq-Befehls, bei dem jede Anweisung eine eigene Shell-Sitzung hat, gestaltete sich das Wechseln des Arbeitsverzeichnisses als problematisch.
-    Zur Bewältigung dieser Herausforderungen wurde eine automatisierte Methode entwickelt, um den neuen Code einzufügen.
-    Dadurch konnte der Verlust von Änderungen bei einem Containerneustart vermieden werden.
+    Zur Bewältigung dieser Herausforderungen wurden die Befehle in das Dockerfile eingetragen, um die Änderungen direkt ins Image zu übertragen.
+    Dadurch konnte der Verlust von Änderungen bei einem Containerneustart oder der Zerstörung des Containers vermieden werden.
     Es war erforderlich, die Dateistruktur im ILIAS-Container genau zu analysieren, um die richtige Vorgehensweise für die Einbindung eigener Komponenten zu ermitteln.
 
     \subsubsection{Verstecken der ILIAS Login-Seite}
@@ -936,6 +934,16 @@
     Der crontab kann den Container über den Befehl \textit{docker exec} auf den Container zugreifen, dabei muss man jedoch beachten, dass die Flags \textit{-it} nicht gesetzt sind, da sonst eine interaktive Shell gestartet wird.
     Danach muss nur doch die Portweiterleitung eingerichtet werden, was jedoch ein gewisses Verständnis benötigt. Dadurch kann jetzt extern über SSH auf den Ilias Docker Container zugegriffen werden.
 
+    \subsubsection{Selenium}
+    \label{subsubsec:lessonslearnedSelenium}
+    Allgemein war Selenium ein sehr hilfreiches Tool, um Änderungen an \ac{ilias}-Inhalten vorzunehmen.
+    Trotzdem gab es einige Probleme beim Konfigurieren der Remote-Webserver-Funktion von Selenium, da sich die Syntax in verschiedenen Versionen unterscheidet, zum Beispiel durch das Setzen verschiedener Optionen wie \glqq set\_capability\grqq\ oder \glqq add\_argument\grqq.
+    Ein weiteres Problem war, dass für das Aufrufen der \ac{ilias}-Webpage aus dem Selenium Container heraus, nicht wie auf der \ac{vm} einfach \glqq localhost\grqq\ benutzen werden kann.
+    Das liegt daran, dass in der docker-compose.yml zwar eine Portweiterleitung des \ac{ilias} Containers auf die \ac{vm} eingerichtet ist, das Zugreifen auf den \ac{ilias} Container jedoch nicht so einfach vom Selenium Container aus möglich ist.
+    Um das Problem zu beheben, muss entweder eine eigene Docker-Network Konfiguration eingeführt werden oder es muss die Docker-eigene IP des \ac{ilias} Containers herausgefunden werden.
+    Es wurde sich für Letzteres entschieden und so wird vor dem Starten des Skripts, die IP über den \glqq docker inspect\grqq\ command und den Namen des Containers herausgefunden und als Entrypage für das Skript konfiguriert.
+
+    Sehr nützlich war auch die Funktion des Docker-Images, über den Port 7900 das Ausführen des Selenium-Skripts innerhalb der Docker Umgebung beobachten zu können.
 
     \fill
     \newpage
