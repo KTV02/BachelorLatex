@@ -539,7 +539,9 @@
     Jedoch hat XSS auch seine Limitationen, im Vergleich zu Command-Injection kann Tim keine Directories nach der SuperSecretFile.txt durchsuchen.
     Tim hofft also erst einmal darauf, dass die Datei im momentanen root Directory der Webseite \textit{/setup} liegt und baut sich auf dieser Basis seinen Payload zusammen.
 
-    \vspace{0.4cm}
+
+    \fill
+    \newpage
     \begin{lstlisting}[label={lst:setupXSSpayload}]
         "><script>
             var xhr = new XMLHttpRequest();
@@ -597,6 +599,8 @@
         \label{fig:ForumPost}
     \end{figure}
 
+    \fill
+    \newpage
     \subsubsection{Knacken des SSH Passworts mit Hydra}
     Tim hat jetzt sein eigentliches Ziel erreicht, er hat seine Note von 5.0 auf 1.0.
     Jedoch hat er beim Herumstöbern ein auffälliges Banner auf der \glqq My Workspace\grqq\ Seite von SuperSecureAndi gefunden und entschließt sich dem Ganzen auf den Grund zu gehen,
@@ -624,7 +628,8 @@
 
     \noindent
     Jetzt hat Tim alles, was er braucht, um sich über SSH einzuloggen:
-    Port, Nutzername und Passwort. Mit dem Befehl \textit{ssh -p 2222 SuperSecureAndi@<MACHINEIP>} kann sich Andi mit dem eben herausgefundenen Passwort auf die Maschine einwählen.
+    Port, Nutzername und Passwort.
+    Mit dem Befehl \textit{ssh -p 2222 SuperSecureAndi@<MACHINEIP>} kann sich Andi mit dem eben herausgefundenen Passwort auf die Maschine einwählen.
     Dort werden ihm dann auch direkt zwei Dateien dargelegt: IliasChangeLog.txt und ImportantNote.txt.
 
     \begin{figure}[H]
@@ -646,7 +651,8 @@
     \end{figure}
 
     \noindent
-    Jetzt ist Tims Interesse so richtig geweckt! Temporäre Zugangsdaten für einen Entwicklungsserver mit einer neuen Ilias Version! Auch wenn Tim
+    Jetzt ist Tims Interesse so richtig geweckt!
+    Temporäre Zugangsdaten für einen Entwicklungsserver mit einer neuen Ilias Version! Auch wenn Tim
     seine eigentliche Mission abgeschlossen hat, macht er sich direkt auf zur nächsten Virtual Machine in der Hoffnung, dass auch dort Geheimnisse
     darauf warten von ihm gelüftet zu werden.
 
@@ -674,6 +680,9 @@
         \label{fig:loginAlsDev}
     \end{figure}
 
+    \fill
+    \newpage
+    \noindent
     Komplett vertieft will Tim sich direkt mit den Credentials einloggen.
     Als er die Loginseite kurz überfliegt, fallen ihm die Wort \textit{using ImageMagic(v6.9.3-8)} direkt auf.
     \begin{figure}[H]
@@ -686,7 +695,7 @@
     \noindent
     Er hatte vor kurzem etwas über ImageTragick gelesen.
     Und wie so oft bietet \href{https://www.exploit-db.com/exploits/39767}{\textbf{exploit-db}} direkt die richtigen Informationen.
-
+    
     \vspace{0.4cm}
     \begin{lstlisting}[label={lst:imageMagickExploit}]
         exploit.mvg
@@ -714,7 +723,9 @@
     \end{enumerate}
 
 
-    \vspace{0.4cm}
+    \fill
+    \newpage
+    \noindent
     \begin{lstlisting}[label={lst:imageMagickExploitFinal}]
         #Als .txt bearbeiten und in einem akzeptiertem Dateiformat
         #speichern
@@ -738,6 +749,9 @@
         \caption{Der Exploit wird als Profilbild gespeichert und ein Netcat Lister nimmt den Verbindungsversuch des Servers auf Port 444 entgegen.}
         \label{fig:exploitHochladen}
     \end{figure}
+
+    \fill
+    \newpage
     \noindent
     Nach, dem die Verbindung erfolgreich etabliert ist, kommt schon das nächste Problem auf Tim zu.
     Die Bash Shell ist zu instabil, um damit fortzufahren.
@@ -756,6 +770,9 @@
         \caption{Vollständiges Terminal nach Ausführen der oben beschriebenen Schritte.}
         \label{fig:shellStabilisiert}
     \end{figure}
+
+    \fill
+    \newpage
     \noindent
     Nachdem die Shell erfolgreich zu einem vollständigen Terminal ausgebaut werden konnte, kann die erste Flag eingesammelt werden.
 
@@ -769,7 +786,9 @@
 
 
 
-
+    \fill
+    \newpage
+    \noindent
     \subsubsection{Scan auf Schwachstellen}
     \label{subsubsec:scanSchwachstellen}
     Tim lässt sich erst einmal mit \textit{ls} alle Dateien und Verzeichnisse im aktuellen Verzeichnis zeigen, dabei stößt er direkt auf eine Datei namens SuperSecretFlag.txt.
@@ -844,6 +863,9 @@
     \end{figure}
     \noindent
 
+    \fill
+    \newpage
+    \noindent
     \subsubsection{Privilege Escalation unter Ausnutzung Sudo Version 1.8.27}
     \label{subsubsec:privilegeEscalation2}
     Die Fehlkonfiguration der /etc/passwd Datei konnte erfolgreich ausgenutzt werden, aber diese war nicht die einzige Schwachstelle, die während des Scans aufgedeckt wurde.
@@ -904,6 +926,9 @@
     Dabei war vor allem relevant, zu verstehen, wie genau sensible Daten per \ac{xss} offengelegt werden können.
     So konnten dann die \ac{xss}-Payloads korrekt designt werden.
 
+    \fill
+    \newpage
+    \noindent
     \subsubsection{Einfügen eines gelben Banners auf der \glqq My Workplace\grqq-Seite in ILIAS}
     \label{subsubsec:lessonslearnedHTTP}
     Um ein gelbes Banner auf der \glqq My Workplace\grqq-Seite in ILIAS zu erstellen, werden grundlegende Kenntnisse in HTML, JavaScript und CSS benötigt.
@@ -1096,11 +1121,14 @@
     \label{sec:Anhang}
 
     Link zum TryHackMe Raum: https://tryhackme.com/room/t1mth3h4ck3rb0y
+    \\
     Passwort, falls gefragt: t1mth3h4ck3rb0y
+    \\
     GitHub Repository: https://github.com/KTV02/PSSWE
     
-    \vspace{3cm}
-
+    \vspace{1cm}
+    \noindent
+    Skript zum Testen verschiedener Schwachstellen (Schreibrechte wichtiger Dateien, Sudo, ImageMagick, OpenSSL).
     \begin{lstlisting}[label={lst:schwachstellentestSkript}]
         #!/bin/bash
 
@@ -1155,10 +1183,13 @@
         echo "Dirty COW vulnerability status: $dirtycow"
 
         echo "Vulnerability tests completed."
-    \end{lstlisting} Skript zum Testen verschiedener Schwachstellen (Schreibrechte wichtiger Dateien, Sudo, ImageMagick, OpenSSL).
+    \end{lstlisting}
 
     \fill
     \newpage
+    \noindent
+    Beispiel eines erstellten Seleniumskripts.
+    Für Zugang zum Git-Repository mit allen Dateien oder bei Fragen und Anregungen melden Sie sich bitte unter den angegebene Mail-Adressen der Autorenschaft.
     \begin{lstlisting}[label={lst:SeleniumSkript}]
         from selenium import webdriver
         from selenium.webdriver import ActionChains
@@ -1394,8 +1425,7 @@
 
 
 
-    \end{lstlisting} Beispiel eines erstellten Seleniumskripts.
-    Für Zugang zum Git-Repository mit allen Dateien oder bei Fragen und Anregungen melden Sie sich bitte unter den angegebene Mail-Adressen der Autorenschaft.
+    \end{lstlisting}
 
 
 
