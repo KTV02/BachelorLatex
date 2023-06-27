@@ -1251,7 +1251,8 @@
             login.click()
             time.sleep(2)
 
-        def add_user(flogin,fpassword,ffirstname,flastname,boolean_is_male,fmail,boolean_is_admin):
+        def add_user(flogin,fpassword,ffirstname,
+            flastname,boolean_is_male,fmail,boolean_is_admin):
             #make sure current page is homepage
             driver.get(adress)
             #click on admin menu
@@ -1358,7 +1359,8 @@
             repository.click()
 
             wait = WebDriverWait(driver, 10)
-            home = wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[4]/div/div/nav/div[2]/ul/li[2]/ul/li/a")))
+            home = wait.until(EC.element_to_be_clickable((By.XPATH,
+            "/html/body/div[2]/div[4]/div/div/nav/div[2]/ul/li[2]/ul/li/a")))
             home.click()
 
             wait = WebDriverWait(driver, 10)
@@ -1423,7 +1425,8 @@
 
 
             perform_login("root",pw)
-            add_user(new_user,tmp_passwd,"Andi","SuperSecure",True,"andy.derprofessor@email.com",True)
+            add_user(new_user,tmp_passwd,"Andi","SuperSecure",
+            True,"andy.derprofessor@email.com",True)
             set_init_passwd(new_user,tmp_passwd,new_passwd)
             #perform_login(new_user,new_passwd)
             add_course()
