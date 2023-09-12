@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.4)  12 SEP 2023 19:02
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.4)  12 SEP 2023 19:34
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -703,24 +703,18 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 (c:/texlive/2022/texmf-dist/tex/generic/babel/luababel.def
 \bbl@attr@locale=\attribute4
 )
-(c:/texlive/2022/texmf-dist/tex/generic/babel-german/ngerman.ldf
-Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthogra
-phy)
-
-(c:/texlive/2022/texmf-dist/tex/generic/babel-german/ngermanb.ldf
-Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthogr
-aphy)
-Package babel Info: Making " an active character on input line 122.
-
-(c:/texlive/2022/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-de-1996.tex
-UTF-8 German hyphenation patterns (reformed orthography)
-(c:/texlive/2022/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-de-1996.tex
-
-German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2021-02-26
- (WL))))))
-(c:/texlive/2022/texmf-dist/tex/generic/babel/locale/de/babel-ngerman.tex
-Package babel Info: Importing font and identification data for ngerman
-(babel)             from babel-de.ini. Reported on input line 11.
+(c:/texlive/2022/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language22). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language22). Reported on input line 108.
+))
+(c:/texlive/2022/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
 )
 (c:/texlive/2022/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
@@ -742,10 +736,21 @@ Package csquotes Info: ... configuration file loaded successfully.
 File: csquotes.cfg 
 )
 Package csquotes Info: Disabling multilingual quotes.
-Package csquotes Info: Redefining alias 'default' -> 'german'.
-Package csquotes Info: Redefining alias 'german' -> 'german/quotes'.
-)
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package csquotes Info: Redefining alias 'default' -> 'english'.
+
+
+c:/texlive/2022/texmf-dist/tex/latex/csquotes/csquotes.sty:2497: Package csquot
+es Error: Quote style not defined.
+
+See the csquotes package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2497 \ProcessOptions*
+                     
+Define the style or alias 'english/quotes' first.
+
+) (c:/texlive/2022/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2022/07/12 v3.18b programmable bibliographies (PK/MW)
 
 (c:/texlive/2022/texmf-dist/tex/latex/logreq/logreq.sty
@@ -1052,9 +1057,6 @@ Package: listings 2020/03/24 1.8d (Carsten Heinz)
 (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-(c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
 ./main.tex:63: Missing = inserted for \ifnum.
 <to be read again> 
 n
@@ -1182,41 +1184,31 @@ Package tablefootnote Warning: LuaTeX and hyperref package used:
 (tablefootnote)                regardless of tablefootnote package.
 (tablefootnote)                The text to be printed will be OK.
 
-Package biblatex Info: Trying to load language 'ngerman' -> 'ngerman-apa'...
-Package biblatex Info: ... file 'ngerman-apa.lbx' found.
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex-apa/ngerman-apa.lbx
-File: ngerman-apa.lbx 2022/06/22 v9.16 APA biblatex localisation
-Package biblatex Info: Trying to load language 'ngerman'...
-Package biblatex Info: ... file 'ngerman.lbx' found.
+Package biblatex Info: Trying to load language 'english' -> 'english-apa'...
+Package biblatex Info: ... file 'english-apa.lbx' found.
+(c:/texlive/2022/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx
+File: english-apa.lbx 2022/06/22 v9.16 APA biblatex localisation
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
 
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
-File: ngerman.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'german' -> 'german-apa'...
-Package biblatex Info: ... file 'german-apa.lbx' found.
+(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load language 'american' -> 'american-apa'...
+Package biblatex Info: ... file 'american-apa.lbx' found.
 
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex-apa/german-apa.lbx
-File: german-apa.lbx 2022/06/22 v9.16 APA biblatex localisation
-Package biblatex Info: Trying to load language 'german'...
-Package biblatex Info: ... file 'german.lbx' found.
+(c:/texlive/2022/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx
+File: american-apa.lbx 2022/06/22 v9.16 APA biblatex localisation
+Package biblatex Info: Trying to load language 'american'...
+Package biblatex Info: ... file 'american.lbx' found.
 
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/german.lbx
-File: german.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-)))
-Package biblatex Info: Trying to load language 'ngerman'...
-Package biblatex Info: ... file 'ngerman.lbx' found.
+(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/american.lbx
+File: american.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
 
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
-File: ngerman.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'german' -> 'german-apa'...
-Package biblatex Info: ... file 'german-apa.lbx' found.
-
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex-apa/german-apa.lbx
-File: german-apa.lbx 2022/06/22 v9.16 APA biblatex localisation
-Package biblatex Info: Trying to load language 'german'...
-Package biblatex Info: ... file 'german.lbx' found.
-
-(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/german.lbx
-File: german.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
+(c:/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
 ))))
 Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
@@ -1231,56 +1223,68 @@ Package biblatex Info: ... file 'main.bbl' found.
 Package biblatex Info: Reference section=0 on input line 67.
 Package biblatex Info: Reference segment=0 on input line 67.
 \c@lstlisting=\count462
-Package acronym Info: Label `acro:ilias' newly defined as it shall be overridde
-n
-although it is yet undefined on input line 78.
-<author_pictures/chris_2.jpg, id=196, 801.99625pt x 1088.065pt>
-File: author_pictures/chris_2.jpg Graphic file (type jpg)
-<use author_pictures/chris_2.jpg>
-Package luatex.def Info: author_pictures/chris_2.jpg  used on input line 103.
-(luatex.def)             Requested size: 46.80176pt x 63.488pt.
-<author_pictures/umut.jpg, id=197, 774.0117pt x 1052.733pt>
-File: author_pictures/umut.jpg Graphic file (type jpg)
-<use author_pictures/umut.jpg>
-Package luatex.def Info: author_pictures/umut.jpg  used on input line 107.
-(luatex.def)             Requested size: 46.80176pt x 63.64314pt.
-<author_pictures/lennart.jpg, id=198, 796.9775pt x 1081.03876pt>
-File: author_pictures/lennart.jpg Graphic file (type jpg)
-<use author_pictures/lennart.jpg>
-Package luatex.def Info: author_pictures/lennart.jpg  used on input line 111.
-(luatex.def)             Requested size: 46.80176pt x 63.4739pt.
-<author_pictures/Fred.jpg, id=199, 796.9775pt x 1081.03876pt>
-File: author_pictures/Fred.jpg Graphic file (type jpg)
-<use author_pictures/Fred.jpg>
-Package luatex.def Info: author_pictures/Fred.jpg  used on input line 115.
-(luatex.def)             Requested size: 46.80176pt x 63.4739pt.
+<Title/hhn.jpg, id=20, 190.46156pt x 108.405pt>
+File: Title/hhn.jpg Graphic file (type jpg)
+<use Title/hhn.jpg>
+Package luatex.def Info: Title/hhn.jpg  used on input line 83.
+(luatex.def)             Requested size: 143.9978pt x 81.96188pt.
+<Title/hd.jpg, id=21, 187.45032pt x 105.39375pt>
+File: Title/hd.jpg Graphic file (type jpg)
+<use Title/hd.jpg>
+Package luatex.def Info: Title/hd.jpg  used on input line 87.
+(luatex.def)             Requested size: 143.9978pt x 80.96687pt.
+<Title/dkfz.jpg, id=22, 452.69125pt x 127.47626pt>
+File: Title/dkfz.jpg Graphic file (type jpg)
+<use Title/dkfz.jpg>
+Package luatex.def Info: Title/dkfz.jpg  used on input line 96.
+(luatex.def)             Requested size: 288.0011pt x 81.10017pt.
  [1
 
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./author_pictures
-/chris_2.jpg><./author_pictures/umut.jpg><./author_pictures/lennart.jpg><./autho
-r_pictures/Fred.jpg>]
-./main.tex:147: Misplaced \noalign.
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./Title/hhn.jpg><
+./Title/hd.jpg><./Title/dkfz.jpg>]
+./main.tex:132: Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.147         \hline
+l.132         \hline
                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
+
+Package acronym Info: Label `acro:ilias' newly defined as it shall be overridde
+n
+although it is yet undefined on input line 143.
+
+Package acronym Warning: Acronym `ilias' is not defined on input line 143.
+
+
+Package acronym Warning: Acronym `ilias' is not defined on input line 143.
 
 Package acronym Info: Label `acro:vm' newly defined as it shall be overridden
-although it is yet undefined on input line 159.
-./main.tex:170: Misplaced \noalign.
+although it is yet undefined on input line 144.
+
+Package acronym Warning: Acronym `vm' is not defined on input line 144.
+
+
+Package acronym Warning: Acronym `vm' is not defined on input line 144.
+
+
+Package acronym Warning: Acronym `vm' is not defined on input line 150.
+
+
+Package acronym Warning: Acronym `ilias' is not defined on input line 150.
+
+./main.tex:155: Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.170         \hline
+l.155         \hline
                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-./main.tex:173: Undefined control sequence.
+./main.tex:158: Undefined control sequence.
 <recently read> \keywords 
           
-l.173         \keywords
+l.158         \keywords
                      {Ilias, Fehlkonfiguration, ImageMagick, Privilage Escal...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1338,24 +1342,24 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (c:/texlive/2022/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [2])
+))
 \tf@toc=\write5
 
 \openout5 = main.toc
- [3]
-./main.tex:200: Missing number, treated as zero.
+ [2]
+./main.tex:185: Missing number, treated as zero.
 <to be read again> 
 \scan_stop: 
-l.200     \newpage
+l.185     \newpage
                 
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./main.tex:200: Illegal unit of measure (pt inserted).
+./main.tex:185: Illegal unit of measure (pt inserted).
 <to be read again> 
 \scan_stop: 
-l.200     \newpage
+l.185     \newpage
                 
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1365,17 +1369,35 @@ delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 206.
+(Font)              <9> on input line 191.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 206.
+(Font)              <5> on input line 191.
+
+LaTeX Warning: Citation 'hhnGehackt' on page 3 undefined on input line 199.
+
+
+Package acronym Warning: Acronym `ilias' is not defined on input line 200.
+
+
+Package acronym Warning: Acronym `ilias' is not defined on input line 201.
+
 Package acronym Info: Label `acro:xss' newly defined as it shall be overridden
-although it is yet undefined on input line 225.
-[4]
+although it is yet undefined on input line 210.
 
-LaTeX Warning: Reference `subsec:screening-ergebnisse' on page 5 undefined on i
-nput line 265.
+Package acronym Warning: Acronym `xss' is not defined on input line 210.
 
-[5] (d:/BachelorTEst/out/main.aux)
+
+Package acronym Warning: Acronym `xss' is not defined on input line 210.
+
+
+Package acronym Warning: Acronym `vm' is not defined on input line 212.
+
+[3]
+
+LaTeX Warning: Reference `subsec:screening-ergebnisse' on page 4 undefined on i
+nput line 250.
+
+[4] (d:/BachelorTEst/out/main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1392,137 +1414,26 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 28867 strings out of 477352
+ 28456 strings out of 477352
  125081,1648299 words of node,token memory allocated
- 762 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 8 glue, 4 kern, 1 penalty, 3 glyph, 28
- attribute, 71 glue_spec, 16 attribute_list, 1 write, 6 pdf_action nodes
-   avail lists: 1:1,2:1236,3:355,4:123,5:494,6:97,7:6890,8:74,9:516,10:24,11:855
-
- 48789 multiletter control sequences out of 65536+600000
- 53 fonts using 2410679 bytes
- 72i,16n,78p,1128b,7169s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-warning  (pdf backend): unreferenced destination with name 'cite.0@hhnGehackt'
-
-warning  (pdf backend): unreferenced destination with name 'section.9'
-
-warning  (pdf backend): unreferenced destination with name 'section.8'
-
-warning  (pdf backend): unreferenced destination with name 'section.7'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.3.3'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.3.2'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.3.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.6'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.5'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.4'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.3'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.2'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.1'
-
-warning  (pdf backend): unreferenced destination with name 'section.6'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.5'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.4'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.3'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.2'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.5.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.1.3'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.1.2'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.5.1.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.5.1'
-
-warning  (pdf backend): unreferenced destination with name 'section.5'
-
-warning  (pdf backend): unreferenced destination with name 'section.4'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.6'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.5'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.4'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.1'
-
-warning  (pdf backend): unreferenced destination with name 'section.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.2.4.2'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.2.4.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.2.4'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.2.3.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.2.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsubsection.2.2.1'
-
-
-warning  (pdf backend): unreferenced destination with name 'subsection.2.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.2.1'
-
-warning  (pdf backend): unreferenced destination with name 'section.2'
+ 656 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 4 kern, 1 penalty, 3 glyph, 15
+ attribute, 71 glue_spec, 9 attribute_list, 1 write nodes
+   avail lists: 1:3,2:944,3:148,4:70,5:490,6:56,7:6349,8:15,9:522,10:15,11:479
+ 48475 multiletter control sequences out of 65536+600000
+ 52 fonts using 2352727 bytes
+ 72i,16n,72p,1128b,5041s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/texlive/2022/texmf-
 dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pu
-blic/lm/lmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><
-c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2022/texmf
--dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pub
-lic/lm/lmr9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb>
-Output written on main.pdf (7 pages, 12833272 bytes).
+blic/lm/lmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb><
+c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2022/texm
+f-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pu
+blic/lm/lmr8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/
+texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb>
+Output written on main.pdf (6 pages, 226284 bytes).
 
-PDF statistics: 345 PDF objects out of 1000 (max. 8388607)
- 321 compressed objects within 4 object streams
- 60 named destinations out of 1000 (max. 131072)
- 385 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 103 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 131072)
+ 33 words of extra memory for PDF output out of 10000 (max. 100000000)
 
