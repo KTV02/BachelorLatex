@@ -2,12 +2,7 @@
 \documentclass[10pt, a4paper,onecolumn ,titlepage]{article}
 %\documentclass[man,floatsintext]{apa7}
 
-%Einbindung der Referenzen in das Dokument via BiblaTeX
-\usepackage[ngerman]{babel}
-\usepackage[style=german,german=quotes]{csquotes}
-\usepackage[style=apa,backend=biber]{biblatex}
-\DeclareLanguageMapping{american}{american-apa}
-\addbibresource{main.bib}
+
 
 %Packages
 \usepackage[utf8]{inputenc}
@@ -35,12 +30,13 @@
 \usepackage{arabicfnt}
 \usepackage{tocbibind}
 
-%Ueberschrieben des kewyowrds befehl
-\providecommand{\keywords}[1]
-{
-    \small
-    \textbf{\textit{Keywords --}} #1
-}
+%Einbindung der Referenzen in das Dokument via BiblaTeX
+\usepackage[ngerman]{babel}
+\usepackage[style=german,german=quotes]{csquotes}
+\usepackage[style=apa,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{main.bib}
+
 
 %Zum Einfügen von Code
 \usepackage{listings}
