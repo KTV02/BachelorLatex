@@ -2813,37 +2813,6 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">hhnGehackt</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">ilias</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">xss</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">xssExploitDb</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">xssCVEDetails</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">imagemagick</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">imageTragicReport</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">privilegeEscalationArten</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">privilegeEscalationSudoExploit</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">privilegeEscalationSudoExploit</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">privilegeEscalationSudo</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">privilegeEscalationPasswd</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">linuxRechteBild</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">privilegeEscalationFehlkRechte</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">docker</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">dockerEntrypoints</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">imagemagickExploit</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">reverseShell</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">reverseShell</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">shellStabilisieren</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">shellStabilisieren</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">privilegeEscalationRaumTryHackMe</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">privilegeEscalationRaumTryHackMe</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">privilegeEscalationRaumTryHackMe</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">privilegeEscalationSudoExploit</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">privilegeEscalationSudoExploit</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">shellStabilisieren</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">shellStabilisieren</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">imageMagickEinrichten</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">imageMagickEinrichten</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">sudoEinrichten</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">sudoEinrichten</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">
@@ -2891,15 +2860,6 @@
                 type="entry"
                 sortingtemplatename="apa"
                 sortingnamekeytemplatename="apasortcite"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
-  <bcf:datalist section="0"
-                name="apa/global//global/global"
-                type="entry"
-                sortingtemplatename="apa"
-                sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"
                 labelalphanametemplatename="global">

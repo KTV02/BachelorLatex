@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.4)  12 SEP 2023 18:29
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.4)  12 SEP 2023 19:02
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -50,8 +50,8 @@ Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
 Inserting `tracingstacklevels' at position 1 in `input_level_string'.
 (c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(c:/texlive/2022/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+(c:/texlive/2022/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 luaotfload | db : Font names database loaded from C:/texlive/2022/texmf-var/luat
 ex-cache/generic/names/luaotfload-names.luc.gz)
 \c@part=\count183
@@ -1238,22 +1238,22 @@ although it is yet undefined on input line 78.
 File: author_pictures/chris_2.jpg Graphic file (type jpg)
 <use author_pictures/chris_2.jpg>
 Package luatex.def Info: author_pictures/chris_2.jpg  used on input line 103.
-(luatex.def)             Requested size: 44.85168pt x 60.8482pt.
+(luatex.def)             Requested size: 46.80176pt x 63.488pt.
 <author_pictures/umut.jpg, id=197, 774.0117pt x 1052.733pt>
 File: author_pictures/umut.jpg Graphic file (type jpg)
 <use author_pictures/umut.jpg>
 Package luatex.def Info: author_pictures/umut.jpg  used on input line 107.
-(luatex.def)             Requested size: 44.85168pt x 60.99269pt.
+(luatex.def)             Requested size: 46.80176pt x 63.64314pt.
 <author_pictures/lennart.jpg, id=198, 796.9775pt x 1081.03876pt>
 File: author_pictures/lennart.jpg Graphic file (type jpg)
 <use author_pictures/lennart.jpg>
 Package luatex.def Info: author_pictures/lennart.jpg  used on input line 111.
-(luatex.def)             Requested size: 44.85168pt x 60.83467pt.
+(luatex.def)             Requested size: 46.80176pt x 63.4739pt.
 <author_pictures/Fred.jpg, id=199, 796.9775pt x 1081.03876pt>
 File: author_pictures/Fred.jpg Graphic file (type jpg)
 <use author_pictures/Fred.jpg>
 Package luatex.def Info: author_pictures/Fred.jpg  used on input line 115.
-(luatex.def)             Requested size: 44.85168pt x 60.83467pt.
+(luatex.def)             Requested size: 46.80176pt x 63.4739pt.
  [1
 
 {c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./author_pictures
@@ -1318,11 +1318,11 @@ LaTeX Font Info:    Trying to load font information for OMX+lmex on input line
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4.
+(Font)              <10.95> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 4.
+(Font)              <6> on input line 4.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1365,788 +1365,26 @@ delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 206.
+(Font)              <9> on input line 206.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 206.
+(Font)              <5> on input line 206.
 Package acronym Info: Label `acro:xss' newly defined as it shall be overridden
 although it is yet undefined on input line 225.
-./main.tex:237: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.237     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:237: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.237     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
 [4]
-Package acronym Info: Label `acro:owasp' newly defined as it shall be overridde
-n
-although it is yet undefined on input line 253.
 
-./main.tex:269: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.269     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
+LaTeX Warning: Reference `subsec:screening-ergebnisse' on page 5 undefined on i
+nput line 265.
 
-./main.tex:269: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.269     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
+[5] (d:/BachelorTEst/out/main.aux)
 
-[5]
-./main.tex:298: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.298     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:298: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.298     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[6]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-25.
- (c:/texlive/2022/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-
-./main.tex:335: Illegal unit of measure (pt inserted).
-<to be read again> 
-!
-l.335     \vspace{0.5}
-                    
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[7]
-<other_pictures/linux_file_permissions.width-1600.png, id=360, 803.0pt x 388.45
-125pt>
-File: other_pictures/linux_file_permissions.width-1600.png Graphic file (type p
-ng)
-<use other_pictures/linux_file_permissions.width-1600.png>
-Package luatex.def Info: other_pictures/linux_file_permissions.width-1600.png  
-used on input line 353.
-(luatex.def)             Requested size: 345.0pt x 166.89444pt.
-
-./main.tex:374: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.374     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:374: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.374     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[8<./other_pictures/linux_file_permissions.width-1600.png>]
-<other_pictures/Technologien.png, id=373, 1235.61626pt x 675.52374pt>
-File: other_pictures/Technologien.png Graphic file (type png)
-<use other_pictures/Technologien.png>
-Package luatex.def Info: other_pictures/Technologien.png  used on input line 38
-1.
-(luatex.def)             Requested size: 345.0pt x 188.60936pt.
- [9<./other_pictures/Technologien.png>]
-Overfull \hbox (0.845pt too wide) in paragraph at lines 415--420
-[]\T1/lmr/m/n/10 MyS-QL[] ist ein Open-Source-relationales Da-ten-bank-ver-wal-t
-ungs-sys-tem (RDBMS),
- []
-
-[10]
-./main.tex:457: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.457     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:457: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.457     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[11]
-<other_pictures/storyline.png, id=414, 1026.83624pt x 570.13pt>
-File: other_pictures/storyline.png Graphic file (type png)
-<use other_pictures/storyline.png>
-Package luatex.def Info: other_pictures/storyline.png  used on input line 492.
-(luatex.def)             Requested size: 345.0pt x 191.55368pt.
- [12]
-./main.tex:502: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.502     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:502: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.502     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[13<./other_pictures/Storyline.png>]
-<VM1_Bilder/NmapScan.PNG, id=427, 399.74344pt x 152.82094pt>
-File: VM1_Bilder/NmapScan.PNG Graphic file (type png)
-<use VM1_Bilder/NmapScan.PNG>
-Package luatex.def Info: VM1_Bilder/NmapScan.PNG  used on input line 515.
-(luatex.def)             Requested size: 345.0pt x 131.89912pt.
-<VM1_Bilder/robotstxt.PNG, id=428, 695.59875pt x 37.64063pt>
-File: VM1_Bilder/robotstxt.PNG Graphic file (type png)
-<use VM1_Bilder/robotstxt.PNG>
-Package luatex.def Info: VM1_Bilder/robotstxt.PNG  used on input line 526.
-(luatex.def)             Requested size: 345.0pt x 18.66862pt.
-
-./main.tex:542: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.542     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:542: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.542     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[14<./VM1_Bilder/NmapScan.PNG><./VM1_Bilder/robotstxt.PNG>]
-<VM1_Bilder/XSSHash.PNG, id=443, 585.68813pt x 249.18094pt>
-File: VM1_Bilder/XSSHash.PNG Graphic file (type png)
-<use VM1_Bilder/XSSHash.PNG>
-Package luatex.def Info: VM1_Bilder/XSSHash.PNG  used on input line 570.
-(luatex.def)             Requested size: 345.0pt x 146.78734pt.
-<VM1_Bilder/GobusterScan.PNG, id=445, 1227.83719pt x 605.26125pt>
-File: VM1_Bilder/GobusterScan.PNG Graphic file (type png)
-<use VM1_Bilder/GobusterScan.PNG>
-Package luatex.def Info: VM1_Bilder/GobusterScan.PNG  used on input line 583.
-(luatex.def)             Requested size: 345.0pt x 170.06306pt.
- [15<./VM1_Bilder/XSSHash.PNG>]
-<VM1_Bilder/ForumPost.PNG, id=466, 774.64406pt x 129.48375pt>
-File: VM1_Bilder/ForumPost.PNG Graphic file (type png)
-<use VM1_Bilder/ForumPost.PNG>
-Package luatex.def Info: VM1_Bilder/ForumPost.PNG  used on input line 596.
-(luatex.def)             Requested size: 345.0pt x 57.66847pt.
-
-./main.tex:602: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.602     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:602: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.602     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[16<./VM1_Bilder/GobusterScan.PNG><./VM1_Bilder/ForumPost.PNG>]
-<VM1_Bilder/YellowBanner.PNG, id=475, 1169.11781pt x 400.49625pt>
-File: VM1_Bilder/YellowBanner.PNG Graphic file (type png)
-<use VM1_Bilder/YellowBanner.PNG>
-Package luatex.def Info: VM1_Bilder/YellowBanner.PNG  used on input line 611.
-(luatex.def)             Requested size: 345.0pt x 118.18204pt.
-<VM1_Bilder/HydraBruteforce.PNG, id=477, 1138.2525pt x 306.39468pt>
-File: VM1_Bilder/HydraBruteforce.PNG Graphic file (type png)
-<use VM1_Bilder/HydraBruteforce.PNG>
-Package luatex.def Info: VM1_Bilder/HydraBruteforce.PNG  used on input line 623
-.
-(luatex.def)             Requested size: 345.0pt x 92.86818pt.
-<VM1_Bilder/IliasChangelog.PNG, id=478, 630.85687pt x 246.9225pt>
-File: VM1_Bilder/IliasChangelog.PNG Graphic file (type png)
-<use VM1_Bilder/IliasChangelog.PNG>
-Package luatex.def Info: VM1_Bilder/IliasChangelog.PNG  used on input line 635.
-
-(luatex.def)             Requested size: 345.0pt x 135.0354pt.
- [17<./VM1_Bilder/YellowBanner.PNG><./VM1_Bilder/HydraBruteforce.PNG>]
-<VM1_Bilder/ImportantNote.PNG, id=488, 594.72188pt x 63.98906pt>
-File: VM1_Bilder/ImportantNote.PNG Graphic file (type png)
-<use VM1_Bilder/ImportantNote.PNG>
-Package luatex.def Info: VM1_Bilder/ImportantNote.PNG  used on input line 647.
-(luatex.def)             Requested size: 345.0pt x 37.11952pt.
-
-./main.tex:660: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.660     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:660: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.660     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[18<./VM1_Bilder/IliasChangelog.PNG><./VM1_Bilder/ImportantNote.PNG>]
-<storyline_bilder_vm2/loginAlsDev01.png, id=497, 736.7525pt x 569.12625pt>
-File: storyline_bilder_vm2/loginAlsDev01.png Graphic file (type png)
-<use storyline_bilder_vm2/loginAlsDev01.png>
-Package luatex.def Info: storyline_bilder_vm2/loginAlsDev01.png  used on input 
-line 675.
-(luatex.def)             Requested size: 345.0pt x 266.49937pt.
-
-./main.tex:682: Missing number, treated as zero.
-<to be read again> 
-\global 
-l.682     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:682: Illegal unit of measure (pt inserted).
-<to be read again> 
-\global 
-l.682     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[19<./storyline_bilder_vm2/LoginAlsDev01.png>]
-<storyline_bilder_vm2/loginPageHinweisImageMagick.png, id=507, 539.01375pt x 40
-.15pt>
-File: storyline_bilder_vm2/loginPageHinweisImageMagick.png Graphic file (type p
-ng)
-<use storyline_bilder_vm2/loginPageHinweisImageMagick.png>
-Package luatex.def Info: storyline_bilder_vm2/loginPageHinweisImageMagick.png  
-used on input line 688.
-(luatex.def)             Requested size: 345.0pt x 25.69835pt.
-
-./main.tex:725: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.725     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:725: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.725     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[20
-Missing character: There is no – (U+2013) in font ec-lmri10!
-<./storyline_bilder_vm2/loginPageHinweisImageMagick.png>]
-<storyline_bilder_vm2/VerbindungDa.png, id=529, 1116.17pt x 659.46375pt>
-File: storyline_bilder_vm2/VerbindungDa.png Graphic file (type png)
-<use storyline_bilder_vm2/VerbindungDa.png>
-Package luatex.def Info: storyline_bilder_vm2/VerbindungDa.png  used on input l
-ine 746.
-(luatex.def)             Requested size: 345.0pt x 203.82788pt.
-
-./main.tex:752: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.752     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:752: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.752     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[21<./storyline_bilder_vm2/VerbindungDa.png>]
-<storyline_bilder_vm2/shellStabilisierenGanz.png, id=546, 355.3275pt x 176.66pt
->
-File: storyline_bilder_vm2/shellStabilisierenGanz.png Graphic file (type png)
-<use storyline_bilder_vm2/shellStabilisierenGanz.png>
-Package luatex.def Info: storyline_bilder_vm2/shellStabilisierenGanz.png  used 
-on input line 767.
-(luatex.def)             Requested size: 345.0pt x 171.5298pt.
-
-./main.tex:773: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.773     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:773: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.773     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[22<./storyline_bilder_vm2/shellStabilisierenGanz.png>]
-<storyline_bilder_vm2/userflag.png, id=555, 465.74pt x 280.04625pt>
-File: storyline_bilder_vm2/userflag.png Graphic file (type png)
-<use storyline_bilder_vm2/userflag.png>
-Package luatex.def Info: storyline_bilder_vm2/userflag.png  used on input line 
-779.
-(luatex.def)             Requested size: 345.0pt x 207.45317pt.
-
-./main.tex:788: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.788     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:788: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.788     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[23<./storyline_bilder_vm2/userflag.png>]
-<storyline_bilder_vm2/FileDenied.png, id=562, 524.96124pt x 390.45876pt>
-File: storyline_bilder_vm2/FileDenied.png Graphic file (type png)
-<use storyline_bilder_vm2/FileDenied.png>
-Package luatex.def Info: storyline_bilder_vm2/FileDenied.png  used on input lin
-e 798.
-(luatex.def)             Requested size: 345.0pt x 256.61327pt.
- [24<./storyline_bilder_vm2/FileDenied.png>]
-<storyline_bilder_vm2/ScanSchwachstellen.png, id=578, 769.87625pt x 284.06125pt
->
-File: storyline_bilder_vm2/ScanSchwachstellen.png Graphic file (type png)
-<use storyline_bilder_vm2/ScanSchwachstellen.png>
-Package luatex.def Info: storyline_bilder_vm2/ScanSchwachstellen.png  used on i
-nput line 823.
-(luatex.def)             Requested size: 345.0pt x 127.29756pt.
-
-Overfull \hbox (10.35732pt too wide) in paragraph at lines 846--847
-\T1/lmr/m/it/10 cker:'$1$THM$tYg-pU9xz-sOZ98alD7sjt70':0:0:root:/root:/bin/-bash
-'
- []
-
-[25<./storyline_bilder_vm2/ScanSchwachstellen.png>]
-<storyline_bilder_vm2/addUserReadFlag.png, id=589, 695.59875pt x 221.82875pt>
-File: storyline_bilder_vm2/addUserReadFlag.png Graphic file (type png)
-<use storyline_bilder_vm2/addUserReadFlag.png>
-Package luatex.def Info: storyline_bilder_vm2/addUserReadFlag.png  used on inpu
-t line 851.
-(luatex.def)             Requested size: 345.0pt x 110.0205pt.
-<storyline_bilder_vm2/addUserVersion2.png, id=590, 695.59875pt x 125.46875pt>
-File: storyline_bilder_vm2/addUserVersion2.png Graphic file (type png)
-<use storyline_bilder_vm2/addUserVersion2.png>
-Package luatex.def Info: storyline_bilder_vm2/addUserVersion2.png  used on inpu
-t line 859.
-(luatex.def)             Requested size: 345.0pt x 62.22878pt.
-
-./main.tex:866: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.866     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:866: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.866     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[26<./storyline_bilder_vm2/addUserReadFlag.png><./storyline_bilder_vm2/addUserVe
-rsion2.png>]
-<storyline_bilder_vm2/escalationSudo.png, id=603, 697.60625pt x 95.35625pt>
-File: storyline_bilder_vm2/escalationSudo.png Graphic file (type png)
-<use storyline_bilder_vm2/escalationSudo.png>
-Package luatex.def Info: storyline_bilder_vm2/escalationSudo.png  used on input
- line 879.
-(luatex.def)             Requested size: 345.0pt x 47.15855pt.
-
-./main.tex:900: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.900     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:900: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.900     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[27<./storyline_bilder_vm2/escalationSudo.png>]
-./main.tex:931: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.931     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:931: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.931     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[28] [29]
-<other_pictures/selenium_pic.jpg, id=622, 320.69812pt x 275.52937pt>
-File: other_pictures/selenium_pic.jpg Graphic file (type jpg)
-<use other_pictures/selenium_pic.jpg>
-Package luatex.def Info: other_pictures/selenium_pic.jpg  used on input line 98
-7.
-(luatex.def)             Requested size: 345.0pt x 296.41531pt.
- [30]
-./main.tex:993: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.993     \newpage
-                
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:993: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.993     \newpage
-                
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[31<./other_pictures/selenium_pic.jpg>]
-./main.tex:1029: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.1029     \newpage
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:1029: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.1029     \newpage
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[32]
-./main.tex:1065: Illegal unit of measure (pt inserted).
-<to be read again> 
-!
-l.1065     \vspace{0.5}
-                     
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-./main.tex:1079: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.1079     \newpage
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:1079: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.1079     \newpage
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[33]
-./main.tex:1080: Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.1080     \hline
-               
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-./main.tex:1088: Misplaced \noalign.
-\hline ->\noalign 
-                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.1088     \hline
-               
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1088
-
- []
-
-./main.tex:1095: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.1095     \newpage
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:1095: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.1095     \newpage
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[34]
-Overfull \hbox (0.12477pt too wide) in paragraph at lines 1098--1098
-\T1/lmr/m/n/10 / / owasp . org / www - community / attacks / xss / # : ~ : text = Cross % 2DSite %
- []
-
-[35]
-./main.tex:1104: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.1104     \newpage
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:1104: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.1104     \newpage
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[36]
-./main.tex:1120: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.1120     \newpage
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:1120: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.1120     \newpage
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[37] [38]
-./main.tex:1190: Missing number, treated as zero.
-<to be read again> 
-\scan_stop: 
-l.1190     \newpage
-                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-./main.tex:1190: Illegal unit of measure (pt inserted).
-<to be read again> 
-\scan_stop: 
-l.1190     \newpage
-                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-[39] [40] [41] [42]
-Overfull \hbox (12.2089pt too wide) in paragraph at lines 1359--1360
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][]  
- []
-
-[43] [44] [45] (d:/BachelorTEst/out/main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 
@@ -2154,30 +1392,137 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 30048 strings out of 477352
- 195454,1648299 words of node,token memory allocated
- 945 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 8 glue, 4 kern, 1 glyph, 64 attribute, 72 glue_spec
-, 34 attribute_list, 1 write, 23 pdf_action nodes
-   avail lists: 1:5,2:5362,3:674,4:1370,5:3016,6:108,7:10177,8:126,9:7288,10:26,
-11:1035
- 49345 multiletter control sequences out of 65536+600000
- 56 fonts using 2583671 bytes
- 72i,8n,82p,1128b,7169s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 28867 strings out of 477352
+ 125081,1648299 words of node,token memory allocated
+ 762 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 8 glue, 4 kern, 1 penalty, 3 glyph, 28
+ attribute, 71 glue_spec, 16 attribute_list, 1 write, 6 pdf_action nodes
+   avail lists: 1:1,2:1236,3:355,4:123,5:494,6:97,7:6890,8:74,9:516,10:24,11:855
+
+ 48789 multiletter control sequences out of 65536+600000
+ 53 fonts using 2410679 bytes
+ 72i,16n,78p,1128b,7169s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+warning  (pdf backend): unreferenced destination with name 'cite.0@hhnGehackt'
+
+warning  (pdf backend): unreferenced destination with name 'section.9'
+
+warning  (pdf backend): unreferenced destination with name 'section.8'
+
+warning  (pdf backend): unreferenced destination with name 'section.7'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.3.3'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.3.2'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.3.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.6.3'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.6'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.5'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.4'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.3'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.2'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.6.2.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.6.2'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.6.1'
+
+warning  (pdf backend): unreferenced destination with name 'section.6'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.5'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.4'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.3'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.2'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.2.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.5.2'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.1.3'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.1.2'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.5.1.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.5.1'
+
+warning  (pdf backend): unreferenced destination with name 'section.5'
+
+warning  (pdf backend): unreferenced destination with name 'section.4'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.3.6'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.3.5'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.3.4'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.3.3'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.3.2'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.3.1'
+
+warning  (pdf backend): unreferenced destination with name 'section.3'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.2.4.2'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.2.4.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.2.4'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.2.3.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.2.3'
+
+warning  (pdf backend): unreferenced destination with name 'subsubsection.2.2.1'
+
+
+warning  (pdf backend): unreferenced destination with name 'subsection.2.2'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.2.1'
+
+warning  (pdf backend): unreferenced destination with name 'section.2'
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/texlive/2022/texmf-
 dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pu
-blic/lm/lmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx8.pfb><
-c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb><c:/texlive/2022/texm
-f-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1
-/public/lm/lmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb>
-<c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2022/texm
-f-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pu
-blic/lm/lmr9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c
-:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on main.pdf (47 pages, 15484068 bytes).
+blic/lm/lmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb><
+c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2022/texmf
+-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pub
+lic/lm/lmr9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb>
+Output written on main.pdf (7 pages, 12833272 bytes).
 
-PDF statistics: 1124 PDF objects out of 1200 (max. 8388607)
- 1003 compressed objects within 11 object streams
- 488 named destinations out of 1000 (max. 131072)
+PDF statistics: 345 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 60 named destinations out of 1000 (max. 131072)
  385 words of extra memory for PDF output out of 10000 (max. 100000000)
 
