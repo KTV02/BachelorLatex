@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50a317bd-4557-47d2-9ce8-aa2128dbfb8a" name="Default Changelist" comment="Bib">
+    <list default="true" id="50a317bd-4557-47d2-9ce8-aa2128dbfb8a" name="Default Changelist" comment="TitlePage">
+      <change beforePath="$PROJECT_DIR$/.idea/Ausarbeitung_PSSWE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BachelorTEst.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.bcf" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.bcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.blg" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.blg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.toc" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ausarbeitung_PSSWE.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.aux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.bbl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.bcf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.blg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.synctex.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/ForumPost.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/GobusterScan.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/HydraBruteforce.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/IliasChangelog.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/ImportantNote.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/NmapScan.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/XSSHash.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/YellowBanner.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VM1_Bilder/robotstxt.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/author_pictures/Fred.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/author_pictures/chris_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/author_pictures/lennart.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/author_pictures/umut.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.bbl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.bcf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other_pictures/Storyline.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other_pictures/Technologien.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other_pictures/linux_file_permissions.width-1600.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other_pictures/selenium.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/other_pictures/selenium_pic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/FileDenied.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/LoginAlsDev01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/ScanSchwachstellen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/VerbindungDa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/addUserReadFlag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/addUserVersion2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/escalationSudo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/exploitHochladen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/listenerStartenExploitHochladen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/loginPage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/loginPageHinweisImageMagick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/personalDataOverview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/shellStabilisierenGanz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/testFotoHochladen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storyline_bilder_vm2/userflag.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +85,7 @@
       <recent name="D:\BachelorTEst\src" />
     </key>
   </component>
-  <component name="RunManager" selected="LaTeX.Test">
+  <component name="RunManager" selected="BibTeX.testbib">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -79,6 +119,19 @@
       </texify-bibtex>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="BachelorTEst" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="BachelorTEst" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
       <texify>
         <compiler>LUALATEX</compiler>
@@ -95,7 +148,7 @@
         <output-format>PDF</output-format>
         <latex-distribution>TEXLIVE</latex-distribution>
         <has-been-run>true</has-been-run>
-        <bib-run-config>[]</bib-run-config>
+        <bib-run-config>[BibTeX.testbib]</bib-run-config>
         <makeindex-run-config>[]</makeindex-run-config>
       </texify>
       <method v="2" />
@@ -136,7 +189,7 @@
       <updated>1694534397170</updated>
       <workItem from="1694534400166" duration="424000" />
       <workItem from="1694534913280" duration="438000" />
-      <workItem from="1694535384468" duration="4614000" />
+      <workItem from="1694535384468" duration="9969000" />
     </task>
     <task id="LOCAL-00001" summary="base">
       <created>1694536420716</created>
@@ -152,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694538467875</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="TitlePage">
+      <created>1694540100094</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694540100094</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +233,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="base" />
     <MESSAGE value="Bib" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bib" />
+    <MESSAGE value="TitlePage" />
+    <option name="LAST_COMMIT_MESSAGE" value="TitlePage" />
   </component>
 </project>

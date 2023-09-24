@@ -16,5 +16,96 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{kurbig-2005}{online}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f0a219bbcf5e792d906f494cf227896c}{%
+           family={Kürbig},
+           familyi={K\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=29e9fc207518899536aa781d8012a821}{%
+           family={Sauter},
+           familyi={S\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{fullhash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{bibnamehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{authorbibnamehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{authornamehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{authorfullhash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Seminar: Bildsegmentierung und Computer Vision WS 2005/6}
+      \field{urlday}{12}
+      \field{urlmonth}{8}
+      \field{urlyear}{2023}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.mathematik.uni-ulm.de/stochastik/lehre/ws05_06/seminar/ausarbeitung_sauter.pdf#:~:text=Das%20Verfahren%20der%20Bildsegmentierung%20findet%20Anwendung%20in%20zahlreichen,auch%20zur%20Segmentierung%20von%20R%C3%B6ntgenbildern%20und%20der%20Computertomographie.
+      \endverb
+      \verb{url}
+      \verb https://www.mathematik.uni-ulm.de/stochastik/lehre/ws05_06/seminar/ausarbeitung_sauter.pdf#:~:text=Das%20Verfahren%20der%20Bildsegmentierung%20findet%20Anwendung%20in%20zahlreichen,auch%20zur%20Segmentierung%20von%20R%C3%B6ntgenbildern%20und%20der%20Computertomographie.
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{kurbig-2005}{online}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f0a219bbcf5e792d906f494cf227896c}{%
+           family={Kürbig},
+           familyi={K\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=29e9fc207518899536aa781d8012a821}{%
+           family={Sauter},
+           familyi={S\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{fullhash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{bibnamehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{authorbibnamehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{authornamehash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \strng{authorfullhash}{43ab1ddbcba0ec70d949f7c522ebd62f}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Seminar: Bildsegmentierung und Computer Vision WS 2005/6}
+      \field{urlday}{12}
+      \field{urlmonth}{8}
+      \field{urlyear}{2023}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.mathematik.uni-ulm.de/stochastik/lehre/ws05_06/seminar/ausarbeitung_sauter.pdf#:~:text=Das%20Verfahren%20der%20Bildsegmentierung%20findet%20Anwendung%20in%20zahlreichen,auch%20zur%20Segmentierung%20von%20R%C3%B6ntgenbildern%20und%20der%20Computertomographie.
+      \endverb
+      \verb{url}
+      \verb https://www.mathematik.uni-ulm.de/stochastik/lehre/ws05_06/seminar/ausarbeitung_sauter.pdf#:~:text=Das%20Verfahren%20der%20Bildsegmentierung%20findet%20Anwendung%20in%20zahlreichen,auch%20zur%20Segmentierung%20von%20R%C3%B6ntgenbildern%20und%20der%20Computertomographie.
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

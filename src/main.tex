@@ -3,9 +3,10 @@
 %\documentclass[man,floatsintext]{apa7}
 
 
-
 %Packages
 \usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[babel=true]{csquotes}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amstext}
@@ -31,8 +32,6 @@
 \usepackage{tocbibind}
 
 %Einbindung der Referenzen in das Dokument via BiblaTeX
-\usepackage[english]{babel}
-\usepackage[style=english,english=quotes]{csquotes}
 \usepackage[style=apa,backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 \addbibresource{main.bib}
@@ -91,7 +90,7 @@
             \end{figure}
 
             \begin{figure}[H]
-            \centering
+                \centering
                 \begin{minipage}[b]{0.8\linewidth} % [b] => Ausrichtung an \caption
                     \includegraphics[width=\linewidth]{Title/dkfz}
                 \end{minipage}\label{fig:dkfz}
@@ -123,59 +122,12 @@
 
     \end{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	Abstract
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \renewcommand*\abstractname{\flushleft\textbf{Abstract}\hfill}
-    \begin{abstract}
-        \hline
-        \vspace{0.5cm}
-        \noindent
-        \textbf{Hintergrund}:  In einer immer stärker miteinander vernetzten Welt wird eines immer wichtiger, die Sicherheit und der Schutz digitaler Infrastruktur.
-        Dies zeigt auch eine immer weiter zunehmenden Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
-        Geschultes IT-Personal mit fundierten Kenntnissen im Umgang mit Schwachstelle ist somit unerlässlich.
-
-        \vspace{0.5cm}
-        \noindent
-        \textbf{Zielsetzung}: Das Ziel dieses Projekts ist das Erstellen eines TryHackMe Raumes, der anhand einer ansprechenden Storyline
-        Wissen im Bereich IT-Sicherheit vermittelt und vorhandene Kenntnisse auf die Probe stellt.
-        Es gilt demnach, geeignete Schwachstellen (in \ac{ilias}) zu bestimmen und eine Storyline rund um diese zu entwerfen.
-        Passende Technologien sind auszuwählen und die \ac{vm}, zur späteren Einbindung in den TryHackMe Raum, auszuarbeiten.
-        Abschließen gilt es alle Komponenten in einem ansprechend designten TryHackMe Raum zu vereinen.
-
-
-        \vspace{0.5cm}
-        \noindent
-        \textbf{Ergebnisse}: Insgesamt wurden zwei \ac{vm}s mit den \ac{ilias} Versionen 5.2.3 und 5.2.4 erstellt.
-        Eine Storyline rund um den Studenten TimDerHackerBoy führt die Nutzer des Raumes durch die beiden Maschinen.
-        Um den Raum erfolgreich abzuschließen sind unter anderem verschiedene Schwachstellen auszunutzen, drei Flags zu finden und den erfolgreichen Umgang mit verschiedenen Tools wie Hydra unter Beweis zustellen.
-
-        \vspace{0.5cm}
-        \hline
-        \vspace{1cm}
-        \noindent
-        \keywords{Ilias, Fehlkonfiguration, ImageMagick, Privilage Escalation, XSS}
-
-        \vspace{2cm}
-        \noindent
-        Für Zugang zum Git-Repository oder bei Fragen und Anregungen melden Sie sich bitte unter den angegebene Mail-Adressen der Autorenschaft.
-
-        \vspace{1cm}
-        \noindent
-        Hier geht es zum \href{https://tryhackme.com/room/t1mth3h4ck3rb0y}{\textbf{TryHackMe Raum}}.
-    \end{abstract}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	1.Inhaltsverzeichnis
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-     \shorttoc{Inhaltsübersicht}{1} %Inhaltübersicht ohne Unterpunkte
-     \pagebreak
-     \tableofcontents
-     \vfill
-     \pagebreak
+    \shorttoc{Table of Contents}{1} %Inhaltübersicht ohne Unterpunkte
+    \pagebreak
+    \tableofcontents
+    \vfill
+    \pagebreak
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,34 +135,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \fill
     \newpage
-    \section{Einleitung}
-    \label{sec:einleitung}
-
-    \subsection{Gegenstand und Motivation}
-    \label{subsec:gegenstand-motivation}
-    \footnote{In dieser Arbeit wird aus Gründen der besseren Lesbarkeit das generische Maskulinum verwendet. Weibliche und anderweitige Geschlechteridentitäten werden dabei ausdrücklich mitgemeint.}
-    Die Zuverlässigkeit moderner IT-Systeme entscheidet über Erfolg oder Misserfolg vieler Firmen, Branchen oder ganzer Nationen.
-    In unserer immer stärker digitalisierten Welt, wird die Sicherheit und der Schutz digitaler Infrastruktur dementsprechend immer wichtiger.
-    Dies zeigt auch eine immer weiter zunehmende Anzahl an Cyberangriffen, die es nötig macht, seine IT-Infrastruktur immer im Blick zu behalten und bestmöglich vor ungewollten Angriffen zu schützen.
-    Geschultes IT-Personal mit fundierten Kenntnissen im Umgang mit Schwachstelle ist somit unerlässlich.
-    Eine Möglichkeit, ein solches Wissen zu erlangen, bietet die Lernplattform \href{https://tryhackme.com/}{TryHackMe}.
-    Sie bietet interessierten Personen die Möglichkeit, sich in Lern- und Challengeräumen umfangreiches Wissen im Bereich Ethical Hacking anzueignen.
-    Und das erworbene Wissen in einer realitätsnahen, aber dennoch abgesicherten Umgebung zu testen.
-    Jüngst sind auch viele Hochschulen und Universitäten Ziel von Cyberangriffen geworden, oftmals mit dem Ziel Geld zu erpressen~\parencite{hhnGehackt}.
-    Eine häufig zur Kommunikation genutzte Software an Universitäten und Hochschulen ist das Lernmanagementsystem \ac{ilias}, das in der Vergangenheit ebenfalls verschiedene Schwachstellen aufwies, die ein Einfallstor für Hacker darstellten.
-    Um eine möglichst realistische Lernumgebung des zu entwickelnden TryHackMe Raumes zu schaffen, greift der zu entwickelnde TryHackMe Raum auf eben diese \ac{ilias} Schwachstellen zurück.
 
 
-    \subsection{Zielsetzung}
-    \label{subsec:zielsetzung}
-    Das oberste Ziel des zu TryHackMe Raumes besteht in der Wissensvermittlung bzw. dem Prüfen erworbener Kenntnisse.
-    Indem wir interessierte Personen mittels einer Storyline durch einen Raum mit realistischen und in der Vergangenheit aufgetretener Schwachstellen leiten, sollen diese ihr Können unter Beweis stellen.
-    Dies soll das Verständnis für die Bedeutung der IT-Sicherheit in der heutigen digitalen Landschaft fördern und gleichzeitig zukünftige Sicherheitsexperten bestmöglich auf Bedrohungen einstellen.
-    Die Geschichte handelt von einem jungen Studenten namens TimDerHackerboy, der sich im Laufe seines Kurses \glqq Grundlagen der sicheren Software-Entwicklung\grqq\ zu einer besseren Note hackt.
-    Dabei begegnet er unter anderem Schwachstellen wie dem \ac{xss}, ImageTragick oder einer Fehlkonfiguration, die bei geschicktem Ausnutzen eine Privilege Escalation zulässt.
-    Es gilt demnach, geeignete Schwachstellen zu bestimmen und diese in die Storyline rund um TimDerHackerboy einzuarbeiten.
-    Passende Technologien sind auszuwählen und die \ac{vm}s, zur späteren Einbindung in den TryHackMe Raum, auszuarbeiten.
-    Abschließend gilt es, alle Komponenten in einem ansprechend designten TryHackMe Raum zu vereinen.
+    \section{Introduction}
+    \label{sec:introduction}
+
+    \subsection{Background and Motivation}
+    \label{subsec:background}
+    Image Segmentation, a pivotal technique in the medical domain, enables the detection of tissue abnormalities, such
+    as tumors, and assists in segmenting medical imaging from X-Rays, CT scans, and MRIs\parencite{kurbig-2005}.
+    Another application of image segmentation is to replace current tracking systems, that require additional hardware
+    like magnetic field based tracking\parentcite{bianchi-2019} (Bianchi et al., 2019,p.2) or optical trackers (Koivukangas et al., 2013,p.2).
+    While these applications are groundbreaking, the success of image segmentation hinges on two critical pillars -
+    accuracy and robustness. Accurate segmentation ensures that the features of medical images are correctly identified,
+    facilitating precise diagnosis. But in the medical field not only accuracy is important, but also the robustness of
+    the predictions. For a physician to make informed decisions aided by an image segmentation algorithm, it needs to
+    be reliable in a wide variety of different settings. Optimally, the algorithm rejects all images it can not make a
+    reliable prediction on and it is additionally ensured, that the number of rejected images is as small as possible
+    (Deserno, 2008). The concept of robustness in image segmentation, will be delved into in greater detail in
+    subsequent chapters. To ensure that a given algorithm is fit to be used in the medical field, there is a need for
+    an independent certification. Therefore, there has to be an objective way to quantify the robustness of image
+    segmentation algorithms. This study seeks to find a transparent measure by developing a comprehensive testing
+    framework able to evaluate them in different scenarios. Anyone releasing new image segmentation algorithms for
+    the medical field could then use this framework to certify their product. This helps medical practitioners make
+    informed decisions with an easy to read robustness scale and improves patient safety by ensuring only adequate
+    software is used. Developers could benefit from the transparent robustness scale, because it shows their software
+    meets standards for accuracy and robustness, which has long been the norm for medical devices, because it reduces
+    the risk of recalls due to defects and potential lawsuits (The Importance of ISO 13485 Certification to Medical
+    Device Manufacturing | Smithers, 05.08.2023.) The platform that is being developed quantifies robustness, has an
+    open Interface to enable broad usage and can be extended to test the image segmentation with different types of
+    interference effects. Because the process is automated, it helps to provide a cheap and easy way to test an image
+    segmentation algorithm for its readiness to be deployed in the medical field.
 
 
 
@@ -222,40 +177,38 @@
         \begin{threeparttable}
             \begin{tabularx}{\linewidth}{|X|X|}
                 \hline
-                \textbf{Interference Effect} & \textbf{Value Ranges}  \\
+                \textbf{Interference Effect} & \textbf{Value Ranges} \\
                 \hline
-                Glare & 2,38 \\
+                Glare                        & 2,38                  \\
                 \hline
-                Brightness\tnote{1} & 2,38 \\
+                Brightness\tnote{1}          & 2,38                  \\
                 \hline
-                Darkness & 0,79\\
+                Darkness                     & 0,79                  \\
                 \hline
-                4 & 0  \\
+                4                            & 0                     \\
                 \hline
-                5\tnote{1} & 3,97 \\
+                5\tnote{1}                   & 3,97                  \\
                 \hline
-                6\tnote{1} & 7,14 \\
+                6\tnote{1}                   & 7,14                  \\
                 \hline
-                7 & 0  \\
+                7                            & 0                     \\
                 \hline
-                8 & 0  \\
+                8                            & 0                     \\
                 \hline
-                9 & 1,59 \\
+                9                            & 1,59                  \\
                 \hline
-                10 & 1,59 \\
+                10                           & 1,59                  \\
                 \hline
             \end{tabularx}
 
             \begin{tablenotes}
-                \item[1] Durch das Screening der Enable-Fragebogenrückläufer (Abschnitt~\ref{subsec:screening-ergebnisse}) als \textit{auffällig} markiertes Item.
+               % \item[1] Durch das Screening der Enable-Fragebogenrückläufer (Abschnitt~\ref{subsec:screening-ergebnisse}) als \textit{auffällig} markiertes Item.
+               % \item[1] Durch das Screening der Enable-Fragebogenrückläufer (Abschnitt~\ref{subsec:screening-ergebnisse}) als \textit{auffällig} markiertes Item.
                 \item[*] Zur Auswertung werden die Antwortmöglichkeiten des SUS mit Zahlen kodiert. stimme gar nicht zu --> 1; stimme voll zu --> 5.
             \end{tablenotes}
         \end{threeparttable}
     \end{table}
 
-
-
-
-
+\printbibliography
 \end{document}
 
